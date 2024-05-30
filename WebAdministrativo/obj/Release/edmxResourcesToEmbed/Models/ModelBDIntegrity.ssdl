@@ -1,0 +1,1936 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDIntegrityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SCI_ACCIONES">
+    <Key>
+      <PropertyRef Name="ID_ACCION" />
+      <PropertyRef Name="ID_TAREA" />
+    </Key>
+    <Property Name="ID_ACCION" Type="int" Nullable="false" />
+    <Property Name="ID_TAREA" Type="int" Nullable="false" />
+    <Property Name="ID_RESPONSABLE" Type="int" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" />
+    <Property Name="FECHA" Type="datetime" />
+    <Property Name="OBSERVACION" Type="varchar" MaxLength="200" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="20" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SCI_ALERTAS">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDRELACIONADO" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDRELACIONADO" Type="int" Nullable="false" />
+    <Property Name="TIPOALERTA" Type="int" />
+    <Property Name="PROCESO" Type="int" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="20" />
+    <Property Name="IDPERSONA" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="FECHACREACION" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SCI_CARACTERISTICAS">
+    <Key>
+      <PropertyRef Name="IDCARACTERISTICA" />
+    </Key>
+    <Property Name="IDCARACTERISTICA" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="IDCARACTERISTICA_REF" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_CLASIFICACION">
+    <Key>
+      <PropertyRef Name="IDCLASIFICACION" />
+    </Key>
+    <Property Name="IDCLASIFICACION" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="IDCLASIFICACION_REF" Type="int" />
+    <Property Name="INDICACION_OPEN" Type="nchar" MaxLength="10" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_CLIENTEMAST">
+    <Key>
+      <PropertyRef Name="IDCLIENTE" />
+    </Key>
+    <Property Name="IDCLIENTE" Type="int" Nullable="false" />
+    <Property Name="IDEMPRESA" Type="int" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="25" />
+    <Property Name="CELULAR" Type="varchar" MaxLength="25" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="ESGARANTE" Type="int" />
+    <Property Name="CREDITO" Type="decimal" Precision="15" Scale="6" />
+    <Property Name="DIAS" Type="int" />
+    <Property Name="TIPOCLIENTE" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_COMPANY">
+    <Key>
+      <PropertyRef Name="IDCOMPANYA" />
+    </Key>
+    <Property Name="IDCOMPANYA" Type="int" Nullable="false" />
+    <Property Name="DOCUMENTO" Type="varchar" MaxLength="20" />
+    <Property Name="RAZONSOCIAL" Type="varchar" MaxLength="80" />
+    <Property Name="IDREPRESENTANTE" Type="int" Nullable="false" />
+    <Property Name="IDEMPRESA" Type="int" Nullable="false" />
+    <Property Name="URL" Type="varchar" MaxLength="100" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="300" />
+    <Property Name="NOMCOMERCIAL" Type="varchar" MaxLength="120" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="3" />
+    <Property Name="ABREVIATURA" Type="varchar" MaxLength="30" />
+    <Property Name="FLATCONEXION" Type="varchar" MaxLength="20" />
+    <Property Name="LOGO" Type="varchar" MaxLength="250" />
+    <Property Name="LOGOPORTADA" Type="varchar" MaxLength="250" />
+    <Property Name="RUTA" Type="varchar" MaxLength="250" />
+    <Property Name="IDPERFIL" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_COMPROBANTE">
+    <Key>
+      <PropertyRef Name="IDCOMPROBANTE" />
+    </Key>
+    <Property Name="IDCOMPROBANTE" Type="int" Nullable="false" />
+    <Property Name="FECHAEMISION" Type="datetime" />
+    <Property Name="NROCOMPROBANTE" Type="varchar" MaxLength="25" />
+    <Property Name="TIPOCOMPROBANTE" Type="int" />
+    <Property Name="IDCLIENTE" Type="int" />
+    <Property Name="SERIE" Type="varchar" MaxLength="50" />
+    <Property Name="TIPOFACTURA" Type="int" />
+    <Property Name="TIPOVENTA" Type="int" />
+    <Property Name="FORMAPAGO" Type="int" />
+    <Property Name="CONCEPTOCOMPROBANTE" Type="varchar" MaxLength="30" />
+    <Property Name="MONTOAFECTO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MONTOIMPUESTO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MONTOTOTAL" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MONEDA" Type="varchar" MaxLength="2" />
+    <Property Name="TIPOCAMBIO" Type="int" />
+    <Property Name="IDNEGOCIO" Type="int" />
+    <Property Name="PERIODO" Type="varchar" MaxLength="6" />
+    <Property Name="IGV" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="FECHAVENCIMIENTO" Type="datetime" />
+    <Property Name="FECHACANCELACION" Type="datetime" />
+    <Property Name="FECHAANULACION" Type="datetime" />
+    <Property Name="IDCOTIZACION" Type="int" />
+    <Property Name="NROCOTIZACION" Type="varchar" MaxLength="25" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_COMPROBANTEDETALLE">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDCOMPROBANTE" />
+      <PropertyRef Name="IDPRODUCTO" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDCOMPROBANTE" Type="int" Nullable="false" />
+    <Property Name="IDPRODUCTO" Type="int" Nullable="false" />
+    <Property Name="IDLISTABASE" Type="int" />
+    <Property Name="MONTOAFECTO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MONTOIMPUESTO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MONTOTOTAL" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="IGV" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="CANTIDAD" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+  </EntityType>
+  <EntityType Name="SCI_COTIZACION">
+    <Key>
+      <PropertyRef Name="IDCOTIZACION" />
+    </Key>
+    <Property Name="IDCOTIZACION" Type="int" Nullable="false" />
+    <Property Name="NROCOTIZACION" Type="varchar" MaxLength="25" />
+    <Property Name="IDCLIENTE" Type="int" Nullable="false" />
+    <Property Name="FECHAREGISTRO" Type="datetime" />
+    <Property Name="FECHAINICIO" Type="datetime" />
+    <Property Name="FECHAFIN" Type="datetime" />
+    <Property Name="FECHACADUCIDAD" Type="datetime" />
+    <Property Name="IDEMPLEADO" Type="int" />
+    <Property Name="TIPOCAMBO" Type="int" />
+    <Property Name="MONEDA" Type="varchar" MaxLength="2" />
+    <Property Name="MONTOAFECTO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MONTOIMPUESTO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MONTOTOTAL" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_COTIZACIONDETALLE">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDPRODUCTO" />
+      <PropertyRef Name="IDCOTIZACION" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDPRODUCTO" Type="int" Nullable="false" />
+    <Property Name="IDCOTIZACION" Type="int" Nullable="false" />
+    <Property Name="CANTIDAD" Type="int" />
+    <Property Name="IGV" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MONTOAFECTO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MONTOIMPUESTO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MONTOTOTAL" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="ESTADO" Type="int" />
+  </EntityType>
+  <EntityType Name="SCI_EMPLEADO">
+    <Key>
+      <PropertyRef Name="IDEMPLEADO" />
+    </Key>
+    <Property Name="IDEMPLEADO" Type="int" Nullable="false" />
+    <Property Name="IDNEGOCIO" Type="int" />
+    <Property Name="FECHAINICIO" Type="datetime" />
+    <Property Name="FECHACESE" Type="datetime" />
+    <Property Name="FECHALIQUIDACION" Type="datetime" />
+    <Property Name="FECHAREINGRESO" Type="datetime" />
+    <Property Name="TIPO_TRABAJADOR" Type="int" />
+    <Property Name="FOTO" Type="image" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="25" />
+    <Property Name="ANEXO" Type="varchar" MaxLength="25" />
+    <Property Name="CELULAR" Type="varchar" MaxLength="25" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="TIPOMONEDA" Type="int" />
+    <Property Name="SUELDO_ACTUAL" Type="decimal" Precision="15" Scale="6" />
+    <Property Name="SUELDO_ANTERIOR" Type="decimal" Precision="15" Scale="6" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_GARANTIA">
+    <Key>
+      <PropertyRef Name="IDGARANTIA" />
+    </Key>
+    <Property Name="IDGARANTIA" Type="int" Nullable="false" />
+    <Property Name="IDEMPRESA" Type="int" Nullable="false" />
+    <Property Name="FECHAREGISTRO" Type="datetime" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="20" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="500" />
+    <Property Name="IDCONTACTO" Type="int" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="FECHAINICIO" Type="datetime" />
+    <Property Name="FECHAFIN" Type="datetime" />
+    <Property Name="REFERENCIA" Type="varchar" MaxLength="100" />
+    <Property Name="OBSERVACION" Type="text" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIODMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="SCI_GARANTIADETALLE">
+    <Key>
+      <PropertyRef Name="IDGARANTIA" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="IDGARANTIA" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ITEM" Type="varchar" MaxLength="20" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="500" />
+    <Property Name="MARCA" Type="varchar" MaxLength="20" />
+    <Property Name="MODELO" Type="varchar" MaxLength="20" />
+    <Property Name="CANTIDAD" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIODMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="SCI_LISTABASE">
+    <Key>
+      <PropertyRef Name="IDLISTABASE" />
+    </Key>
+    <Property Name="IDLISTABASE" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="FECINI" Type="datetime" />
+    <Property Name="FECFIN" Type="datetime" />
+    <Property Name="TIPO_LISTA" Type="int" />
+    <Property Name="IDNEGOCIO" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFCACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_LISTABASEDETALLE">
+    <Key>
+      <PropertyRef Name="IDPRODUCTO" />
+      <PropertyRef Name="IDLISTABASE" />
+    </Key>
+    <Property Name="IDPRODUCTO" Type="int" Nullable="false" />
+    <Property Name="IDLISTABASE" Type="int" Nullable="false" />
+    <Property Name="TIPO_COMPONENTE" Type="int" />
+    <Property Name="FACTOR" Type="decimal" Precision="15" Scale="6" />
+    <Property Name="TIPO_FACTOR" Type="int" />
+    <Property Name="FEC_INI" Type="datetime" />
+    <Property Name="FEC_FIN" Type="datetime" />
+    <Property Name="PRECIO_BASE" Type="decimal" Precision="15" Scale="6" />
+    <Property Name="PRECIO_LISTA" Type="decimal" Precision="15" Scale="6" />
+    <Property Name="PRECIO_COSTO" Type="decimal" Precision="15" Scale="6" />
+    <Property Name="ESTADO" Type="int" />
+  </EntityType>
+  <EntityType Name="SCI_MAESTRO">
+    <Key>
+      <PropertyRef Name="IDMAESTRO" />
+    </Key>
+    <Property Name="IDMAESTRO" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="ESTADO" Type="int" />
+  </EntityType>
+  <EntityType Name="SCI_MAESTRODETALLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDMAESTRO" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="VERSION" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+  </EntityType>
+  <EntityType Name="SCI_MARCA">
+    <Key>
+      <PropertyRef Name="IDMARCA" />
+    </Key>
+    <Property Name="IDMARCA" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_MENU">
+    <Key>
+      <PropertyRef Name="IDMENU" />
+      <PropertyRef Name="IDGRUPO" />
+    </Key>
+    <Property Name="IDMENU" Type="int" Nullable="false" />
+    <Property Name="IDGRUPO" Type="int" Nullable="false" />
+    <Property Name="CONCEPTO" Type="varchar" MaxLength="50" />
+    <Property Name="ORDEN" Type="int" />
+    <Property Name="OBJETO" Type="varchar" MaxLength="50" />
+    <Property Name="URL" Type="varchar" MaxLength="150" />
+    <Property Name="RUTAIMAGEN" Type="varchar" MaxLength="150" />
+    <Property Name="IDMENUPADRE" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_MENUAUTORIZACION">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDMENU" />
+      <PropertyRef Name="IDPERFIL" />
+      <PropertyRef Name="IDGRUPO" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDMENU" Type="int" Nullable="false" />
+    <Property Name="IDPERFIL" Type="int" Nullable="false" />
+    <Property Name="IDGRUPO" Type="int" Nullable="false" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHARECREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_MENUGRUPO">
+    <Key>
+      <PropertyRef Name="IDGRUPO" />
+    </Key>
+    <Property Name="IDGRUPO" Type="int" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="ICON" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="SCI_MODELO">
+    <Key>
+      <PropertyRef Name="IDMODELO" />
+    </Key>
+    <Property Name="IDMODELO" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="NONBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_NEGOCIO">
+    <Key>
+      <PropertyRef Name="IDNEGOCIO" />
+    </Key>
+    <Property Name="IDNEGOCIO" Type="int" Nullable="false" />
+    <Property Name="IDCOMPANYA" Type="int" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_PARAMETROS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="PARAMETRO" Type="varchar" MaxLength="30" />
+    <Property Name="VALOR" Type="varchar" MaxLength="120" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+    <Property Name="ESTADO" Type="int" />
+  </EntityType>
+  <EntityType Name="SCI_PERFIL">
+    <Key>
+      <PropertyRef Name="IDPERFIL" />
+    </Key>
+    <Property Name="IDPERFIL" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="25" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="150" />
+    <Property Name="TIPOPERFIL" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACON" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_PERFILUSUARIO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDPERFIL" />
+      <PropertyRef Name="IDUSUARIO" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDPERFIL" Type="int" Nullable="false" />
+    <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+    <Property Name="IDCOMPANYA" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SCI_PERSONA">
+    <Key>
+      <PropertyRef Name="IDPERSONA" />
+    </Key>
+    <Property Name="IDPERSONA" Type="int" Nullable="false" />
+    <Property Name="DOCUMENTO" Type="varchar" MaxLength="25" />
+    <Property Name="RUC" Type="varchar" MaxLength="25" />
+    <Property Name="TIPODOCUMENTO" Type="varchar" MaxLength="25" />
+    <Property Name="APEPATERNO" Type="varchar" MaxLength="40" />
+    <Property Name="APEMATERNO" Type="varchar" MaxLength="40" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="40" />
+    <Property Name="NOMBRECOMPLETO" Type="varchar" MaxLength="100" />
+    <Property Name="FECHANACIMIENTO" Type="datetime" />
+    <Property Name="PASAPORTE" Type="varchar" MaxLength="25" />
+    <Property Name="BREVETE" Type="varchar" MaxLength="25" />
+    <Property Name="IDUBIGEO" Type="varchar" MaxLength="6" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="25" />
+    <Property Name="CELULAR" Type="varchar" MaxLength="25" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="500" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="TIPOPERSONA" Type="int" />
+    <Property Name="SEXO" Type="varchar" MaxLength="1" />
+    <Property Name="ESTADOCIVIL" Type="varchar" MaxLength="1" />
+    <Property Name="RUTAFIRMA" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="SCI_PRODUCTO">
+    <Key>
+      <PropertyRef Name="IDPRODUCTO" />
+    </Key>
+    <Property Name="IDPRODUCTO" Type="int" Nullable="false" />
+    <Property Name="IDCLASIFICACION" Type="int" />
+    <Property Name="IDMARCA" Type="int" />
+    <Property Name="IDCARACTERISTICA" Type="int" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+    <Property Name="DECRIPCION_LARGA" Type="varchar" MaxLength="2000" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="30" />
+    <Property Name="OBSERVACION" Type="varchar" MaxLength="2000" />
+    <Property Name="MODELO" Type="varchar" MaxLength="25" />
+    <Property Name="SECCION" Type="varchar" MaxLength="50" />
+    <Property Name="SERIE" Type="varchar" MaxLength="25" />
+    <Property Name="MANUAL" Type="image" />
+    <Property Name="TIPOPRODUCTO" Type="int" />
+    <Property Name="PRECIO" Type="money" />
+    <Property Name="CANTIDAD" Type="int" />
+    <Property Name="STOCK" Type="int" />
+    <Property Name="INDICADOR_IMPUESTO" Type="int" />
+    <Property Name="IDNEGOCIO" Type="int" />
+    <Property Name="IMAGEN_PRINCIPAL" Type="nchar" MaxLength="250" />
+    <Property Name="INDICADOR_B_PRINCIPAL" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIODMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPMODIFICACION" Type="int" />
+    <Property Name="IPCREACION" Type="int" />
+  </EntityType>
+  <EntityType Name="SCI_PRODUCTODETALLE">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDPRODUCTO" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDPRODUCTO" Type="int" Nullable="false" />
+    <Property Name="IMAGEN" Type="image" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" />
+    <Property Name="IDCARACTERISTICA" Type="int" />
+    <Property Name="URL" Type="varchar" MaxLength="150" />
+    <Property Name="IDGRUPO" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+  </EntityType>
+  <EntityType Name="SCI_TAREAS">
+    <Key>
+      <PropertyRef Name="ID_TAREA" />
+    </Key>
+    <Property Name="ID_TAREA" Type="int" Nullable="false" />
+    <Property Name="NROREQUERIMIENTO" Type="varchar" MaxLength="20" />
+    <Property Name="TIPO" Type="int" />
+    <Property Name="TAREA" Type="varchar" MaxLength="100" />
+    <Property Name="ID_SOLICITANTE" Type="int" />
+    <Property Name="ID_RESPONSABLE" Type="int" />
+    <Property Name="ID_ALTERNO" Type="int" />
+    <Property Name="ID_INVOLUCRADO" Type="int" />
+    <Property Name="IDAREA" Type="int" />
+    <Property Name="FECHAREGISTRO" Type="datetime" />
+    <Property Name="FECHAINIPLAZO" Type="datetime" />
+    <Property Name="FECHAFINPLAZO" Type="datetime" />
+    <Property Name="PRECIO" Type="money" />
+    <Property Name="OBSERVACION" Type="varchar" MaxLength="200" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="20" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SCI_TICKET">
+    <Key>
+      <PropertyRef Name="IDTICKET" />
+    </Key>
+    <Property Name="IDTICKET" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="TIPO" Type="int" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="FECHAREGISTRO" Type="datetime" />
+    <Property Name="IDSOLICITANTE" Type="int" />
+    <Property Name="IDRESPONSABLE" Type="int" />
+    <Property Name="FECHAINI" Type="datetime" />
+    <Property Name="FECHAFIN" Type="datetime" />
+    <Property Name="CANTIDAD" Type="int" />
+    <Property Name="OBSERVACION" Type="varchar" MaxLength="500" />
+    <Property Name="SOLUCION" Type="varchar" MaxLength="500" />
+    <Property Name="DOCUMENTACION" Type="varchar" MaxLength="300" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIODMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="SCI_UBIGEO">
+    <Key>
+      <PropertyRef Name="IDUBIGEO" />
+    </Key>
+    <Property Name="IDUBIGEO" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="ESTADO" Type="int" />
+  </EntityType>
+  <EntityType Name="SCI_USUARIO">
+    <Key>
+      <PropertyRef Name="IDUSUARIO" />
+    </Key>
+    <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+    <Property Name="TIPOUSUARIO" Type="int" />
+    <Property Name="USUARIO" Type="varchar" MaxLength="25" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="25" />
+    <Property Name="FLAGEXPIRACION" Type="int" />
+    <Property Name="FECHAEXPIRACION" Type="datetime" />
+    <Property Name="SQLLOGIN" Type="varchar" MaxLength="25" />
+    <Property Name="SQLPASSWORD" Type="varchar" MaxLength="25" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="CADUCIDAD" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Accesos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_Accesos">
+    <Key>
+      <PropertyRef Name="IDPERSONA" />
+      <PropertyRef Name="IDUSUARIO" />
+      <PropertyRef Name="DesEstado" />
+    </Key>
+    <Property Name="IDPERSONA" Type="int" Nullable="false" />
+    <Property Name="DESTIPOUSUARIO" Type="varchar" MaxLength="50" />
+    <Property Name="NOMBRECOMPLETO" Type="varchar" MaxLength="100" />
+    <Property Name="APEPATERNO" Type="varchar" MaxLength="40" />
+    <Property Name="APEMATERNO" Type="varchar" MaxLength="40" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="40" />
+    <Property Name="DOCUMENTO" Type="varchar" MaxLength="25" />
+    <Property Name="TIPODOCUMENTO" Type="varchar" MaxLength="25" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+    <Property Name="TIPOUSUARIO" Type="int" />
+    <Property Name="USUARIO" Type="varchar" MaxLength="25" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="25" />
+    <Property Name="FLAGEXPIRACION" Type="int" />
+    <Property Name="FECHAEXPIRACION" Type="datetime" />
+    <Property Name="SQLLOGIN" Type="varchar" MaxLength="25" />
+    <Property Name="SQLPASSWORD" Type="varchar" MaxLength="25" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="CADUCIDAD" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+    <Property Name="DesEstado" Type="varchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Accion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_Accion">
+    <Key>
+      <PropertyRef Name="ID_ACCION" />
+      <PropertyRef Name="ID_TAREA" />
+    </Key>
+    <Property Name="RESPONSABLE" Type="varchar" MaxLength="100" />
+    <Property Name="DESESTADO" Type="varchar" MaxLength="50" />
+    <Property Name="FECREGISTRO" Type="varchar" MaxLength="30" />
+    <Property Name="COLORESTADO" Type="varchar" MaxLength="100" />
+    <Property Name="ID_ACCION" Type="int" Nullable="false" />
+    <Property Name="ID_TAREA" Type="int" Nullable="false" />
+    <Property Name="ID_RESPONSABLE" Type="int" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" />
+    <Property Name="FECHA" Type="datetime" />
+    <Property Name="OBSERVACION" Type="varchar" MaxLength="200" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="20" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Alerta' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_Alerta">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDRELACIONADO" />
+    </Key>
+    <Property Name="SOLICITANTE" Type="varchar" MaxLength="100" />
+    <Property Name="RESPONSABLE" Type="varchar" MaxLength="100" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="TIPOREQUERIMIENTO" Type="varchar" MaxLength="50" />
+    <Property Name="DESESTADO" Type="varchar" MaxLength="50" />
+    <Property Name="COLORESTADO" Type="varchar" MaxLength="100" />
+    <Property Name="AREA" Type="varchar" MaxLength="50" />
+    <Property Name="FECREGISTRO" Type="varchar" MaxLength="30" />
+    <Property Name="FECINIPLAZO" Type="varchar" MaxLength="30" />
+    <Property Name="FECFINPLAZO" Type="varchar" MaxLength="30" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDRELACIONADO" Type="int" Nullable="false" />
+    <Property Name="TIPOALERTA" Type="int" />
+    <Property Name="PROCESO" Type="int" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="20" />
+    <Property Name="IDPERSONA" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="FECHACREACION" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Garantia' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_Garantia">
+    <Key>
+      <PropertyRef Name="IDGARANTIA" />
+      <PropertyRef Name="IDEMPRESA" />
+      <PropertyRef Name="IDCONTACTO" />
+    </Key>
+    <Property Name="TIPODOCEMPRESA" Type="varchar" MaxLength="25" />
+    <Property Name="DOCEMPRESA" Type="varchar" MaxLength="25" />
+    <Property Name="EMPRESA" Type="varchar" MaxLength="100" />
+    <Property Name="CONTACTO" Type="varchar" MaxLength="100" />
+    <Property Name="DESESTADO" Type="varchar" MaxLength="50" />
+    <Property Name="COLORESTADO" Type="varchar" MaxLength="100" />
+    <Property Name="FECREGISTRO" Type="varchar" MaxLength="30" />
+    <Property Name="FECINIPLAZO" Type="varchar" MaxLength="30" />
+    <Property Name="FECFINPLAZO" Type="varchar" MaxLength="30" />
+    <Property Name="IDGARANTIA" Type="int" Nullable="false" />
+    <Property Name="IDEMPRESA" Type="int" Nullable="false" />
+    <Property Name="FECHAREGISTRO" Type="datetime" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="20" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="500" />
+    <Property Name="IDCONTACTO" Type="int" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="FECHAINICIO" Type="datetime" />
+    <Property Name="FECHAFIN" Type="datetime" />
+    <Property Name="REFERENCIA" Type="varchar" MaxLength="100" />
+    <Property Name="OBSERVACION" Type="text" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIODMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_GarantiaDetalle' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_GarantiaDetalle">
+    <Key>
+      <PropertyRef Name="IDGARANTIA" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="DESESTADO" Type="varchar" MaxLength="50" />
+    <Property Name="COLORESTADO" Type="varchar" MaxLength="100" />
+    <Property Name="IDGARANTIA" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ITEM" Type="varchar" MaxLength="20" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="500" />
+    <Property Name="MARCA" Type="varchar" MaxLength="20" />
+    <Property Name="MODELO" Type="varchar" MaxLength="20" />
+    <Property Name="CANTIDAD" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIODMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Maestro' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_Maestro">
+    <Key>
+      <PropertyRef Name="IDMAESTRO" />
+      <PropertyRef Name="DesEstado" />
+    </Key>
+    <Property Name="IDMAESTRO" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="DesEstado" Type="varchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_MaestroDetalle' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_MaestroDetalle">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDMAESTRO" />
+      <PropertyRef Name="DesEstado" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDMAESTRO" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="VERSION" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="DesEstado" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="COLORESTADO" Type="varchar" MaxLength="100" />
+    <Property Name="CodMaestro" Type="varchar" MaxLength="25" />
+    <Property Name="NomMaestro" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Tarea' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_Tarea">
+    <Key>
+      <PropertyRef Name="ID_TAREA" />
+    </Key>
+    <Property Name="SOLICITANTE" Type="varchar" MaxLength="100" />
+    <Property Name="RESPONSABLE" Type="varchar" MaxLength="100" />
+    <Property Name="ALTERNO" Type="varchar" MaxLength="100" />
+    <Property Name="INVOLUCRADO" Type="varchar" MaxLength="100" />
+    <Property Name="TIPOREQUERIMIENTO" Type="varchar" MaxLength="50" />
+    <Property Name="DESESTADO" Type="varchar" MaxLength="50" />
+    <Property Name="COLORESTADO" Type="varchar" MaxLength="100" />
+    <Property Name="AREA" Type="varchar" MaxLength="50" />
+    <Property Name="FECREGISTRO" Type="varchar" MaxLength="30" />
+    <Property Name="FECINIPLAZO" Type="varchar" MaxLength="30" />
+    <Property Name="FECFINPLAZO" Type="varchar" MaxLength="30" />
+    <Property Name="ID_TAREA" Type="int" Nullable="false" />
+    <Property Name="NROREQUERIMIENTO" Type="varchar" MaxLength="20" />
+    <Property Name="TIPO" Type="int" />
+    <Property Name="TAREA" Type="varchar" MaxLength="100" />
+    <Property Name="ID_SOLICITANTE" Type="int" />
+    <Property Name="ID_RESPONSABLE" Type="int" />
+    <Property Name="ID_ALTERNO" Type="int" />
+    <Property Name="ID_INVOLUCRADO" Type="int" />
+    <Property Name="IDAREA" Type="int" />
+    <Property Name="FECHAREGISTRO" Type="datetime" />
+    <Property Name="FECHAINIPLAZO" Type="datetime" />
+    <Property Name="FECHAFINPLAZO" Type="datetime" />
+    <Property Name="PRECIO" Type="money" />
+    <Property Name="OBSERVACION" Type="varchar" MaxLength="200" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="20" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_TareaAsignadas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_TareaAsignadas">
+    <Key>
+      <PropertyRef Name="ID_TAREA" />
+    </Key>
+    <Property Name="SOLICITANTE" Type="varchar" MaxLength="100" />
+    <Property Name="RESPONSABLE" Type="varchar" MaxLength="100" />
+    <Property Name="ALTERNO" Type="varchar" MaxLength="100" />
+    <Property Name="INVOLUCRADO" Type="varchar" MaxLength="100" />
+    <Property Name="TIPOREQUERIMIENTO" Type="varchar" MaxLength="50" />
+    <Property Name="DESESTADO" Type="varchar" MaxLength="50" />
+    <Property Name="COLORESTADO" Type="varchar" MaxLength="100" />
+    <Property Name="AREA" Type="varchar" MaxLength="50" />
+    <Property Name="FECREGISTRO" Type="varchar" MaxLength="30" />
+    <Property Name="FECINIPLAZO" Type="varchar" MaxLength="30" />
+    <Property Name="FECFINPLAZO" Type="varchar" MaxLength="30" />
+    <Property Name="IDPERSONA" Type="int" />
+    <Property Name="ID_TAREA" Type="int" Nullable="false" />
+    <Property Name="NROREQUERIMIENTO" Type="varchar" MaxLength="20" />
+    <Property Name="TIPO" Type="int" />
+    <Property Name="TAREA" Type="varchar" MaxLength="100" />
+    <Property Name="ID_SOLICITANTE" Type="int" />
+    <Property Name="ID_RESPONSABLE" Type="int" />
+    <Property Name="ID_ALTERNO" Type="int" />
+    <Property Name="ID_INVOLUCRADO" Type="int" />
+    <Property Name="IDAREA" Type="int" />
+    <Property Name="FECHAREGISTRO" Type="datetime" />
+    <Property Name="FECHAINIPLAZO" Type="datetime" />
+    <Property Name="FECHAFINPLAZO" Type="datetime" />
+    <Property Name="PRECIO" Type="money" />
+    <Property Name="OBSERVACION" Type="varchar" MaxLength="200" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="20" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_Ticket">
+    <Key>
+      <PropertyRef Name="IDTICKET" />
+    </Key>
+    <Property Name="SOLICITANTE" Type="varchar" MaxLength="100" />
+    <Property Name="RESPONSABLE" Type="varchar" MaxLength="100" />
+    <Property Name="TIPOREQUERIMIENTO" Type="varchar" MaxLength="50" />
+    <Property Name="DESESTADO" Type="varchar" MaxLength="50" />
+    <Property Name="COLORESTADO" Type="varchar" MaxLength="100" />
+    <Property Name="FECREGISTRO" Type="varchar" MaxLength="30" />
+    <Property Name="FECINIPLAZO" Type="varchar" MaxLength="30" />
+    <Property Name="FECFINPLAZO" Type="varchar" MaxLength="30" />
+    <Property Name="IDTICKET" Type="int" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="25" />
+    <Property Name="TIPO" Type="int" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="FECHAREGISTRO" Type="datetime" />
+    <Property Name="IDSOLICITANTE" Type="int" />
+    <Property Name="IDRESPONSABLE" Type="int" />
+    <Property Name="FECHAINI" Type="datetime" />
+    <Property Name="FECHAFIN" Type="datetime" />
+    <Property Name="CANTIDAD" Type="int" />
+    <Property Name="OBSERVACION" Type="varchar" MaxLength="500" />
+    <Property Name="SOLUCION" Type="varchar" MaxLength="500" />
+    <Property Name="DOCUMENTACION" Type="varchar" MaxLength="300" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIODMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <Association Name="FK__SCI_ACCIO__ID_TA__367C1819">
+    <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="1" />
+    <End Role="SCI_ACCIONES" Type="Self.SCI_ACCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_TAREAS">
+        <PropertyRef Name="ID_TAREA" />
+      </Principal>
+      <Dependent Role="SCI_ACCIONES">
+        <PropertyRef Name="ID_TAREA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_ALERT__IDPER__531856C7">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
+    <End Role="SCI_ALERTAS" Type="Self.SCI_ALERTAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_ALERTAS">
+        <PropertyRef Name="IDPERSONA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_CLIEN__IDCLI__6A158EC2">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
+    <End Role="SCI_CLIENTEMAST" Type="Self.SCI_CLIENTEMAST" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_CLIENTEMAST">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COMPA__IDEMP__5F98004F">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
+    <End Role="SCI_COMPANY" Type="Self.SCI_COMPANY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_COMPANY">
+        <PropertyRef Name="IDEMPRESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COMPA__IDPER__628FA481">
+    <End Role="SCI_PERFIL" Type="Self.SCI_PERFIL" Multiplicity="0..1" />
+    <End Role="SCI_COMPANY" Type="Self.SCI_COMPANY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERFIL">
+        <PropertyRef Name="IDPERFIL" />
+      </Principal>
+      <Dependent Role="SCI_COMPANY">
+        <PropertyRef Name="IDPERFIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COMPA__IDREP__5EA3DC16">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
+    <End Role="SCI_COMPANY" Type="Self.SCI_COMPANY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_COMPANY">
+        <PropertyRef Name="IDREPRESENTANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COMPR__IDCLI__71B6B08A">
+    <End Role="SCI_CLIENTEMAST" Type="Self.SCI_CLIENTEMAST" Multiplicity="0..1" />
+    <End Role="SCI_COMPROBANTE" Type="Self.SCI_COMPROBANTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_CLIENTEMAST">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="SCI_COMPROBANTE">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COMPR__IDCOM__098E3A1B">
+    <End Role="SCI_COMPROBANTE" Type="Self.SCI_COMPROBANTE" Multiplicity="1" />
+    <End Role="SCI_COMPROBANTEDETALLE" Type="Self.SCI_COMPROBANTEDETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_COMPROBANTE">
+        <PropertyRef Name="IDCOMPROBANTE" />
+      </Principal>
+      <Dependent Role="SCI_COMPROBANTEDETALLE">
+        <PropertyRef Name="IDCOMPROBANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COMPR__IDCOT__70C28C51">
+    <End Role="SCI_COTIZACION" Type="Self.SCI_COTIZACION" Multiplicity="0..1" />
+    <End Role="SCI_COMPROBANTE" Type="Self.SCI_COMPROBANTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_COTIZACION">
+        <PropertyRef Name="IDCOTIZACION" />
+      </Principal>
+      <Dependent Role="SCI_COMPROBANTE">
+        <PropertyRef Name="IDCOTIZACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COMPR__IDNEG__72AAD4C3">
+    <End Role="SCI_NEGOCIO" Type="Self.SCI_NEGOCIO" Multiplicity="0..1" />
+    <End Role="SCI_COMPROBANTE" Type="Self.SCI_COMPROBANTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_NEGOCIO">
+        <PropertyRef Name="IDNEGOCIO" />
+      </Principal>
+      <Dependent Role="SCI_COMPROBANTE">
+        <PropertyRef Name="IDNEGOCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COMPROBANTED__693CA210">
+    <End Role="SCI_LISTABASEDETALLE" Type="Self.SCI_LISTABASEDETALLE" Multiplicity="0..1" />
+    <End Role="SCI_COMPROBANTEDETALLE" Type="Self.SCI_COMPROBANTEDETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_LISTABASEDETALLE">
+        <PropertyRef Name="IDPRODUCTO" />
+        <PropertyRef Name="IDLISTABASE" />
+      </Principal>
+      <Dependent Role="SCI_COMPROBANTEDETALLE">
+        <PropertyRef Name="IDPRODUCTO" />
+        <PropertyRef Name="IDLISTABASE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COTIZ__IDCLI__6A30C649">
+    <End Role="SCI_CLIENTEMAST" Type="Self.SCI_CLIENTEMAST" Multiplicity="1" />
+    <End Role="SCI_COTIZACION" Type="Self.SCI_COTIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_CLIENTEMAST">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="SCI_COTIZACION">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COTIZ__IDCOT__6C190EBB">
+    <End Role="SCI_COTIZACION" Type="Self.SCI_COTIZACION" Multiplicity="1" />
+    <End Role="SCI_COTIZACIONDETALLE" Type="Self.SCI_COTIZACIONDETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_COTIZACION">
+        <PropertyRef Name="IDCOTIZACION" />
+      </Principal>
+      <Dependent Role="SCI_COTIZACIONDETALLE">
+        <PropertyRef Name="IDCOTIZACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COTIZ__IDEMP__6B24EA82">
+    <End Role="SCI_EMPLEADO" Type="Self.SCI_EMPLEADO" Multiplicity="0..1" />
+    <End Role="SCI_COTIZACION" Type="Self.SCI_COTIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_EMPLEADO">
+        <PropertyRef Name="IDEMPLEADO" />
+      </Principal>
+      <Dependent Role="SCI_COTIZACION">
+        <PropertyRef Name="IDEMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COTIZ__IDPRO__6CBCF143">
+    <End Role="SCI_PRODUCTO" Type="Self.SCI_PRODUCTO" Multiplicity="1" />
+    <End Role="SCI_COTIZACIONDETALLE" Type="Self.SCI_COTIZACIONDETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PRODUCTO">
+        <PropertyRef Name="IDPRODUCTO" />
+      </Principal>
+      <Dependent Role="SCI_COTIZACIONDETALLE">
+        <PropertyRef Name="IDPRODUCTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_EMPLE__IDEMP__6644FDDE">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
+    <End Role="SCI_EMPLEADO" Type="Self.SCI_EMPLEADO" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_EMPLEADO">
+        <PropertyRef Name="IDEMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_EMPLE__IDNEG__6EF57B66">
+    <End Role="SCI_NEGOCIO" Type="Self.SCI_NEGOCIO" Multiplicity="0..1" />
+    <End Role="SCI_EMPLEADO" Type="Self.SCI_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_NEGOCIO">
+        <PropertyRef Name="IDNEGOCIO" />
+      </Principal>
+      <Dependent Role="SCI_EMPLEADO">
+        <PropertyRef Name="IDNEGOCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_LISTA__IDLIS__70DDC3D8">
+    <End Role="SCI_LISTABASE" Type="Self.SCI_LISTABASE" Multiplicity="1" />
+    <End Role="SCI_LISTABASEDETALLE" Type="Self.SCI_LISTABASEDETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_LISTABASE">
+        <PropertyRef Name="IDLISTABASE" />
+      </Principal>
+      <Dependent Role="SCI_LISTABASEDETALLE">
+        <PropertyRef Name="IDLISTABASE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_LISTA__IDNEG__6FE99F9F">
+    <End Role="SCI_NEGOCIO" Type="Self.SCI_NEGOCIO" Multiplicity="0..1" />
+    <End Role="SCI_LISTABASE" Type="Self.SCI_LISTABASE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_NEGOCIO">
+        <PropertyRef Name="IDNEGOCIO" />
+      </Principal>
+      <Dependent Role="SCI_LISTABASE">
+        <PropertyRef Name="IDNEGOCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_LISTA__IDPRO__05BDA937">
+    <End Role="SCI_PRODUCTO" Type="Self.SCI_PRODUCTO" Multiplicity="1" />
+    <End Role="SCI_LISTABASEDETALLE" Type="Self.SCI_LISTABASEDETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PRODUCTO">
+        <PropertyRef Name="IDPRODUCTO" />
+      </Principal>
+      <Dependent Role="SCI_LISTABASEDETALLE">
+        <PropertyRef Name="IDPRODUCTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_MENU__IDGRUP__73BA3083">
+    <End Role="SCI_MENUGRUPO" Type="Self.SCI_MENUGRUPO" Multiplicity="1" />
+    <End Role="SCI_MENU" Type="Self.SCI_MENU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_MENUGRUPO">
+        <PropertyRef Name="IDGRUPO" />
+      </Principal>
+      <Dependent Role="SCI_MENU">
+        <PropertyRef Name="IDGRUPO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_MENUA__IDPER__74AE54BC">
+    <End Role="SCI_PERFIL" Type="Self.SCI_PERFIL" Multiplicity="1" />
+    <End Role="SCI_MENUAUTORIZACION" Type="Self.SCI_MENUAUTORIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERFIL">
+        <PropertyRef Name="IDPERFIL" />
+      </Principal>
+      <Dependent Role="SCI_MENUAUTORIZACION">
+        <PropertyRef Name="IDPERFIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_MENUAUTORIZA__75A278F5">
+    <End Role="SCI_MENU" Type="Self.SCI_MENU" Multiplicity="1" />
+    <End Role="SCI_MENUAUTORIZACION" Type="Self.SCI_MENUAUTORIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_MENU">
+        <PropertyRef Name="IDMENU" />
+        <PropertyRef Name="IDGRUPO" />
+      </Principal>
+      <Dependent Role="SCI_MENUAUTORIZACION">
+        <PropertyRef Name="IDMENU" />
+        <PropertyRef Name="IDGRUPO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_NEGOC__IDCOM__76969D2E">
+    <End Role="SCI_COMPANY" Type="Self.SCI_COMPANY" Multiplicity="0..1" />
+    <End Role="SCI_NEGOCIO" Type="Self.SCI_NEGOCIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_COMPANY">
+        <PropertyRef Name="IDCOMPANYA" />
+      </Principal>
+      <Dependent Role="SCI_NEGOCIO">
+        <PropertyRef Name="IDCOMPANYA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PERFI__IDCOM__778AC167">
+    <End Role="SCI_COMPANY" Type="Self.SCI_COMPANY" Multiplicity="0..1" />
+    <End Role="SCI_PERFILUSUARIO" Type="Self.SCI_PERFILUSUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_COMPANY">
+        <PropertyRef Name="IDCOMPANYA" />
+      </Principal>
+      <Dependent Role="SCI_PERFILUSUARIO">
+        <PropertyRef Name="IDCOMPANYA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PERFI__IDPER__787EE5A0">
+    <End Role="SCI_PERFIL" Type="Self.SCI_PERFIL" Multiplicity="1" />
+    <End Role="SCI_PERFILUSUARIO" Type="Self.SCI_PERFILUSUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERFIL">
+        <PropertyRef Name="IDPERFIL" />
+      </Principal>
+      <Dependent Role="SCI_PERFILUSUARIO">
+        <PropertyRef Name="IDPERFIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PERFI__IDUSU__797309D9">
+    <End Role="SCI_USUARIO" Type="Self.SCI_USUARIO" Multiplicity="1" />
+    <End Role="SCI_PERFILUSUARIO" Type="Self.SCI_PERFILUSUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_USUARIO">
+        <PropertyRef Name="IDUSUARIO" />
+      </Principal>
+      <Dependent Role="SCI_PERFILUSUARIO">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PERSO__IDUBI__59DF26F9">
+    <End Role="SCI_UBIGEO" Type="Self.SCI_UBIGEO" Multiplicity="0..1" />
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_UBIGEO">
+        <PropertyRef Name="IDUBIGEO" />
+      </Principal>
+      <Dependent Role="SCI_PERSONA">
+        <PropertyRef Name="IDUBIGEO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PRODU__IDCAR__7F10ABA8">
+    <End Role="SCI_CARACTERISTICAS" Type="Self.SCI_CARACTERISTICAS" Multiplicity="0..1" />
+    <End Role="SCI_PRODUCTO" Type="Self.SCI_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_CARACTERISTICAS">
+        <PropertyRef Name="IDCARACTERISTICA" />
+      </Principal>
+      <Dependent Role="SCI_PRODUCTO">
+        <PropertyRef Name="IDCARACTERISTICA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PRODU__IDCAR__7F2BE32F">
+    <End Role="SCI_CARACTERISTICAS" Type="Self.SCI_CARACTERISTICAS" Multiplicity="0..1" />
+    <End Role="SCI_PRODUCTODETALLE" Type="Self.SCI_PRODUCTODETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_CARACTERISTICAS">
+        <PropertyRef Name="IDCARACTERISTICA" />
+      </Principal>
+      <Dependent Role="SCI_PRODUCTODETALLE">
+        <PropertyRef Name="IDCARACTERISTICA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PRODU__IDCLA__7D286336">
+    <End Role="SCI_CLASIFICACION" Type="Self.SCI_CLASIFICACION" Multiplicity="0..1" />
+    <End Role="SCI_PRODUCTO" Type="Self.SCI_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_CLASIFICACION">
+        <PropertyRef Name="IDCLASIFICACION" />
+      </Principal>
+      <Dependent Role="SCI_PRODUCTO">
+        <PropertyRef Name="IDCLASIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PRODU__IDMAR__7E1C876F">
+    <End Role="SCI_MARCA" Type="Self.SCI_MARCA" Multiplicity="0..1" />
+    <End Role="SCI_PRODUCTO" Type="Self.SCI_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_MARCA">
+        <PropertyRef Name="IDMARCA" />
+      </Principal>
+      <Dependent Role="SCI_PRODUCTO">
+        <PropertyRef Name="IDMARCA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PRODU__IDNEG__0004CFE1">
+    <End Role="SCI_NEGOCIO" Type="Self.SCI_NEGOCIO" Multiplicity="0..1" />
+    <End Role="SCI_PRODUCTO" Type="Self.SCI_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_NEGOCIO">
+        <PropertyRef Name="IDNEGOCIO" />
+      </Principal>
+      <Dependent Role="SCI_PRODUCTO">
+        <PropertyRef Name="IDNEGOCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PRODU__IDPRO__05889F0D">
+    <End Role="SCI_PRODUCTO" Type="Self.SCI_PRODUCTO" Multiplicity="1" />
+    <End Role="SCI_PRODUCTODETALLE" Type="Self.SCI_PRODUCTODETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PRODUCTO">
+        <PropertyRef Name="IDPRODUCTO" />
+      </Principal>
+      <Dependent Role="SCI_PRODUCTODETALLE">
+        <PropertyRef Name="IDPRODUCTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_TAREA__ID_AL__30C33EC3">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
+    <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TAREAS">
+        <PropertyRef Name="ID_ALTERNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_TAREA__ID_IN__31B762FC">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
+    <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TAREAS">
+        <PropertyRef Name="ID_INVOLUCRADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_TAREA__ID_RE__2FCF1A8A">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
+    <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TAREAS">
+        <PropertyRef Name="ID_RESPONSABLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_TAREA__ID_SO__2EDAF651">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
+    <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TAREAS">
+        <PropertyRef Name="ID_SOLICITANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_USUAR__IDUSU__0E52EF38">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
+    <End Role="SCI_USUARIO" Type="Self.SCI_USUARIO" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_USUARIO">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SCI_GARA_IDCON">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
+    <End Role="SCI_GARANTIA" Type="Self.SCI_GARANTIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_GARANTIA">
+        <PropertyRef Name="IDCONTACTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SCI_GARA_IDEMP">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
+    <End Role="SCI_GARANTIA" Type="Self.SCI_GARANTIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_GARANTIA">
+        <PropertyRef Name="IDEMPRESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SCI_GARDET_IDGAR">
+    <End Role="SCI_GARANTIA" Type="Self.SCI_GARANTIA" Multiplicity="1" />
+    <End Role="SCI_GARANTIADETALLE" Type="Self.SCI_GARANTIADETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_GARANTIA">
+        <PropertyRef Name="IDGARANTIA" />
+      </Principal>
+      <Dependent Role="SCI_GARANTIADETALLE">
+        <PropertyRef Name="IDGARANTIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SCI_MAESTRODETALLE_SCI_MAESTRO">
+    <End Role="SCI_MAESTRO" Type="Self.SCI_MAESTRO" Multiplicity="1" />
+    <End Role="SCI_MAESTRODETALLE" Type="Self.SCI_MAESTRODETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_MAESTRO">
+        <PropertyRef Name="IDMAESTRO" />
+      </Principal>
+      <Dependent Role="SCI_MAESTRODETALLE">
+        <PropertyRef Name="IDMAESTRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TICKET_IDRES">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
+    <End Role="SCI_TICKET" Type="Self.SCI_TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TICKET">
+        <PropertyRef Name="IDRESPONSABLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TICKET_IDSOL">
+    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
+    <End Role="SCI_TICKET" Type="Self.SCI_TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TICKET">
+        <PropertyRef Name="IDSOLICITANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDIntegrityModelStoreContainer">
+    <EntitySet Name="SCI_ACCIONES" EntityType="Self.SCI_ACCIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_ALERTAS" EntityType="Self.SCI_ALERTAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_CARACTERISTICAS" EntityType="Self.SCI_CARACTERISTICAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_CLASIFICACION" EntityType="Self.SCI_CLASIFICACION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_CLIENTEMAST" EntityType="Self.SCI_CLIENTEMAST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_COMPANY" EntityType="Self.SCI_COMPANY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_COMPROBANTE" EntityType="Self.SCI_COMPROBANTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_COMPROBANTEDETALLE" EntityType="Self.SCI_COMPROBANTEDETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_COTIZACION" EntityType="Self.SCI_COTIZACION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_COTIZACIONDETALLE" EntityType="Self.SCI_COTIZACIONDETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_EMPLEADO" EntityType="Self.SCI_EMPLEADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_GARANTIA" EntityType="Self.SCI_GARANTIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_GARANTIADETALLE" EntityType="Self.SCI_GARANTIADETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_LISTABASE" EntityType="Self.SCI_LISTABASE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_LISTABASEDETALLE" EntityType="Self.SCI_LISTABASEDETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_MAESTRO" EntityType="Self.SCI_MAESTRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_MAESTRODETALLE" EntityType="Self.SCI_MAESTRODETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_MARCA" EntityType="Self.SCI_MARCA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_MENU" EntityType="Self.SCI_MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_MENUAUTORIZACION" EntityType="Self.SCI_MENUAUTORIZACION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_MENUGRUPO" EntityType="Self.SCI_MENUGRUPO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_MODELO" EntityType="Self.SCI_MODELO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_NEGOCIO" EntityType="Self.SCI_NEGOCIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_PARAMETROS" EntityType="Self.SCI_PARAMETROS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_PERFIL" EntityType="Self.SCI_PERFIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_PERFILUSUARIO" EntityType="Self.SCI_PERFILUSUARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_PERSONA" EntityType="Self.SCI_PERSONA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_PRODUCTO" EntityType="Self.SCI_PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_PRODUCTODETALLE" EntityType="Self.SCI_PRODUCTODETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_TAREAS" EntityType="Self.SCI_TAREAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_TICKET" EntityType="Self.SCI_TICKET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_UBIGEO" EntityType="Self.SCI_UBIGEO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCI_USUARIO" EntityType="Self.SCI_USUARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VIEW_Accesos" EntityType="Self.VIEW_Accesos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_Accesos].[IDPERSONA] AS [IDPERSONA], 
+    [VIEW_Accesos].[DESTIPOUSUARIO] AS [DESTIPOUSUARIO], 
+    [VIEW_Accesos].[NOMBRECOMPLETO] AS [NOMBRECOMPLETO], 
+    [VIEW_Accesos].[APEPATERNO] AS [APEPATERNO], 
+    [VIEW_Accesos].[APEMATERNO] AS [APEMATERNO], 
+    [VIEW_Accesos].[NOMBRE] AS [NOMBRE], 
+    [VIEW_Accesos].[DOCUMENTO] AS [DOCUMENTO], 
+    [VIEW_Accesos].[TIPODOCUMENTO] AS [TIPODOCUMENTO], 
+    [VIEW_Accesos].[EMAIL] AS [EMAIL], 
+    [VIEW_Accesos].[IDUSUARIO] AS [IDUSUARIO], 
+    [VIEW_Accesos].[TIPOUSUARIO] AS [TIPOUSUARIO], 
+    [VIEW_Accesos].[USUARIO] AS [USUARIO], 
+    [VIEW_Accesos].[PASSWORD] AS [PASSWORD], 
+    [VIEW_Accesos].[FLAGEXPIRACION] AS [FLAGEXPIRACION], 
+    [VIEW_Accesos].[FECHAEXPIRACION] AS [FECHAEXPIRACION], 
+    [VIEW_Accesos].[SQLLOGIN] AS [SQLLOGIN], 
+    [VIEW_Accesos].[SQLPASSWORD] AS [SQLPASSWORD], 
+    [VIEW_Accesos].[ESTADO] AS [ESTADO], 
+    [VIEW_Accesos].[CADUCIDAD] AS [CADUCIDAD], 
+    [VIEW_Accesos].[USUARIOCREACION] AS [USUARIOCREACION], 
+    [VIEW_Accesos].[USUARIOMODIFICACION] AS [USUARIOMODIFICACION], 
+    [VIEW_Accesos].[FECHACREACION] AS [FECHACREACION], 
+    [VIEW_Accesos].[FECHAMODIFICACION] AS [FECHAMODIFICACION], 
+    [VIEW_Accesos].[IPCREACION] AS [IPCREACION], 
+    [VIEW_Accesos].[IPMODIFICACION] AS [IPMODIFICACION], 
+    [VIEW_Accesos].[DesEstado] AS [DesEstado]
+    FROM [dbo].[VIEW_Accesos] AS [VIEW_Accesos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_Accion" EntityType="Self.VIEW_Accion" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_Accion].[RESPONSABLE] AS [RESPONSABLE], 
+    [VIEW_Accion].[DESESTADO] AS [DESESTADO], 
+    [VIEW_Accion].[FECREGISTRO] AS [FECREGISTRO], 
+    [VIEW_Accion].[COLORESTADO] AS [COLORESTADO], 
+    [VIEW_Accion].[ID_ACCION] AS [ID_ACCION], 
+    [VIEW_Accion].[ID_TAREA] AS [ID_TAREA], 
+    [VIEW_Accion].[ID_RESPONSABLE] AS [ID_RESPONSABLE], 
+    [VIEW_Accion].[DESCRIPCION] AS [DESCRIPCION], 
+    [VIEW_Accion].[FECHA] AS [FECHA], 
+    [VIEW_Accion].[OBSERVACION] AS [OBSERVACION], 
+    [VIEW_Accion].[ESTADO] AS [ESTADO], 
+    [VIEW_Accion].[USUARIOCREACION] AS [USUARIOCREACION], 
+    [VIEW_Accion].[USUARIOMODIFICACION] AS [USUARIOMODIFICACION], 
+    [VIEW_Accion].[FECHACREACION] AS [FECHACREACION], 
+    [VIEW_Accion].[FECHAMODIFICACION] AS [FECHAMODIFICACION]
+    FROM [dbo].[VIEW_Accion] AS [VIEW_Accion]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_Alerta" EntityType="Self.VIEW_Alerta" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_Alerta].[SOLICITANTE] AS [SOLICITANTE], 
+    [VIEW_Alerta].[RESPONSABLE] AS [RESPONSABLE], 
+    [VIEW_Alerta].[EMAIL] AS [EMAIL], 
+    [VIEW_Alerta].[TIPOREQUERIMIENTO] AS [TIPOREQUERIMIENTO], 
+    [VIEW_Alerta].[DESESTADO] AS [DESESTADO], 
+    [VIEW_Alerta].[COLORESTADO] AS [COLORESTADO], 
+    [VIEW_Alerta].[AREA] AS [AREA], 
+    [VIEW_Alerta].[FECREGISTRO] AS [FECREGISTRO], 
+    [VIEW_Alerta].[FECINIPLAZO] AS [FECINIPLAZO], 
+    [VIEW_Alerta].[FECFINPLAZO] AS [FECFINPLAZO], 
+    [VIEW_Alerta].[ID] AS [ID], 
+    [VIEW_Alerta].[IDRELACIONADO] AS [IDRELACIONADO], 
+    [VIEW_Alerta].[TIPOALERTA] AS [TIPOALERTA], 
+    [VIEW_Alerta].[PROCESO] AS [PROCESO], 
+    [VIEW_Alerta].[CODIGO] AS [CODIGO], 
+    [VIEW_Alerta].[IDPERSONA] AS [IDPERSONA], 
+    [VIEW_Alerta].[ESTADO] AS [ESTADO], 
+    [VIEW_Alerta].[USUARIOCREACION] AS [USUARIOCREACION], 
+    [VIEW_Alerta].[FECHACREACION] AS [FECHACREACION]
+    FROM [dbo].[VIEW_Alerta] AS [VIEW_Alerta]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_Garantia" EntityType="Self.VIEW_Garantia" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_Garantia].[TIPODOCEMPRESA] AS [TIPODOCEMPRESA], 
+    [VIEW_Garantia].[DOCEMPRESA] AS [DOCEMPRESA], 
+    [VIEW_Garantia].[EMPRESA] AS [EMPRESA], 
+    [VIEW_Garantia].[CONTACTO] AS [CONTACTO], 
+    [VIEW_Garantia].[DESESTADO] AS [DESESTADO], 
+    [VIEW_Garantia].[COLORESTADO] AS [COLORESTADO], 
+    [VIEW_Garantia].[FECREGISTRO] AS [FECREGISTRO], 
+    [VIEW_Garantia].[FECINIPLAZO] AS [FECINIPLAZO], 
+    [VIEW_Garantia].[FECFINPLAZO] AS [FECFINPLAZO], 
+    [VIEW_Garantia].[IDGARANTIA] AS [IDGARANTIA], 
+    [VIEW_Garantia].[IDEMPRESA] AS [IDEMPRESA], 
+    [VIEW_Garantia].[FECHAREGISTRO] AS [FECHAREGISTRO], 
+    [VIEW_Garantia].[CODIGO] AS [CODIGO], 
+    [VIEW_Garantia].[DESCRIPCION] AS [DESCRIPCION], 
+    [VIEW_Garantia].[IDCONTACTO] AS [IDCONTACTO], 
+    [VIEW_Garantia].[EMAIL] AS [EMAIL], 
+    [VIEW_Garantia].[FECHAINICIO] AS [FECHAINICIO], 
+    [VIEW_Garantia].[FECHAFIN] AS [FECHAFIN], 
+    [VIEW_Garantia].[REFERENCIA] AS [REFERENCIA], 
+    [VIEW_Garantia].[OBSERVACION] AS [OBSERVACION], 
+    [VIEW_Garantia].[ESTADO] AS [ESTADO], 
+    [VIEW_Garantia].[USUARIOCREACION] AS [USUARIOCREACION], 
+    [VIEW_Garantia].[USUARIODMODIFICACION] AS [USUARIODMODIFICACION], 
+    [VIEW_Garantia].[FECHACREACION] AS [FECHACREACION], 
+    [VIEW_Garantia].[FECHAMODIFICACION] AS [FECHAMODIFICACION], 
+    [VIEW_Garantia].[IPMODIFICACION] AS [IPMODIFICACION], 
+    [VIEW_Garantia].[IPCREACION] AS [IPCREACION]
+    FROM [dbo].[VIEW_Garantia] AS [VIEW_Garantia]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_GarantiaDetalle" EntityType="Self.VIEW_GarantiaDetalle" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_GarantiaDetalle].[DESESTADO] AS [DESESTADO], 
+    [VIEW_GarantiaDetalle].[COLORESTADO] AS [COLORESTADO], 
+    [VIEW_GarantiaDetalle].[IDGARANTIA] AS [IDGARANTIA], 
+    [VIEW_GarantiaDetalle].[ID] AS [ID], 
+    [VIEW_GarantiaDetalle].[ITEM] AS [ITEM], 
+    [VIEW_GarantiaDetalle].[DESCRIPCION] AS [DESCRIPCION], 
+    [VIEW_GarantiaDetalle].[MARCA] AS [MARCA], 
+    [VIEW_GarantiaDetalle].[MODELO] AS [MODELO], 
+    [VIEW_GarantiaDetalle].[CANTIDAD] AS [CANTIDAD], 
+    [VIEW_GarantiaDetalle].[ESTADO] AS [ESTADO], 
+    [VIEW_GarantiaDetalle].[USUARIOCREACION] AS [USUARIOCREACION], 
+    [VIEW_GarantiaDetalle].[USUARIODMODIFICACION] AS [USUARIODMODIFICACION], 
+    [VIEW_GarantiaDetalle].[FECHACREACION] AS [FECHACREACION], 
+    [VIEW_GarantiaDetalle].[FECHAMODIFICACION] AS [FECHAMODIFICACION], 
+    [VIEW_GarantiaDetalle].[IPMODIFICACION] AS [IPMODIFICACION], 
+    [VIEW_GarantiaDetalle].[IPCREACION] AS [IPCREACION]
+    FROM [dbo].[VIEW_GarantiaDetalle] AS [VIEW_GarantiaDetalle]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_Maestro" EntityType="Self.VIEW_Maestro" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_Maestro].[IDMAESTRO] AS [IDMAESTRO], 
+    [VIEW_Maestro].[CODIGO] AS [CODIGO], 
+    [VIEW_Maestro].[NOMBRE] AS [NOMBRE], 
+    [VIEW_Maestro].[DESCRIPCION] AS [DESCRIPCION], 
+    [VIEW_Maestro].[ESTADO] AS [ESTADO], 
+    [VIEW_Maestro].[DesEstado] AS [DesEstado]
+    FROM [dbo].[VIEW_Maestro] AS [VIEW_Maestro]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_MaestroDetalle" EntityType="Self.VIEW_MaestroDetalle" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_MaestroDetalle].[ID] AS [ID], 
+    [VIEW_MaestroDetalle].[IDMAESTRO] AS [IDMAESTRO], 
+    [VIEW_MaestroDetalle].[CODIGO] AS [CODIGO], 
+    [VIEW_MaestroDetalle].[NOMBRE] AS [NOMBRE], 
+    [VIEW_MaestroDetalle].[DESCRIPCION] AS [DESCRIPCION], 
+    [VIEW_MaestroDetalle].[VERSION] AS [VERSION], 
+    [VIEW_MaestroDetalle].[ESTADO] AS [ESTADO], 
+    [VIEW_MaestroDetalle].[DesEstado] AS [DesEstado], 
+    [VIEW_MaestroDetalle].[COLORESTADO] AS [COLORESTADO], 
+    [VIEW_MaestroDetalle].[CodMaestro] AS [CodMaestro], 
+    [VIEW_MaestroDetalle].[NomMaestro] AS [NomMaestro]
+    FROM [dbo].[VIEW_MaestroDetalle] AS [VIEW_MaestroDetalle]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_Tarea" EntityType="Self.VIEW_Tarea" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_Tarea].[SOLICITANTE] AS [SOLICITANTE], 
+    [VIEW_Tarea].[RESPONSABLE] AS [RESPONSABLE], 
+    [VIEW_Tarea].[ALTERNO] AS [ALTERNO], 
+    [VIEW_Tarea].[INVOLUCRADO] AS [INVOLUCRADO], 
+    [VIEW_Tarea].[TIPOREQUERIMIENTO] AS [TIPOREQUERIMIENTO], 
+    [VIEW_Tarea].[DESESTADO] AS [DESESTADO], 
+    [VIEW_Tarea].[COLORESTADO] AS [COLORESTADO], 
+    [VIEW_Tarea].[AREA] AS [AREA], 
+    [VIEW_Tarea].[FECREGISTRO] AS [FECREGISTRO], 
+    [VIEW_Tarea].[FECINIPLAZO] AS [FECINIPLAZO], 
+    [VIEW_Tarea].[FECFINPLAZO] AS [FECFINPLAZO], 
+    [VIEW_Tarea].[ID_TAREA] AS [ID_TAREA], 
+    [VIEW_Tarea].[NROREQUERIMIENTO] AS [NROREQUERIMIENTO], 
+    [VIEW_Tarea].[TIPO] AS [TIPO], 
+    [VIEW_Tarea].[TAREA] AS [TAREA], 
+    [VIEW_Tarea].[ID_SOLICITANTE] AS [ID_SOLICITANTE], 
+    [VIEW_Tarea].[ID_RESPONSABLE] AS [ID_RESPONSABLE], 
+    [VIEW_Tarea].[ID_ALTERNO] AS [ID_ALTERNO], 
+    [VIEW_Tarea].[ID_INVOLUCRADO] AS [ID_INVOLUCRADO], 
+    [VIEW_Tarea].[IDAREA] AS [IDAREA], 
+    [VIEW_Tarea].[FECHAREGISTRO] AS [FECHAREGISTRO], 
+    [VIEW_Tarea].[FECHAINIPLAZO] AS [FECHAINIPLAZO], 
+    [VIEW_Tarea].[FECHAFINPLAZO] AS [FECHAFINPLAZO], 
+    [VIEW_Tarea].[PRECIO] AS [PRECIO], 
+    [VIEW_Tarea].[OBSERVACION] AS [OBSERVACION], 
+    [VIEW_Tarea].[ESTADO] AS [ESTADO], 
+    [VIEW_Tarea].[USUARIOCREACION] AS [USUARIOCREACION], 
+    [VIEW_Tarea].[USUARIOMODIFICACION] AS [USUARIOMODIFICACION], 
+    [VIEW_Tarea].[FECHACREACION] AS [FECHACREACION], 
+    [VIEW_Tarea].[FECHAMODIFICACION] AS [FECHAMODIFICACION]
+    FROM [dbo].[VIEW_Tarea] AS [VIEW_Tarea]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_TareaAsignadas" EntityType="Self.VIEW_TareaAsignadas" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_TareaAsignadas].[SOLICITANTE] AS [SOLICITANTE], 
+    [VIEW_TareaAsignadas].[RESPONSABLE] AS [RESPONSABLE], 
+    [VIEW_TareaAsignadas].[ALTERNO] AS [ALTERNO], 
+    [VIEW_TareaAsignadas].[INVOLUCRADO] AS [INVOLUCRADO], 
+    [VIEW_TareaAsignadas].[TIPOREQUERIMIENTO] AS [TIPOREQUERIMIENTO], 
+    [VIEW_TareaAsignadas].[DESESTADO] AS [DESESTADO], 
+    [VIEW_TareaAsignadas].[COLORESTADO] AS [COLORESTADO], 
+    [VIEW_TareaAsignadas].[AREA] AS [AREA], 
+    [VIEW_TareaAsignadas].[FECREGISTRO] AS [FECREGISTRO], 
+    [VIEW_TareaAsignadas].[FECINIPLAZO] AS [FECINIPLAZO], 
+    [VIEW_TareaAsignadas].[FECFINPLAZO] AS [FECFINPLAZO], 
+    [VIEW_TareaAsignadas].[IDPERSONA] AS [IDPERSONA], 
+    [VIEW_TareaAsignadas].[ID_TAREA] AS [ID_TAREA], 
+    [VIEW_TareaAsignadas].[NROREQUERIMIENTO] AS [NROREQUERIMIENTO], 
+    [VIEW_TareaAsignadas].[TIPO] AS [TIPO], 
+    [VIEW_TareaAsignadas].[TAREA] AS [TAREA], 
+    [VIEW_TareaAsignadas].[ID_SOLICITANTE] AS [ID_SOLICITANTE], 
+    [VIEW_TareaAsignadas].[ID_RESPONSABLE] AS [ID_RESPONSABLE], 
+    [VIEW_TareaAsignadas].[ID_ALTERNO] AS [ID_ALTERNO], 
+    [VIEW_TareaAsignadas].[ID_INVOLUCRADO] AS [ID_INVOLUCRADO], 
+    [VIEW_TareaAsignadas].[IDAREA] AS [IDAREA], 
+    [VIEW_TareaAsignadas].[FECHAREGISTRO] AS [FECHAREGISTRO], 
+    [VIEW_TareaAsignadas].[FECHAINIPLAZO] AS [FECHAINIPLAZO], 
+    [VIEW_TareaAsignadas].[FECHAFINPLAZO] AS [FECHAFINPLAZO], 
+    [VIEW_TareaAsignadas].[PRECIO] AS [PRECIO], 
+    [VIEW_TareaAsignadas].[OBSERVACION] AS [OBSERVACION], 
+    [VIEW_TareaAsignadas].[ESTADO] AS [ESTADO], 
+    [VIEW_TareaAsignadas].[USUARIOCREACION] AS [USUARIOCREACION], 
+    [VIEW_TareaAsignadas].[USUARIOMODIFICACION] AS [USUARIOMODIFICACION], 
+    [VIEW_TareaAsignadas].[FECHACREACION] AS [FECHACREACION], 
+    [VIEW_TareaAsignadas].[FECHAMODIFICACION] AS [FECHAMODIFICACION]
+    FROM [dbo].[VIEW_TareaAsignadas] AS [VIEW_TareaAsignadas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_Ticket" EntityType="Self.VIEW_Ticket" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_Ticket].[SOLICITANTE] AS [SOLICITANTE], 
+    [VIEW_Ticket].[RESPONSABLE] AS [RESPONSABLE], 
+    [VIEW_Ticket].[TIPOREQUERIMIENTO] AS [TIPOREQUERIMIENTO], 
+    [VIEW_Ticket].[DESESTADO] AS [DESESTADO], 
+    [VIEW_Ticket].[COLORESTADO] AS [COLORESTADO], 
+    [VIEW_Ticket].[FECREGISTRO] AS [FECREGISTRO], 
+    [VIEW_Ticket].[FECINIPLAZO] AS [FECINIPLAZO], 
+    [VIEW_Ticket].[FECFINPLAZO] AS [FECFINPLAZO], 
+    [VIEW_Ticket].[IDTICKET] AS [IDTICKET], 
+    [VIEW_Ticket].[CODIGO] AS [CODIGO], 
+    [VIEW_Ticket].[TIPO] AS [TIPO], 
+    [VIEW_Ticket].[DESCRIPCION] AS [DESCRIPCION], 
+    [VIEW_Ticket].[FECHAREGISTRO] AS [FECHAREGISTRO], 
+    [VIEW_Ticket].[IDSOLICITANTE] AS [IDSOLICITANTE], 
+    [VIEW_Ticket].[IDRESPONSABLE] AS [IDRESPONSABLE], 
+    [VIEW_Ticket].[FECHAINI] AS [FECHAINI], 
+    [VIEW_Ticket].[FECHAFIN] AS [FECHAFIN], 
+    [VIEW_Ticket].[CANTIDAD] AS [CANTIDAD], 
+    [VIEW_Ticket].[OBSERVACION] AS [OBSERVACION], 
+    [VIEW_Ticket].[SOLUCION] AS [SOLUCION], 
+    [VIEW_Ticket].[DOCUMENTACION] AS [DOCUMENTACION], 
+    [VIEW_Ticket].[ESTADO] AS [ESTADO], 
+    [VIEW_Ticket].[USUARIOCREACION] AS [USUARIOCREACION], 
+    [VIEW_Ticket].[USUARIODMODIFICACION] AS [USUARIODMODIFICACION], 
+    [VIEW_Ticket].[FECHACREACION] AS [FECHACREACION], 
+    [VIEW_Ticket].[FECHAMODIFICACION] AS [FECHAMODIFICACION], 
+    [VIEW_Ticket].[IPMODIFICACION] AS [IPMODIFICACION], 
+    [VIEW_Ticket].[IPCREACION] AS [IPCREACION]
+    FROM [dbo].[VIEW_Ticket] AS [VIEW_Ticket]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__SCI_ACCIO__ID_TA__367C1819" Association="Self.FK__SCI_ACCIO__ID_TA__367C1819">
+      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
+      <End Role="SCI_ACCIONES" EntitySet="SCI_ACCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_ALERT__IDPER__531856C7" Association="Self.FK__SCI_ALERT__IDPER__531856C7">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_ALERTAS" EntitySet="SCI_ALERTAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_CLIEN__IDCLI__6A158EC2" Association="Self.FK__SCI_CLIEN__IDCLI__6A158EC2">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_CLIENTEMAST" EntitySet="SCI_CLIENTEMAST" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COMPA__IDEMP__5F98004F" Association="Self.FK__SCI_COMPA__IDEMP__5F98004F">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_COMPANY" EntitySet="SCI_COMPANY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COMPA__IDPER__628FA481" Association="Self.FK__SCI_COMPA__IDPER__628FA481">
+      <End Role="SCI_PERFIL" EntitySet="SCI_PERFIL" />
+      <End Role="SCI_COMPANY" EntitySet="SCI_COMPANY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COMPA__IDREP__5EA3DC16" Association="Self.FK__SCI_COMPA__IDREP__5EA3DC16">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_COMPANY" EntitySet="SCI_COMPANY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COMPR__IDCLI__71B6B08A" Association="Self.FK__SCI_COMPR__IDCLI__71B6B08A">
+      <End Role="SCI_CLIENTEMAST" EntitySet="SCI_CLIENTEMAST" />
+      <End Role="SCI_COMPROBANTE" EntitySet="SCI_COMPROBANTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COMPR__IDCOM__098E3A1B" Association="Self.FK__SCI_COMPR__IDCOM__098E3A1B">
+      <End Role="SCI_COMPROBANTE" EntitySet="SCI_COMPROBANTE" />
+      <End Role="SCI_COMPROBANTEDETALLE" EntitySet="SCI_COMPROBANTEDETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COMPR__IDCOT__70C28C51" Association="Self.FK__SCI_COMPR__IDCOT__70C28C51">
+      <End Role="SCI_COTIZACION" EntitySet="SCI_COTIZACION" />
+      <End Role="SCI_COMPROBANTE" EntitySet="SCI_COMPROBANTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COMPR__IDNEG__72AAD4C3" Association="Self.FK__SCI_COMPR__IDNEG__72AAD4C3">
+      <End Role="SCI_NEGOCIO" EntitySet="SCI_NEGOCIO" />
+      <End Role="SCI_COMPROBANTE" EntitySet="SCI_COMPROBANTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COMPROBANTED__693CA210" Association="Self.FK__SCI_COMPROBANTED__693CA210">
+      <End Role="SCI_LISTABASEDETALLE" EntitySet="SCI_LISTABASEDETALLE" />
+      <End Role="SCI_COMPROBANTEDETALLE" EntitySet="SCI_COMPROBANTEDETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COTIZ__IDCLI__6A30C649" Association="Self.FK__SCI_COTIZ__IDCLI__6A30C649">
+      <End Role="SCI_CLIENTEMAST" EntitySet="SCI_CLIENTEMAST" />
+      <End Role="SCI_COTIZACION" EntitySet="SCI_COTIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COTIZ__IDCOT__6C190EBB" Association="Self.FK__SCI_COTIZ__IDCOT__6C190EBB">
+      <End Role="SCI_COTIZACION" EntitySet="SCI_COTIZACION" />
+      <End Role="SCI_COTIZACIONDETALLE" EntitySet="SCI_COTIZACIONDETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COTIZ__IDEMP__6B24EA82" Association="Self.FK__SCI_COTIZ__IDEMP__6B24EA82">
+      <End Role="SCI_EMPLEADO" EntitySet="SCI_EMPLEADO" />
+      <End Role="SCI_COTIZACION" EntitySet="SCI_COTIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COTIZ__IDPRO__6CBCF143" Association="Self.FK__SCI_COTIZ__IDPRO__6CBCF143">
+      <End Role="SCI_PRODUCTO" EntitySet="SCI_PRODUCTO" />
+      <End Role="SCI_COTIZACIONDETALLE" EntitySet="SCI_COTIZACIONDETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_EMPLE__IDEMP__6644FDDE" Association="Self.FK__SCI_EMPLE__IDEMP__6644FDDE">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_EMPLEADO" EntitySet="SCI_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_EMPLE__IDNEG__6EF57B66" Association="Self.FK__SCI_EMPLE__IDNEG__6EF57B66">
+      <End Role="SCI_NEGOCIO" EntitySet="SCI_NEGOCIO" />
+      <End Role="SCI_EMPLEADO" EntitySet="SCI_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_LISTA__IDLIS__70DDC3D8" Association="Self.FK__SCI_LISTA__IDLIS__70DDC3D8">
+      <End Role="SCI_LISTABASE" EntitySet="SCI_LISTABASE" />
+      <End Role="SCI_LISTABASEDETALLE" EntitySet="SCI_LISTABASEDETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_LISTA__IDNEG__6FE99F9F" Association="Self.FK__SCI_LISTA__IDNEG__6FE99F9F">
+      <End Role="SCI_NEGOCIO" EntitySet="SCI_NEGOCIO" />
+      <End Role="SCI_LISTABASE" EntitySet="SCI_LISTABASE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_LISTA__IDPRO__05BDA937" Association="Self.FK__SCI_LISTA__IDPRO__05BDA937">
+      <End Role="SCI_PRODUCTO" EntitySet="SCI_PRODUCTO" />
+      <End Role="SCI_LISTABASEDETALLE" EntitySet="SCI_LISTABASEDETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_MENU__IDGRUP__73BA3083" Association="Self.FK__SCI_MENU__IDGRUP__73BA3083">
+      <End Role="SCI_MENUGRUPO" EntitySet="SCI_MENUGRUPO" />
+      <End Role="SCI_MENU" EntitySet="SCI_MENU" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_MENUA__IDPER__74AE54BC" Association="Self.FK__SCI_MENUA__IDPER__74AE54BC">
+      <End Role="SCI_PERFIL" EntitySet="SCI_PERFIL" />
+      <End Role="SCI_MENUAUTORIZACION" EntitySet="SCI_MENUAUTORIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_MENUAUTORIZA__75A278F5" Association="Self.FK__SCI_MENUAUTORIZA__75A278F5">
+      <End Role="SCI_MENU" EntitySet="SCI_MENU" />
+      <End Role="SCI_MENUAUTORIZACION" EntitySet="SCI_MENUAUTORIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_NEGOC__IDCOM__76969D2E" Association="Self.FK__SCI_NEGOC__IDCOM__76969D2E">
+      <End Role="SCI_COMPANY" EntitySet="SCI_COMPANY" />
+      <End Role="SCI_NEGOCIO" EntitySet="SCI_NEGOCIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PERFI__IDCOM__778AC167" Association="Self.FK__SCI_PERFI__IDCOM__778AC167">
+      <End Role="SCI_COMPANY" EntitySet="SCI_COMPANY" />
+      <End Role="SCI_PERFILUSUARIO" EntitySet="SCI_PERFILUSUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PERFI__IDPER__787EE5A0" Association="Self.FK__SCI_PERFI__IDPER__787EE5A0">
+      <End Role="SCI_PERFIL" EntitySet="SCI_PERFIL" />
+      <End Role="SCI_PERFILUSUARIO" EntitySet="SCI_PERFILUSUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PERFI__IDUSU__797309D9" Association="Self.FK__SCI_PERFI__IDUSU__797309D9">
+      <End Role="SCI_USUARIO" EntitySet="SCI_USUARIO" />
+      <End Role="SCI_PERFILUSUARIO" EntitySet="SCI_PERFILUSUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PERSO__IDUBI__59DF26F9" Association="Self.FK__SCI_PERSO__IDUBI__59DF26F9">
+      <End Role="SCI_UBIGEO" EntitySet="SCI_UBIGEO" />
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PRODU__IDCAR__7F10ABA8" Association="Self.FK__SCI_PRODU__IDCAR__7F10ABA8">
+      <End Role="SCI_CARACTERISTICAS" EntitySet="SCI_CARACTERISTICAS" />
+      <End Role="SCI_PRODUCTO" EntitySet="SCI_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PRODU__IDCAR__7F2BE32F" Association="Self.FK__SCI_PRODU__IDCAR__7F2BE32F">
+      <End Role="SCI_CARACTERISTICAS" EntitySet="SCI_CARACTERISTICAS" />
+      <End Role="SCI_PRODUCTODETALLE" EntitySet="SCI_PRODUCTODETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PRODU__IDCLA__7D286336" Association="Self.FK__SCI_PRODU__IDCLA__7D286336">
+      <End Role="SCI_CLASIFICACION" EntitySet="SCI_CLASIFICACION" />
+      <End Role="SCI_PRODUCTO" EntitySet="SCI_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PRODU__IDMAR__7E1C876F" Association="Self.FK__SCI_PRODU__IDMAR__7E1C876F">
+      <End Role="SCI_MARCA" EntitySet="SCI_MARCA" />
+      <End Role="SCI_PRODUCTO" EntitySet="SCI_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PRODU__IDNEG__0004CFE1" Association="Self.FK__SCI_PRODU__IDNEG__0004CFE1">
+      <End Role="SCI_NEGOCIO" EntitySet="SCI_NEGOCIO" />
+      <End Role="SCI_PRODUCTO" EntitySet="SCI_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PRODU__IDPRO__05889F0D" Association="Self.FK__SCI_PRODU__IDPRO__05889F0D">
+      <End Role="SCI_PRODUCTO" EntitySet="SCI_PRODUCTO" />
+      <End Role="SCI_PRODUCTODETALLE" EntitySet="SCI_PRODUCTODETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_TAREA__ID_AL__30C33EC3" Association="Self.FK__SCI_TAREA__ID_AL__30C33EC3">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_TAREA__ID_IN__31B762FC" Association="Self.FK__SCI_TAREA__ID_IN__31B762FC">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_TAREA__ID_RE__2FCF1A8A" Association="Self.FK__SCI_TAREA__ID_RE__2FCF1A8A">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_TAREA__ID_SO__2EDAF651" Association="Self.FK__SCI_TAREA__ID_SO__2EDAF651">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_USUAR__IDUSU__0E52EF38" Association="Self.FK__SCI_USUAR__IDUSU__0E52EF38">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_USUARIO" EntitySet="SCI_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SCI_GARA_IDCON" Association="Self.FK_SCI_GARA_IDCON">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_GARANTIA" EntitySet="SCI_GARANTIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SCI_GARA_IDEMP" Association="Self.FK_SCI_GARA_IDEMP">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_GARANTIA" EntitySet="SCI_GARANTIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SCI_GARDET_IDGAR" Association="Self.FK_SCI_GARDET_IDGAR">
+      <End Role="SCI_GARANTIA" EntitySet="SCI_GARANTIA" />
+      <End Role="SCI_GARANTIADETALLE" EntitySet="SCI_GARANTIADETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SCI_MAESTRODETALLE_SCI_MAESTRO" Association="Self.FK_SCI_MAESTRODETALLE_SCI_MAESTRO">
+      <End Role="SCI_MAESTRO" EntitySet="SCI_MAESTRO" />
+      <End Role="SCI_MAESTRODETALLE" EntitySet="SCI_MAESTRODETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TICKET_IDRES" Association="Self.FK_TICKET_IDRES">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TICKET" EntitySet="SCI_TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TICKET_IDSOL" Association="Self.FK_TICKET_IDSOL">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TICKET" EntitySet="SCI_TICKET" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

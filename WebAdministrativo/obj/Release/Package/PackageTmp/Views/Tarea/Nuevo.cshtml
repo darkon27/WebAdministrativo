@@ -1,0 +1,158 @@
+﻿@model TareaViewModels
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+@using (Html.BeginForm("Guardar", "Tarea", FormMethod.Post))
+{
+<h2>
+    Nueva Tarea
+    <a style="float:right" class="btn btn-primary" href="@Url.Action("Index","Tarea")"><i class="flaticon-envelope"></i>Regresar</a>
+</h2>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class=" control-label">Fecha Registro</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        <input type="text" id="Tarea.FECHAREGISTRO" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
+                               class="form-control" value="@ViewBag.FechaRegistro">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Numero</label>
+                    <input type="text" id="Tareas.ID_TAREA" class="spinner-input form-control" readonly>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <div class="input-group">
+                        <div hidden>
+                            <input type="text" name="Tareas.ID_SOLICITANTE" class="spinner-input form-control" readonly value="@ViewBag.IdUsuarioAdmin">
+                        </div>
+                        <input type="text" name="Tareas.SOLICITANTE" class="spinner-input form-control" readonly value="@ViewBag.UserNameAdmin">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Responsable</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <select name="Tareas.ID_RESPONSABLE" class="form-control" required="required">
+                            <option> Seleccione....</option>
+                            @foreach (var item in ViewBag.ListRESPONSABLE)
+                            {
+                                <option value="@item.IDPERSONA"> @item.NOMBRECOMPLETO</option>
+                            }
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Alterno</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <select name="Tareas.ID_ALTERNO" class="form-control">
+                            <option> Seleccione....</option>
+                            @foreach (var item in ViewBag.ListALTERNO)
+                            {
+                                <option value="@item.IDPERSONA"> @item.NOMBRECOMPLETO</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Involucrado</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <select name="Tareas.ID_INVOLUCRADO" class="form-control">
+                            <option> Seleccione....</option>
+                            @foreach (var item in ViewBag.ListINVOLUCRADO)
+                            {
+                                <option value="@item.IDPERSONA"> @item.NOMBRECOMPLETO</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label">Tarea</label>
+                    @Html.TextBoxFor(m => m.Tareas.TAREA, new { @class = "form-control", @required = "required", @oninput = "convertirAMayusculas(this)" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Tipo Requerimiento</label>
+                    <select name="Tareas.TIPO" class="form-control" required="required">
+                        <option> Seleccione....</option>
+                        @foreach (var item in ViewBag.ListTipoTarea)
+                        {
+                            <option value="@item.CODIGO">@item.NOMBRE</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Area</label>
+                    <select name="Tareas.IDAREA" class="form-control" required="required" data-val="true" data-val-length="Debe seleccionar una Opcion">
+                        <option> Seleccione....</option>
+                        @foreach (var item in ViewBag.ListArea)
+                        {
+                            <option value="@item.CODIGO">@item.NOMBRE</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label">OBSERVACION</label>
+                    @Html.TextBoxFor(m => m.Tareas.OBSERVACION, new { @class = "form-control", @required = "required", @oninput = "convertirAMayusculas(this)" })
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div id="ContenedorBotones" class="form-group">
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="panel-footer">
+        <input type="submit" value="Guardar" style="float:right"  class="btn btn-primary" />
+    </footer>
+
+}

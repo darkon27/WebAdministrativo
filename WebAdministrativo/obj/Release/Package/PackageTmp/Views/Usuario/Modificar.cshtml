@@ -1,0 +1,187 @@
+﻿@model UsuarioViewModels
+@{
+    ViewBag.Title = "Modificar";
+}
+
+
+@using (Html.BeginForm("Actualizar", "Usuario", FormMethod.Post))
+{
+
+    <h2>
+        Modificar usuario     
+            <a style="float:right" class="btn btn-primary" href="@Url.Action("Index","Usuario")"><i class="flaticon-envelope"></i>Regresar</a>  
+    </h2>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Id</label>
+                    @Html.TextBoxFor(m => m.VIEW.IDUSUARIO, new { @class = "form-control", @redonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Usuario</label>
+                    @Html.TextBoxFor(m => m.VIEW.USUARIO, new { @class = "form-control", @redonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Persona</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        @Html.TextBoxFor(m => m.VIEW.NOMBRECOMPLETO, new { @class = "form-control", @redonly = "readonly"})
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Tipo de Usuario</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select name="VIEW.TIPOUSUARIO" class="form-control" required>
+                            <option> Seleccione....</option>
+                            @foreach (var item in Model.ListTipoUsu)
+                            {
+                                <option value="@item.CODIGO" @(item.CODIGO == Model.VIEW.TIPOUSUARIO.ToString() ? "selected" : "")>@item.NOMBRE</option>
+
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Expiración</label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHAEXPIRACION, new { @class = "form-control", @redonly = "readonly", })
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">E-Mail</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        @Html.TextBoxFor(m => m.VIEW.EMAIL, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class=" control-label">Password </label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                        @Html.TextBoxFor(m => m.VIEW.PASSWORD, new { @class = "form-control", @redonly = "readonly"})
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class=" control-label">Conf. Password</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                        @Html.TextBoxFor(m => m.VIEW.SQLPASSWORD, new { @class = "form-control", @redonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Estado</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select name="VIEW.ESTADO" class="form-control" required>
+                            <option> Seleccione....</option>
+                            @foreach (var item in Model.ListEstado)
+                            {
+                                <option value="@item.CODIGO" @(item.CODIGO == Model.VIEW.ESTADO.ToString() ? "selected" : "")>@item.NOMBRE</option>
+
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+              
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label">Solución</label>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="panel-footer">
+        <input type="submit" style="float:right" class="btn btn-primary" value="Actualizar" />
+        <br />
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Usuario Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.USUARIOCREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHACREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">IP Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.IPCREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Usuario Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.USUARIOMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHAMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">IP Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.IPMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+        </div>
+    </footer>
+
+}
+
+

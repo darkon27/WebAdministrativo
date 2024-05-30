@@ -1,0 +1,218 @@
+﻿@model TareaViewModels
+@{
+    ViewBag.Title = "Ver";
+}
+
+
+@using (Html.BeginForm("Actualizar", "Tarea", FormMethod.Post))
+{
+    <h2>
+        Ver Tarea
+        <a style="float:right" class="btn btn-primary" href="@Url.Action("Asignar","Tarea")"><i class="flaticon-envelope"></i>Regresar</a>
+    </h2>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Ticket</label>
+                    @Html.TextBoxFor(m => m.VIEW.ID_TAREA, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                    <div hidden><input type="text" id="txtidSolicitante" class="spinner-input form-control"> </div>
+                    <div hidden><input type="text" id="txtFechaRegistro" class="spinner-input form-control"> </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Generación</label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHAREGISTRO, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                    <div hidden><input type="text" id="txtEstado" class="spinner-input form-control" readonly> </div>
+                    <div hidden><input type="text" id="txtIdTarea" class="spinner-input form-control" readonly> </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Estado</label>
+                    @Html.TextBoxFor(m => m.VIEW.DESESTADO, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Tipo Tarea</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <div hidden>
+                            @Html.TextBoxFor(m => m.VIEW.TIPO, new { @class = "form-control", @required = "required", @redonly = "readonly" })
+                        </div>
+                        @Html.TextBoxFor(m => m.VIEW.TIPOREQUERIMIENTO, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <div hidden>
+                            @Html.TextBoxFor(m => m.VIEW.ID_SOLICITANTE, new { @class = "form-control", @required = "required", @redonly = "readonly" })
+                        </div>
+                        @Html.TextBoxFor(m => m.VIEW.SOLICITANTE, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Responsable</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <div hidden>
+                            @Html.TextBoxFor(m => m.VIEW.IDPERSONA, new { @class = "form-control", @required = "required", @redonly = "readonly" })
+                        </div>
+                        @Html.TextBoxFor(m => m.VIEW.RESPONSABLE, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Alterno</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <div hidden>
+                            @Html.TextBoxFor(m => m.VIEW.ID_ALTERNO, new { @class = "form-control", @required = "required", @redonly = "readonly" })
+                        </div>
+                        @Html.TextBoxFor(m => m.VIEW.ALTERNO, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Involucrado</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <div hidden>
+                            @Html.TextBoxFor(m => m.VIEW.ID_INVOLUCRADO, new { @class = "form-control", @required = "required", @redonly = "readonly" })
+                        </div>
+                        @Html.TextBoxFor(m => m.VIEW.INVOLUCRADO, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <label class="control-label">Tarea</label>
+                    @Html.TextBoxFor(m => m.VIEW.TAREA, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Referencia</label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.VIEW.NROREQUERIMIENTO, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label">Observación</label>
+                    @Html.TextAreaFor(m => m.VIEW.OBSERVACION, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "", @rows = "3" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class=" control-label">Fecha de Asignación </label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        @Html.TextBoxFor(m => m.VIEW.FECHAINIPLAZO, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class=" control-label">Fecha de Termino</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        @Html.TextBoxFor(m => m.VIEW.FECHAFINPLAZO, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+        </div>
+
+    </div>
+    <footer class="panel-footer">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Usuario Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.USUARIOCREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHACREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Usuario Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.USUARIOMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHAMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+        </div>
+    </footer>
+
+}
+
+
+
+
+
+

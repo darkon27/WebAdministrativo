@@ -1,0 +1,254 @@
+﻿@model IEnumerable<VIEW_Persona>
+@{
+    ViewBag.Title = "Index";
+}
+<!-- start: page -->
+<section class="panel">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabs">
+                <ul class="nav nav-tabs">
+                    <li id="ClickTarea" class="active">
+                        <a href="#popular" data-toggle="tab">
+                         
+                            Consultar Persona
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="popular" class="tab-pane active">
+                        <div class="panel-body">
+                            <div class="row">
+                                <ul class="notifications" style="float:right">
+                                    <li>
+                                        <a href="#" onclick="SendParametrosList()" class="btn btn-primary">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Nuevo","Persona")" class="btn btn-primary">
+                                            <i class="fa fa-file-o"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Tipo Usuario</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-tasks"></i>
+                                            </span>
+                                            <select id="TIPOPERSONA" name="TIPOPERSONA" class="form-control" required>
+                                                <option> Seleccione....</option>
+                                                @foreach (var item in ViewBag.ListTipoPersona)
+                                                {
+                                                    <option value="@item.CODIGO">@item.NOMBRE</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Tipo Usuario</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-tasks"></i>
+                                            </span>
+                                            <select id="TIPODOCUMENTO" name="TIPODOCUMENTO" class="form-control" required>
+                                                <option> Seleccione....</option>
+                                                @foreach (var item in ViewBag.ListTipoDocumento)
+                                                {
+                                                    <option value="@item.CODIGO">@item.NOMBRE</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Estado</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-tasks"></i>
+                                            </span>
+                                            <select id="ESTADO" name="ESTADO" class="form-control" required>
+                                                <option> Seleccione....</option>
+                                                @foreach (var item in ViewBag.ListEstado)
+                                                {
+                                                    <option value="@item.CODIGO">@item.NOMBRE</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Documento</label>
+                                        <input type="text" id="DOCUMENTO" maxlength="30" name="DOCUMENTO" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="control-label">Nombre</label>
+                                        <input type="text" id="NOMBRECOMPLETO" maxlength="30" name="NOMBRECOMPLETO" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <form id="Frmpopular">
+                                <div class="row">
+                                    <div class="panel-body">
+                                        <table class="table table-hover mb-none" id="datatable-default">
+                                            <thead>
+                                                <tr class="dark">
+                                                    <th>Nro</th>
+                                                    <th>Fecha</th>
+                                                    <th>Tipo Persona</th>
+                                                    <th>Tipo Doc.</th>
+                                                    <th>Documento</th>
+                                                    <th>Nombre</th>
+                                                    <th>Celular</th>
+                                                    <th>Estado</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@item.IDPERSONA</td>
+                                                        <td>@item.FECHACREACION</td>
+                                                        <td>@item.DESTIPOPERSONA</td>
+                                                        <td>@item.DESTIPODOCUMENTO</td>
+                                                        <td>@item.DOCUMENTO</td>
+                                                        <td>@item.NOMBRECOMPLETO</td>
+                                                        <td>@item.CELULAR</td>
+                                                        <td>@item.DesEstado</td>
+                                                        <td style="width:10%">
+                                                            <a title="Ver" href="@Url.Action("Ver","Persona", new { id=item.IDPERSONA})"><i class="fa  fa-search"></i></a>
+                                                            <a title="Modificar" href="@Url.Action("Modificar","Persona", new { id=item.IDPERSONA})"><i class="fa fa-pencil"></i></a>
+                                                            <a title="Anular" class="modal-basic" href="#modalAnular" onclick="openAnularModal(@item.IDPERSONA)"><i class="fa fa-times"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end: page -->
+
+<div id="modalAnular" class="modal-block modal-block-md mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Confirmación</h2>
+        </header>
+        <div class="panel-body">
+            <div class="modal-wrapper">
+                <div class="modal-text">
+                    <p>Esta seguro de eliminar el Persona?</p>
+                </div>
+            </div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary modal-confirm" onclick="modalAnular()">Si Estoy seguro</button>
+                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<input type="hidden" value="" id="ID" />
+<script>
+
+    function modalAnular(id) {
+        let url= '@Url.Action("modalAnular", "Persona")'
+        url = url + '/' + $("#ID").val();
+        window.location.href = url;
+    }
+
+    var dt;
+    // Función para abrir el modal de anular con el ID correspondiente
+    function openAnularModal(id) {
+        // Muestra el modal utilizando Magnific Popup
+        $.magnificPopup.open({
+            items: {
+                src: '#modalAnular'
+            },
+            type: 'inline'
+        });
+        $("#ID").val(id);
+    }
+
+
+    function SendParametrosList() {
+        // Definir la variable dt fuera del ámbito de la función para que sea accesible globalmente
+        dt = $("#datatable-default").DataTable({
+            destroy: true,
+            responsive: true,
+            searching: false,
+            lengthChange: false,
+            language: {
+                "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros"
+            },
+            ajax: {
+                method: "POST",
+                url: "Persona/Buscar",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: function (d) {
+                    d.TIPOUSUARIO = $('#TIPOPERSONA').val();
+                    d.TIPOUSUARIO = $('#TIPODOCUMENTO').val();
+                    d.DOCUMENTO = $('#DOCUMENTO').val();
+                    d.NOMBRECOMPLETO = $('#NOMBRECOMPLETO').val();
+                    d.ESTADO = $('#ESTADO').val();
+                    return JSON.stringify(d);
+                },
+                dataSrc: "data"
+            },
+            columns: [
+                { "data": "IDPERSONA" },
+                {
+                    "data": "FECHACREACION",
+                    "render": function (data) {
+                        return formatDate(data);
+                    }},
+                { "data": "DESTIPOPERSONA" },
+                { "data": "DESTIPODOCUMENTO" },
+                { "data": "DOCUMENTO" },
+                { "data": "NOMBRECOMPLETO" },
+                { "data": "CELULAR" },
+                { "data": "DesEstado" },
+                {
+                    "data": "IDPERSONA",
+                    'orderable': false,
+                    'render': function (data, type, full, meta) {
+                        var html = '<a title="Ver"  class="mb-xs mt-xs mr-xs modal-basic"  href="/Persona/Ver/' + data + '"><i class="fa fa-search"></i></a>';
+                        html += '<a title="Editar"  class="mb-xs mt-xs mr-xs modal-basic"  href="/Persona/Modificar/' + data + '"><i class="fa fa-pencil"></i></a>';
+                        html += '<a title="Anular"  class="mb-xs mt-xs mr-xs modal-basic"  href="#" onclick="openAnularModal(' + data + ')" ><i class="fa fa-times"></i></a>';
+                        return html;
+                    }
+                }
+            ]
+        });
+    }
+
+</script>
+

@@ -1,0 +1,162 @@
+﻿@model IEnumerable<VIEW_Garantia>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- start: page -->
+<section class="panel">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabs">
+                <ul class="nav nav-tabs">
+                    <li id="ClickTarea" class="active">
+                        <a href="#popular" data-toggle="tab">
+                            <span class="badge hidden-xs">1</span>
+                            Consultar Garantia
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="popular" class="tab-pane active">
+
+                        <div class="panel-body">
+                            @using (Html.BeginForm("Buscar", "Garantia", FormMethod.Post))
+                            {
+                            <div class="row">
+                                <ul class="notifications" style="float:right">
+                                    <li>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fa fa-search"></i>
+                                            @*<span class="badge">3</span>*@
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Nuevo","Garantia")" class="btn btn-primary">
+                                            <i class="fa fa-file-o"></i>
+                                            @*<span class="badge">3</span>*@
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Solicitante</label>
+                                            <div class="input-group">
+                                                <div hidden>
+                                                    <input type="text" id="VIEW.IDCONTACTO" name="VIEW.IDSOLICITANTE" class="spinner-input form-control" readonly value="@ViewBag.IdUsuarioAdmin">
+                                                </div>
+                                                <input type="text" id="VIEW.CONTACTO" name="VIEW.CONTACTO" class="spinner-input form-control" readonly value="@ViewBag.UserNameAdmin">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class=" control-label">Desde</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input type="text" id="VIEW.FECHAINICIO" name="VIEW.FECHAINICIO" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
+                                                       class="form-control" value="@ViewBag.FechaRegistro">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class=" control-label">Hasta</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input type="text" id="VIEW.FECHAFIN" name="VIEW.FECHAFIN" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
+                                                       class="form-control" value="@ViewBag.FechaRegistro">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label class="control-label">Incidencia</label>
+                                            <input type="text" id="VIEW.DESCRIPCION"  name="VIEW.DESCRIPCION"  maxlength="30" name="DESCRIPCION" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Estado</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-tasks"></i>
+                                                </span>
+                                                <select id="ESTADO" name="ESTADO" class="form-control" required>
+                                                    <option> Seleccione....</option>
+                                                    @foreach (var item in ViewBag?.ListEstado)
+                                                    {
+                                                        <option value="@item.CODIGO">@item.NOMBRE</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div id="ContenedorTarea" class="form-group">
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <form id="Frmpopular">
+                                    <div class="row">
+                                        <div class="panel-body">
+                                            <table class="table table-bordered table-striped table-condensed mb-none">
+                                                <thead>
+                                                    <tr class="dark">
+                                                        <th>Nro</th>
+                                                        <th>Fecha Registro</th>
+                                                        <th>Empresa</th>
+                                                        <th>Contacto</th>
+                                                        <th>Referencia</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Estado</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in ViewBag.ListGarantia)
+                                                    {
+                                                        <tr>
+                                                            <td>@item.IDGARANTIA</td>
+                                                            <td>@item.FECREGISTRO</td>
+                                                            <td>@item.EMPRESA</td>
+                                                            <td>@item.CONTACTO</td>
+                                                            <td>@item.CODIGO</td>
+                                                            <td>@item.DESCRIPCION</td>
+                                                            <td class="@item.COLORESTADO ">@item.DESESTADO</td>
+                                                            <td style="width:10%">
+                                                                <a title="Ver" href="@Url.Action("Ver","Garantia", new { id=item.IDGARANTIA})"><i class="fa  fa-search"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end: page -->

@@ -1,0 +1,263 @@
+﻿@model GarantiaViewModels
+@{
+    ViewBag.Title = "Nuevo";
+}
+<div style="color:chartreuse">
+    @ViewBag.Message
+</div>
+
+
+@using (Html.BeginForm("Guardar", "Garantia", FormMethod.Post))
+{
+    <h2>
+        Nueva Garantia
+        <a style="float:right" class="btn btn-primary" href="@Url.Action("Index","Garantia")"><i class="flaticon-envelope"></i>Regresar</a>
+    </h2>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class=" control-label">Fecha Registro</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        <input type="text" id="Garantia.FECHAREGISTRO" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
+                               class="form-control" value="@ViewBag.FechaRegistro">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Contacto</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <input type="text" name="Garantia.CONTACTO" class="spinner-input form-control" value="@ViewBag.UserNameAdmin">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Empresa</label>
+                    <div class="input-group">
+                        <div class="spinner-buttons input-group-btn">
+                            <button type="button" class="btn btn-default spinner-up">
+                                <i class="fa fa-user"></i>      
+                                @*<input type="text" name="Garantia.IDEMPRESA" class="spinner-input form-control">*@
+                            </button>
+                        </div>            
+                        <input type="text" id="txtEMPRESAFiltro" class="spinner-input form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Referencia</label>
+                    @Html.TextBoxFor(m => m.Garantia.REFERENCIA, new { @class = "form-control", @required = "required", @oninput = "convertirAMayusculas(this)" })
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <label class="control-label">Descripcion</label>
+                    @Html.TextBoxFor(m => m.Garantia.DESCRIPCION, new { @class = "form-control", @required = "required", @oninput = "convertirAMayusculas(this)" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label">Observación</label>
+                    @Html.TextBoxFor(m => m.Garantia.OBSERVACION, new { @class = "form-control", @required = "required", @oninput = "convertirAMayusculas(this)", @rows = "3" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Item</label>
+                    <div class="input-group">
+                        <input type="text" id="txtiTEM" class="spinner-input form-control">   
+                        <span class="input-group-addon">
+                            <a title="Agregar"  href="#" onclick="Conceptoonclick(); return false;"><i class="fa fa-check"></i></a>                         
+                        </span>
+                    </div>                 
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Descripcion</label>
+                    <input type="text" id="txtDESCRIPCION" class="spinner-input form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Cantiddad</label>
+                    <input type="text" id="txtCANTIDAD" class="spinner-input form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <br />
+                <div class="form-group">
+                    <label class="control-label"></label>
+                    <a title="Agregar" class="btn btn-default spinner-up" href="#" onclick="AgregarConcepto(); return false;"><i class="fa fa-plus-square"></i></a>
+                    @*<input type="button" style="float:right" value="Agregar" class="btn btn-primary" onclick="AgregarConcepto(); return false;" />*@
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel-body" id="divConceptos">
+                <table id="tablaConceptos" class="table table-bordered table-striped table-condensed mb-none">
+
+                    <tr>
+                        <th>Nro</th>
+                        <th>Item</th>
+                        <th>Descripcion</th>
+                        <th>Cantidad</th>
+                        <th>Marca</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <footer class="panel-footer">
+
+        <input type="submit" style="float:right" value="Guardar" class="btn btn-primary" />
+    </footer>
+}
+
+
+<div id="modalAnular" class="modal-block modal-block-md mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Confirmación</h2>
+        </header>
+        <div class="panel-body">
+            <div class="modal-wrapper">
+                <div class="modal-text">
+                    <p>Esta seguro de Quitar el Producto?</p>
+                </div>
+            </div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary modal-confirm" onclick="modalAnular()">Si Estoy seguro</button>
+                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<div id="modalAgregar" class="modal-block modal-block-md mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Confirmación</h2>
+        </header>
+        <div class="panel-body">
+            <div class="modal-wrapper">
+                <div class="modal-text">
+                    <p>Esta seguro de Agregar el Producto?</p>
+                </div>
+            </div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary modal-confirm" onclick="modalAnular()">Si Estoy seguro</button>
+                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+
+<script>
+    var num = 0;
+    function AgregarConcepto() {
+
+
+        console.log("hola");
+        let Cantidad = document.getElementById("txtCANTIDAD").value;
+        let Item = document.getElementById("txtiTEM").value;
+        let Descripcion = document.getElementById("txtDESCRIPCION").value;
+
+        let Tabla = document.getElementById("tablaConceptos");
+        let TR = document.createElement("tr");
+        let TDID = document.createElement("td");
+        let TDItem = document.createElement("td");
+        let TDDescripcion = document.createElement("td");
+        let TDCantidad = document.createElement("td");
+        let TDMarca = document.createElement("td");
+        let TDDesEstado = document.createElement("td");
+
+        TR.appendChild(TDID);
+        TR.appendChild(TDItem);
+        TR.appendChild(TDDescripcion);
+        TR.appendChild(TDCantidad);
+        TR.appendChild(TDMarca);
+        TR.appendChild(TDDesEstado);
+
+        TDItem.innerHTML = Item;
+        TDDescripcion.innerHTML = Descripcion;
+        TDCantidad.innerHTML = Cantidad;
+
+        Tabla.appendChild(TR);
+
+        let DivConceptos = document.getElementById("divConceptos");
+        let HiddenIndex = document.createElement("input");
+        let HiddenCantidad = document.createElement("input");
+        let HiddenItem = document.createElement("input");
+        let HiddenDescripcion = document.createElement("input");
+
+        HiddenIndex.name = "ListaDetalle.Index";
+        HiddenIndex.value = num;
+        HiddenIndex.type = "hidden";
+
+        HiddenCantidad.name = "ListaDetalle["+ num +"].CANTIDAD";
+        HiddenCantidad.value = Cantidad;
+        HiddenCantidad.type = "hidden";
+
+        HiddenItem.name = "ListaDetalle[" + num + "].ITEM";
+        HiddenItem.value = Item;
+        HiddenItem.type = "hidden";
+
+        HiddenDescripcion.name = "ListaDetalle[" + num + "].DESCRIPCION";
+        HiddenDescripcion.value = Item;
+        HiddenDescripcion.type = "hidden";
+
+        DivConceptos.appendChild(HiddenIndex);
+        DivConceptos.appendChild(HiddenItem);
+        DivConceptos.appendChild(HiddenDescripcion);
+        DivConceptos.appendChild(HiddenCantidad);
+
+        document.getElementById("txtCANTIDAD").value="";
+        document.getElementById("txtiTEM").value = "";
+        document.getElementById("txtDESCRIPCION").value = "";
+        num++;
+    }
+
+
+    function getID(id) {
+        $("#IDTICKET").val(id);
+    }
+
+    function modalAprobar(id) {
+        let url= '@Url.Action("UpdAprobarEstado", "Ticket")'
+        url = url + '/' + $("#IDTICKET").val();
+        window.location.href = url;
+    }
+
+</script>

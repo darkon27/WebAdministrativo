@@ -1,0 +1,103 @@
+﻿@model TicketViewModels
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+@using (Html.BeginForm("Guardar", "Ticket", FormMethod.Post))
+{
+<h2>
+    Nuevo Ticket
+    <div class="row">
+        <ul class="notifications" style="float:right">
+            <li>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i>
+                </button>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Ticket")" class="btn btn-primary">
+                    <i class="fa fa-mail-reply "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</h2>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <div class="input-group">
+                        <div hidden>
+                            <input type="text" name="Ticket.IDSOLICITANTE" class="spinner-input form-control" readonly value="@ViewBag.IdUsuarioAdmin">
+                        </div>
+                        <input type="text" name="Ticket.SOLICITANTE" class="spinner-input form-control" readonly value="@ViewBag.UserNameAdmin">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">NRO Ticket</label>
+                    <input type="text" name="Ticket.FECHAREGISTRO" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
+                           class="form-control" value="@ViewBag.FechaRegistro" disabled="">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Tipo Ticket</label>
+                    <select name="Ticket.TIPO" class="form-control" required>
+                        <option> Seleccione....</option>
+                        @foreach (var item in ViewBag.ListTipo)
+                        {
+                            <option value="@item.CODIGO">@item.NOMBRE</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label class="control-label">Motivo Ticket</label>
+                    @Html.TextBoxFor(m => m.Ticket.DESCRIPCION, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Referencia</label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.Ticket.CODIGO, new { @class = "form-control", @required = "required" })
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label">Observación</label>
+                    @Html.TextAreaFor(m => m.Ticket.OBSERVACION, new { @class = "form-control", @required = "required", @rows = "5" })
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div id="ContenedorBotones" class="form-group">
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="panel-footer">
+        <input type="submit" style="float:right" value="Guardar" class="btn btn-primary" />
+        <br />
+    </footer>
+
+}
+
+

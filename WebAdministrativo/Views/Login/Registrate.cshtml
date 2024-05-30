@@ -1,0 +1,178 @@
+﻿@model VIEW_Accesos
+@{
+    ViewBag.Title = "Registrate";
+    Layout = null;
+}
+
+<!doctype html>
+<html class="fixed">
+<head>
+    <!-- Basic -->
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML5 Admin Template" />
+    <meta name="description" content="Porto Admin - Responsive HTML5 Template">
+    <meta name="author" content="okler.net">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Web Fonts  -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/magnific-popup/magnific-popup.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap-datepicker/css/datepicker3.css" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/Content/assets/stylesheets/theme.css" />
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="~/Content/assets/stylesheets/skins/default.css" />
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="~/Content/assets/stylesheets/theme-custom.css">
+
+    <!-- Head Libs -->
+    <script src="~/Content/assets/vendor/modernizr/modernizr.js"></script>
+</head>
+<body>
+    <!-- start: page -->
+    <section class="body-sign">
+        <div class="center-sign">
+            <a href="/" class="logo pull-left">
+                <img src="~/Content/assets/images/logo.png" height="54" alt="Porto Admin" />
+            </a>
+            <div class="panel panel-sign">
+                <div class="panel-title-sign mt-xl text-right">
+                    <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> REGISTRATE</h2>
+                </div>
+                <div class="panel-body">
+                    @if (TempData["Message"] != null)
+                    {
+                        <div class="alert alert-info">
+                            @TempData["Message"]
+                        </div>
+                    }
+
+                    @using (Html.BeginForm("Grabar", "Login", FormMethod.Post))
+                    {
+                        <form id="FrmSendData">
+                            <div class="row">
+                                <ul class="notifications" style="float:right">
+                                    <li>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fa fa-save"></i>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index","Login")" class="btn btn-primary">
+                                            <i class="fa fa-mail-reply "></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="control-label">Tipo Documento</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            <select name="TipoDocumento" class="form-control" required>
+                                                <option> Seleccione....</option>
+                                                @foreach (var item in ViewBag.ListTipoDocumento)
+                                                {
+                                                    <option value="@item.CODIGO"> @item.DESCRIPCION</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Documento</label>
+                                        @Html.TextBoxFor(m => m.DOCUMENTO, new { @class = "form-control", @required = "required", @maxlength = "15" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nombres</label>
+                                @Html.TextBoxFor(m => m.NOMBRE, new { @class = "form-control", @required = "required", @maxlength = "50" })
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Ape. Paterno</label>
+                                        @Html.TextBoxFor(m => m.APEPATERNO, new { @class = "form-control", @required = "required", @maxlength = "50" })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Ape. Materno</label>
+                                        @Html.TextBoxFor(m => m.APEMATERNO, new { @class = "form-control", @required = "required", @maxlength = "50" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail Address</label>
+                                @Html.TextBoxFor(m => m.EMAIL, new { @class = "form-control", @required = "required", @maxlength = "100" })
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Usuario</label>
+                                        @Html.TextBoxFor(m => m.USUARIO, new { @class = "form-control", @required = "required", @maxlength = "20" })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Fec. Nacimiento </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                            @Html.TextBoxFor(m => m.FECHAEXPIRACION, new { @class = "form-control", @required = "required", Type = "date", @placeholder = "__/__/____" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Password</label>
+                                        @Html.TextBoxFor(m => m.PASSWORD, new { @class = "form-control", @required = "required", @maxlength = "20", @placeholder = "Password" })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Password Confirmation</label>
+                                        @Html.TextBoxFor(m => m.SQLPASSWORD, new { @class = "form-control", @required = "required", @maxlength = "20", @placeholder = "Password" })
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="mt-lg mb-lg line-thru text-center text-uppercase">
+                                <span>or</span>
+                            </span>
+                        </form>
+                    }
+                </div>
+            </div>
+            <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2024. All Rights Reserved.</p>
+        </div>
+    </section>
+    <!-- end: page -->
+    <!-- Vendor -->
+    <script src="~/Content/assets/vendor/jquery/jquery.js"></script>
+    <script src="~/Content/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="~/Content/assets/vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/assets/vendor/magnific-popup/magnific-popup.js"></script>
+    <script src="~/Content/assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/Content/assets/javascripts/theme.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="~/Content/assets/javascripts/theme.custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="~/Content/assets/javascripts/theme.init.js"></script>
+</body>
+</html>

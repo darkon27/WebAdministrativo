@@ -1,0 +1,241 @@
+﻿@model PersonaViewModels
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+@using (Html.BeginForm("Guardar", "Persona", FormMethod.Post))
+{
+    <h2>
+        Nueva Persona
+        <div class="row">
+            <ul class="notifications" style="float:right">
+                <li>
+                    <button type="submit" id="default-success" class="mt-sm mb-sm btn btn-primary">
+                        <i class="fa fa-save"></i>
+                    </button>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Persona")" class="mt-sm mb-sm btn btn-primary">
+                        <i class="fa fa-mail-reply "></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </h2>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Id</label>
+                    <div class="input-group">
+                        <div hidden>
+                            <input type="text" name="VIEW.IDPERSONA" class="spinner-input form-control">
+                        </div>
+                        <input type="text" name="VIEW.IDPERSONA" class="spinner-input form-control">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Tipo Persona</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select id="tipoPersona" name="VIEW.TIPOPERSONA" class="form-control" required>
+                            <option value="0"> Seleccione....</option>
+                            @foreach (var item in Model.ListTipoPersona)
+                            {
+                                <option value="@item.CODIGO" >@item.NOMBRE</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Tipo Documento</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select name="VIEW.TIPODOCUMENTO" class="form-control" required>
+                            <option value="0"> Seleccione....</option>
+                            @foreach (var item in Model.ListTipoDocumento)
+                            {
+                                <option value="@item.CODIGO">@item.NOMBRE</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Documento</label>
+                    @Html.TextBoxFor(m => m.VIEW.DOCUMENTO, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" id="apepaternoDiv">
+                <div class="form-group">
+                    <label class="control-label">Ape Paterno</label>
+                    @Html.TextBoxFor(m => m.VIEW.APEPATERNO, new { @class = "form-control"})
+                </div>
+            </div>
+            <div class="col-sm-3" id="apematernoDiv">
+                <div class="form-group">
+                    <label class="control-label">Ape Materno</label>
+                    @Html.TextBoxFor(m => m.VIEW.APEMATERNO, new { @class = "form-control"})
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Nombre</label>
+                    @Html.TextBoxFor(m => m.VIEW.NOMBRE, new { @class = "form-control", @required = "required" })
+                    @Html.ValidationMessageFor(m => m.VIEW.NOMBRE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" id="CivilDiv">
+                <div class="form-group">
+                    <label class="control-label">Est. Civil</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select name="VIEW.ESTADOCIVIL" class="form-control" required>
+                            <option value="0"> Seleccione....</option>
+                            @foreach (var item in Model.ListEstCivil)
+                            {
+                                <option value="@item.CODIGO">@item.NOMBRE</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3" id="SexoDiv">
+                <div class="form-group">
+                    <label class="control-label">Sexo</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select name="VIEW.SEXO" class="form-control" required>
+                            <option value="0"> Seleccione....</option>
+                            @foreach (var item in Model.ListSexo)
+                            {
+                                <option value="@item.CODIGO">@item.NOMBRE</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">E-Mail</label>
+                    @Html.TextBoxFor(m => m.VIEW.EMAIL, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" id="NacimientoDiv">
+                <div class="form-group">
+                    <label class="control-label">Fecha Nacimiento </label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHANACIMIENTO, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                </div>
+            </div>
+            <div class="col-sm-3" id="EdadDiv">
+                <div class="form-group">
+                    <label class="control-label">Edad</label>
+                    @Html.TextBoxFor(m => m.VIEW.Edad, new { @class = "form-control"})
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Dirección</label>
+                    @Html.TextBoxFor(m => m.VIEW.DIRECCION, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Celular</label>
+                    @Html.TextBoxFor(m => m.VIEW.CELULAR, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Telefono </label>
+                    @Html.TextBoxFor(m => m.VIEW.TELEFONO, new { @class = "form-control"})
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Estado</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select name="VIEW.ESTADO" class="form-control" required>
+                            <option value="0"> Seleccione....</option>
+                            @foreach (var item in Model.ListEstado)
+                            {
+                                <option value="@item.CODIGO">@item.NOMBRE</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="panel-footer">
+        @*<div class="container">
+            @RenderBody()
+        </div>*@
+    </footer>
+
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tipoPersona').change(function() {
+            var selectedValue = $(this).val();
+
+            // Aquí puedes especificar el valor que debe ocultar los campos
+            if (selectedValue === 'J') {
+                $('#EdadDiv').hide();
+                $('#NacimientoDiv').hide();
+                $('#CivilDiv').hide();
+                $('#SexoDiv').hide();
+                $('#apepaternoDiv').hide();
+                $('#apematernoDiv').hide();
+
+            } else {
+                $('#EdadDiv').show();
+                $('#NacimientoDiv').show();
+                $('#CivilDiv').show();
+                $('#SexoDiv').show();
+                $('#apepaternoDiv').show();
+                $('#apematernoDiv').show();
+            }
+        });
+
+        // Opcional: Si deseas que los campos se oculten/mostrar correctamente al cargar la página según el valor seleccionado
+        $('#tipoPersona').trigger('change');
+    });
+</script>
+
+

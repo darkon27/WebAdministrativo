@@ -1,0 +1,928 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDIntegrityModelStoreContainer" CdmEntityContainer="BDIntegrityEntities">
+    <EntitySetMapping Name="SCI_ACCIONES">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_ACCIONES">
+        <MappingFragment StoreEntitySet="SCI_ACCIONES">
+          <ScalarProperty Name="ID_ACCION" ColumnName="ID_ACCION" />
+          <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+          <ScalarProperty Name="ID_RESPONSABLE" ColumnName="ID_RESPONSABLE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_ALERTAS">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_ALERTAS">
+        <MappingFragment StoreEntitySet="SCI_ALERTAS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDRELACIONADO" ColumnName="IDRELACIONADO" />
+          <ScalarProperty Name="TIPOALERTA" ColumnName="TIPOALERTA" />
+          <ScalarProperty Name="PROCESO" ColumnName="PROCESO" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="IDPERSONA" ColumnName="IDPERSONA" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_CARACTERISTICAS">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_CARACTERISTICAS">
+        <MappingFragment StoreEntitySet="SCI_CARACTERISTICAS">
+          <ScalarProperty Name="IDCARACTERISTICA" ColumnName="IDCARACTERISTICA" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="IDCARACTERISTICA_REF" ColumnName="IDCARACTERISTICA_REF" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_CLASIFICACION">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_CLASIFICACION">
+        <MappingFragment StoreEntitySet="SCI_CLASIFICACION">
+          <ScalarProperty Name="IDCLASIFICACION" ColumnName="IDCLASIFICACION" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="IDCLASIFICACION_REF" ColumnName="IDCLASIFICACION_REF" />
+          <ScalarProperty Name="INDICACION_OPEN" ColumnName="INDICACION_OPEN" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_CLIENTEMAST">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_CLIENTEMAST">
+        <MappingFragment StoreEntitySet="SCI_CLIENTEMAST">
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="IDEMPRESA" ColumnName="IDEMPRESA" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="ESGARANTE" ColumnName="ESGARANTE" />
+          <ScalarProperty Name="CREDITO" ColumnName="CREDITO" />
+          <ScalarProperty Name="DIAS" ColumnName="DIAS" />
+          <ScalarProperty Name="TIPOCLIENTE" ColumnName="TIPOCLIENTE" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_COMPANY">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_COMPANY">
+        <MappingFragment StoreEntitySet="SCI_COMPANY">
+          <ScalarProperty Name="IDCOMPANYA" ColumnName="IDCOMPANYA" />
+          <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+          <ScalarProperty Name="RAZONSOCIAL" ColumnName="RAZONSOCIAL" />
+          <ScalarProperty Name="IDREPRESENTANTE" ColumnName="IDREPRESENTANTE" />
+          <ScalarProperty Name="IDEMPRESA" ColumnName="IDEMPRESA" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="NOMCOMERCIAL" ColumnName="NOMCOMERCIAL" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="ABREVIATURA" ColumnName="ABREVIATURA" />
+          <ScalarProperty Name="FLATCONEXION" ColumnName="FLATCONEXION" />
+          <ScalarProperty Name="LOGO" ColumnName="LOGO" />
+          <ScalarProperty Name="LOGOPORTADA" ColumnName="LOGOPORTADA" />
+          <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+          <ScalarProperty Name="IDPERFIL" ColumnName="IDPERFIL" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_COMPROBANTE">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_COMPROBANTE">
+        <MappingFragment StoreEntitySet="SCI_COMPROBANTE">
+          <ScalarProperty Name="IDCOMPROBANTE" ColumnName="IDCOMPROBANTE" />
+          <ScalarProperty Name="FECHAEMISION" ColumnName="FECHAEMISION" />
+          <ScalarProperty Name="NROCOMPROBANTE" ColumnName="NROCOMPROBANTE" />
+          <ScalarProperty Name="TIPOCOMPROBANTE" ColumnName="TIPOCOMPROBANTE" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="SERIE" ColumnName="SERIE" />
+          <ScalarProperty Name="TIPOFACTURA" ColumnName="TIPOFACTURA" />
+          <ScalarProperty Name="TIPOVENTA" ColumnName="TIPOVENTA" />
+          <ScalarProperty Name="FORMAPAGO" ColumnName="FORMAPAGO" />
+          <ScalarProperty Name="CONCEPTOCOMPROBANTE" ColumnName="CONCEPTOCOMPROBANTE" />
+          <ScalarProperty Name="MONTOAFECTO" ColumnName="MONTOAFECTO" />
+          <ScalarProperty Name="MONTOIMPUESTO" ColumnName="MONTOIMPUESTO" />
+          <ScalarProperty Name="MONTOTOTAL" ColumnName="MONTOTOTAL" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="TIPOCAMBIO" ColumnName="TIPOCAMBIO" />
+          <ScalarProperty Name="IDNEGOCIO" ColumnName="IDNEGOCIO" />
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="IGV" ColumnName="IGV" />
+          <ScalarProperty Name="FECHAVENCIMIENTO" ColumnName="FECHAVENCIMIENTO" />
+          <ScalarProperty Name="FECHACANCELACION" ColumnName="FECHACANCELACION" />
+          <ScalarProperty Name="FECHAANULACION" ColumnName="FECHAANULACION" />
+          <ScalarProperty Name="IDCOTIZACION" ColumnName="IDCOTIZACION" />
+          <ScalarProperty Name="NROCOTIZACION" ColumnName="NROCOTIZACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_COMPROBANTEDETALLE">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_COMPROBANTEDETALLE">
+        <MappingFragment StoreEntitySet="SCI_COMPROBANTEDETALLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDCOMPROBANTE" ColumnName="IDCOMPROBANTE" />
+          <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
+          <ScalarProperty Name="IDLISTABASE" ColumnName="IDLISTABASE" />
+          <ScalarProperty Name="MONTOAFECTO" ColumnName="MONTOAFECTO" />
+          <ScalarProperty Name="MONTOIMPUESTO" ColumnName="MONTOIMPUESTO" />
+          <ScalarProperty Name="MONTOTOTAL" ColumnName="MONTOTOTAL" />
+          <ScalarProperty Name="IGV" ColumnName="IGV" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_COTIZACION">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_COTIZACION">
+        <MappingFragment StoreEntitySet="SCI_COTIZACION">
+          <ScalarProperty Name="IDCOTIZACION" ColumnName="IDCOTIZACION" />
+          <ScalarProperty Name="NROCOTIZACION" ColumnName="NROCOTIZACION" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+          <ScalarProperty Name="FECHAINICIO" ColumnName="FECHAINICIO" />
+          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+          <ScalarProperty Name="FECHACADUCIDAD" ColumnName="FECHACADUCIDAD" />
+          <ScalarProperty Name="IDEMPLEADO" ColumnName="IDEMPLEADO" />
+          <ScalarProperty Name="TIPOCAMBO" ColumnName="TIPOCAMBO" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="MONTOAFECTO" ColumnName="MONTOAFECTO" />
+          <ScalarProperty Name="MONTOIMPUESTO" ColumnName="MONTOIMPUESTO" />
+          <ScalarProperty Name="MONTOTOTAL" ColumnName="MONTOTOTAL" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_COTIZACIONDETALLE">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_COTIZACIONDETALLE">
+        <MappingFragment StoreEntitySet="SCI_COTIZACIONDETALLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
+          <ScalarProperty Name="IDCOTIZACION" ColumnName="IDCOTIZACION" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="IGV" ColumnName="IGV" />
+          <ScalarProperty Name="MONTOAFECTO" ColumnName="MONTOAFECTO" />
+          <ScalarProperty Name="MONTOIMPUESTO" ColumnName="MONTOIMPUESTO" />
+          <ScalarProperty Name="MONTOTOTAL" ColumnName="MONTOTOTAL" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_EMPLEADO">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_EMPLEADO">
+        <MappingFragment StoreEntitySet="SCI_EMPLEADO">
+          <ScalarProperty Name="IDEMPLEADO" ColumnName="IDEMPLEADO" />
+          <ScalarProperty Name="IDNEGOCIO" ColumnName="IDNEGOCIO" />
+          <ScalarProperty Name="FECHAINICIO" ColumnName="FECHAINICIO" />
+          <ScalarProperty Name="FECHACESE" ColumnName="FECHACESE" />
+          <ScalarProperty Name="FECHALIQUIDACION" ColumnName="FECHALIQUIDACION" />
+          <ScalarProperty Name="FECHAREINGRESO" ColumnName="FECHAREINGRESO" />
+          <ScalarProperty Name="TIPO_TRABAJADOR" ColumnName="TIPO_TRABAJADOR" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="ANEXO" ColumnName="ANEXO" />
+          <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TIPOMONEDA" ColumnName="TIPOMONEDA" />
+          <ScalarProperty Name="SUELDO_ACTUAL" ColumnName="SUELDO_ACTUAL" />
+          <ScalarProperty Name="SUELDO_ANTERIOR" ColumnName="SUELDO_ANTERIOR" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPREACION" ColumnName="IPREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_GARANTIA">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_GARANTIA">
+        <MappingFragment StoreEntitySet="SCI_GARANTIA">
+          <ScalarProperty Name="IDGARANTIA" ColumnName="IDGARANTIA" />
+          <ScalarProperty Name="IDEMPRESA" ColumnName="IDEMPRESA" />
+          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="IDCONTACTO" ColumnName="IDCONTACTO" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FECHAINICIO" ColumnName="FECHAINICIO" />
+          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+          <ScalarProperty Name="REFERENCIA" ColumnName="REFERENCIA" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_GARANTIADETALLE">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_GARANTIADETALLE">
+        <MappingFragment StoreEntitySet="SCI_GARANTIADETALLE">
+          <ScalarProperty Name="IDGARANTIA" ColumnName="IDGARANTIA" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="MARCA" ColumnName="MARCA" />
+          <ScalarProperty Name="MODELO" ColumnName="MODELO" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_LISTABASE">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_LISTABASE">
+        <MappingFragment StoreEntitySet="SCI_LISTABASE">
+          <ScalarProperty Name="IDLISTABASE" ColumnName="IDLISTABASE" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FECINI" ColumnName="FECINI" />
+          <ScalarProperty Name="FECFIN" ColumnName="FECFIN" />
+          <ScalarProperty Name="TIPO_LISTA" ColumnName="TIPO_LISTA" />
+          <ScalarProperty Name="IDNEGOCIO" ColumnName="IDNEGOCIO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFCACION" ColumnName="IPMODIFCACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_LISTABASEDETALLE">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_LISTABASEDETALLE">
+        <MappingFragment StoreEntitySet="SCI_LISTABASEDETALLE">
+          <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
+          <ScalarProperty Name="IDLISTABASE" ColumnName="IDLISTABASE" />
+          <ScalarProperty Name="TIPO_COMPONENTE" ColumnName="TIPO_COMPONENTE" />
+          <ScalarProperty Name="FACTOR" ColumnName="FACTOR" />
+          <ScalarProperty Name="TIPO_FACTOR" ColumnName="TIPO_FACTOR" />
+          <ScalarProperty Name="FEC_INI" ColumnName="FEC_INI" />
+          <ScalarProperty Name="FEC_FIN" ColumnName="FEC_FIN" />
+          <ScalarProperty Name="PRECIO_BASE" ColumnName="PRECIO_BASE" />
+          <ScalarProperty Name="PRECIO_LISTA" ColumnName="PRECIO_LISTA" />
+          <ScalarProperty Name="PRECIO_COSTO" ColumnName="PRECIO_COSTO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_MAESTRO">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_MAESTRO">
+        <MappingFragment StoreEntitySet="SCI_MAESTRO">
+          <ScalarProperty Name="IDMAESTRO" ColumnName="IDMAESTRO" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_MAESTRODETALLE">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_MAESTRODETALLE">
+        <MappingFragment StoreEntitySet="SCI_MAESTRODETALLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDMAESTRO" ColumnName="IDMAESTRO" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_MARCA">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_MARCA">
+        <MappingFragment StoreEntitySet="SCI_MARCA">
+          <ScalarProperty Name="IDMARCA" ColumnName="IDMARCA" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_MENU">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_MENU">
+        <MappingFragment StoreEntitySet="SCI_MENU">
+          <ScalarProperty Name="IDMENU" ColumnName="IDMENU" />
+          <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
+          <ScalarProperty Name="CONCEPTO" ColumnName="CONCEPTO" />
+          <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+          <ScalarProperty Name="OBJETO" ColumnName="OBJETO" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="RUTAIMAGEN" ColumnName="RUTAIMAGEN" />
+          <ScalarProperty Name="IDMENUPADRE" ColumnName="IDMENUPADRE" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_MENUAUTORIZACION">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_MENUAUTORIZACION">
+        <MappingFragment StoreEntitySet="SCI_MENUAUTORIZACION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDMENU" ColumnName="IDMENU" />
+          <ScalarProperty Name="IDPERFIL" ColumnName="IDPERFIL" />
+          <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHARECREACION" ColumnName="FECHARECREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_MENUGRUPO">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_MENUGRUPO">
+        <MappingFragment StoreEntitySet="SCI_MENUGRUPO">
+          <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ICON" ColumnName="ICON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_MODELO">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_MODELO">
+        <MappingFragment StoreEntitySet="SCI_MODELO">
+          <ScalarProperty Name="IDMODELO" ColumnName="IDMODELO" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NONBRE" ColumnName="NONBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_NEGOCIO">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_NEGOCIO">
+        <MappingFragment StoreEntitySet="SCI_NEGOCIO">
+          <ScalarProperty Name="IDNEGOCIO" ColumnName="IDNEGOCIO" />
+          <ScalarProperty Name="IDCOMPANYA" ColumnName="IDCOMPANYA" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_PARAMETROS">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_PARAMETROS">
+        <MappingFragment StoreEntitySet="SCI_PARAMETROS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PARAMETRO" ColumnName="PARAMETRO" />
+          <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_PERFIL">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_PERFIL">
+        <MappingFragment StoreEntitySet="SCI_PERFIL">
+          <ScalarProperty Name="IDPERFIL" ColumnName="IDPERFIL" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="TIPOPERFIL" ColumnName="TIPOPERFIL" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACON" ColumnName="USUARIOMODIFICACON" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_PERFILUSUARIO">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_PERFILUSUARIO">
+        <MappingFragment StoreEntitySet="SCI_PERFILUSUARIO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDPERFIL" ColumnName="IDPERFIL" />
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="IDCOMPANYA" ColumnName="IDCOMPANYA" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_PERSONA">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_PERSONA">
+        <MappingFragment StoreEntitySet="SCI_PERSONA">
+          <ScalarProperty Name="IDPERSONA" ColumnName="IDPERSONA" />
+          <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+          <ScalarProperty Name="RUC" ColumnName="RUC" />
+          <ScalarProperty Name="TIPODOCUMENTO" ColumnName="TIPODOCUMENTO" />
+          <ScalarProperty Name="APEPATERNO" ColumnName="APEPATERNO" />
+          <ScalarProperty Name="APEMATERNO" ColumnName="APEMATERNO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="NOMBRECOMPLETO" ColumnName="NOMBRECOMPLETO" />
+          <ScalarProperty Name="FECHANACIMIENTO" ColumnName="FECHANACIMIENTO" />
+          <ScalarProperty Name="PASAPORTE" ColumnName="PASAPORTE" />
+          <ScalarProperty Name="BREVETE" ColumnName="BREVETE" />
+          <ScalarProperty Name="IDUBIGEO" ColumnName="IDUBIGEO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="TIPOPERSONA" ColumnName="TIPOPERSONA" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="ESTADOCIVIL" ColumnName="ESTADOCIVIL" />
+          <ScalarProperty Name="RUTAFIRMA" ColumnName="RUTAFIRMA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_PRODUCTO">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_PRODUCTO">
+        <MappingFragment StoreEntitySet="SCI_PRODUCTO">
+          <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
+          <ScalarProperty Name="IDCLASIFICACION" ColumnName="IDCLASIFICACION" />
+          <ScalarProperty Name="IDMARCA" ColumnName="IDMARCA" />
+          <ScalarProperty Name="IDCARACTERISTICA" ColumnName="IDCARACTERISTICA" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DECRIPCION_LARGA" ColumnName="DECRIPCION_LARGA" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="MODELO" ColumnName="MODELO" />
+          <ScalarProperty Name="SECCION" ColumnName="SECCION" />
+          <ScalarProperty Name="SERIE" ColumnName="SERIE" />
+          <ScalarProperty Name="MANUAL" ColumnName="MANUAL" />
+          <ScalarProperty Name="TIPOPRODUCTO" ColumnName="TIPOPRODUCTO" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+          <ScalarProperty Name="INDICADOR_IMPUESTO" ColumnName="INDICADOR_IMPUESTO" />
+          <ScalarProperty Name="IDNEGOCIO" ColumnName="IDNEGOCIO" />
+          <ScalarProperty Name="IMAGEN_PRINCIPAL" ColumnName="IMAGEN_PRINCIPAL" />
+          <ScalarProperty Name="INDICADOR_B_PRINCIPAL" ColumnName="INDICADOR_B_PRINCIPAL" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_PRODUCTODETALLE">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_PRODUCTODETALLE">
+        <MappingFragment StoreEntitySet="SCI_PRODUCTODETALLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="IDCARACTERISTICA" ColumnName="IDCARACTERISTICA" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_TAREAS">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_TAREAS">
+        <MappingFragment StoreEntitySet="SCI_TAREAS">
+          <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+          <ScalarProperty Name="NROREQUERIMIENTO" ColumnName="NROREQUERIMIENTO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="TAREA" ColumnName="TAREA" />
+          <ScalarProperty Name="ID_SOLICITANTE" ColumnName="ID_SOLICITANTE" />
+          <ScalarProperty Name="ID_RESPONSABLE" ColumnName="ID_RESPONSABLE" />
+          <ScalarProperty Name="ID_ALTERNO" ColumnName="ID_ALTERNO" />
+          <ScalarProperty Name="ID_INVOLUCRADO" ColumnName="ID_INVOLUCRADO" />
+          <ScalarProperty Name="IDAREA" ColumnName="IDAREA" />
+          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+          <ScalarProperty Name="FECHAINIPLAZO" ColumnName="FECHAINIPLAZO" />
+          <ScalarProperty Name="FECHAFINPLAZO" ColumnName="FECHAFINPLAZO" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_TICKET">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_TICKET">
+        <MappingFragment StoreEntitySet="SCI_TICKET">
+          <ScalarProperty Name="IDTICKET" ColumnName="IDTICKET" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+          <ScalarProperty Name="IDSOLICITANTE" ColumnName="IDSOLICITANTE" />
+          <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
+          <ScalarProperty Name="FECHAINI" ColumnName="FECHAINI" />
+          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="SOLUCION" ColumnName="SOLUCION" />
+          <ScalarProperty Name="DOCUMENTACION" ColumnName="DOCUMENTACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_UBIGEO">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_UBIGEO">
+        <MappingFragment StoreEntitySet="SCI_UBIGEO">
+          <ScalarProperty Name="IDUBIGEO" ColumnName="IDUBIGEO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_USUARIO">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_USUARIO">
+        <MappingFragment StoreEntitySet="SCI_USUARIO">
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="FLAGEXPIRACION" ColumnName="FLAGEXPIRACION" />
+          <ScalarProperty Name="FECHAEXPIRACION" ColumnName="FECHAEXPIRACION" />
+          <ScalarProperty Name="SQLLOGIN" ColumnName="SQLLOGIN" />
+          <ScalarProperty Name="SQLPASSWORD" ColumnName="SQLPASSWORD" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CADUCIDAD" ColumnName="CADUCIDAD" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_Accesos">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Accesos">
+        <MappingFragment StoreEntitySet="VIEW_Accesos">
+          <ScalarProperty Name="IDPERSONA" ColumnName="IDPERSONA" />
+          <ScalarProperty Name="DESTIPOUSUARIO" ColumnName="DESTIPOUSUARIO" />
+          <ScalarProperty Name="NOMBRECOMPLETO" ColumnName="NOMBRECOMPLETO" />
+          <ScalarProperty Name="APEPATERNO" ColumnName="APEPATERNO" />
+          <ScalarProperty Name="APEMATERNO" ColumnName="APEMATERNO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+          <ScalarProperty Name="TIPODOCUMENTO" ColumnName="TIPODOCUMENTO" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="FLAGEXPIRACION" ColumnName="FLAGEXPIRACION" />
+          <ScalarProperty Name="FECHAEXPIRACION" ColumnName="FECHAEXPIRACION" />
+          <ScalarProperty Name="SQLLOGIN" ColumnName="SQLLOGIN" />
+          <ScalarProperty Name="SQLPASSWORD" ColumnName="SQLPASSWORD" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CADUCIDAD" ColumnName="CADUCIDAD" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="DesEstado" ColumnName="DesEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_Accion">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Accion">
+        <MappingFragment StoreEntitySet="VIEW_Accion">
+          <ScalarProperty Name="RESPONSABLE" ColumnName="RESPONSABLE" />
+          <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
+          <ScalarProperty Name="FECREGISTRO" ColumnName="FECREGISTRO" />
+          <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
+          <ScalarProperty Name="ID_ACCION" ColumnName="ID_ACCION" />
+          <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+          <ScalarProperty Name="ID_RESPONSABLE" ColumnName="ID_RESPONSABLE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_Alerta">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Alerta">
+        <MappingFragment StoreEntitySet="VIEW_Alerta">
+          <ScalarProperty Name="SOLICITANTE" ColumnName="SOLICITANTE" />
+          <ScalarProperty Name="RESPONSABLE" ColumnName="RESPONSABLE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TIPOREQUERIMIENTO" ColumnName="TIPOREQUERIMIENTO" />
+          <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
+          <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
+          <ScalarProperty Name="AREA" ColumnName="AREA" />
+          <ScalarProperty Name="FECREGISTRO" ColumnName="FECREGISTRO" />
+          <ScalarProperty Name="FECINIPLAZO" ColumnName="FECINIPLAZO" />
+          <ScalarProperty Name="FECFINPLAZO" ColumnName="FECFINPLAZO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDRELACIONADO" ColumnName="IDRELACIONADO" />
+          <ScalarProperty Name="TIPOALERTA" ColumnName="TIPOALERTA" />
+          <ScalarProperty Name="PROCESO" ColumnName="PROCESO" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="IDPERSONA" ColumnName="IDPERSONA" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_Garantia">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Garantia">
+        <MappingFragment StoreEntitySet="VIEW_Garantia">
+          <ScalarProperty Name="TIPODOCEMPRESA" ColumnName="TIPODOCEMPRESA" />
+          <ScalarProperty Name="DOCEMPRESA" ColumnName="DOCEMPRESA" />
+          <ScalarProperty Name="EMPRESA" ColumnName="EMPRESA" />
+          <ScalarProperty Name="CONTACTO" ColumnName="CONTACTO" />
+          <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
+          <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
+          <ScalarProperty Name="FECREGISTRO" ColumnName="FECREGISTRO" />
+          <ScalarProperty Name="FECINIPLAZO" ColumnName="FECINIPLAZO" />
+          <ScalarProperty Name="FECFINPLAZO" ColumnName="FECFINPLAZO" />
+          <ScalarProperty Name="IDGARANTIA" ColumnName="IDGARANTIA" />
+          <ScalarProperty Name="IDEMPRESA" ColumnName="IDEMPRESA" />
+          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="IDCONTACTO" ColumnName="IDCONTACTO" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FECHAINICIO" ColumnName="FECHAINICIO" />
+          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+          <ScalarProperty Name="REFERENCIA" ColumnName="REFERENCIA" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_GarantiaDetalle">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_GarantiaDetalle">
+        <MappingFragment StoreEntitySet="VIEW_GarantiaDetalle">
+          <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
+          <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
+          <ScalarProperty Name="IDGARANTIA" ColumnName="IDGARANTIA" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="MARCA" ColumnName="MARCA" />
+          <ScalarProperty Name="MODELO" ColumnName="MODELO" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_Maestro">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Maestro">
+        <MappingFragment StoreEntitySet="VIEW_Maestro">
+          <ScalarProperty Name="IDMAESTRO" ColumnName="IDMAESTRO" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="DesEstado" ColumnName="DesEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_Tarea">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Tarea">
+        <MappingFragment StoreEntitySet="VIEW_Tarea">
+          <ScalarProperty Name="SOLICITANTE" ColumnName="SOLICITANTE" />
+          <ScalarProperty Name="RESPONSABLE" ColumnName="RESPONSABLE" />
+          <ScalarProperty Name="ALTERNO" ColumnName="ALTERNO" />
+          <ScalarProperty Name="INVOLUCRADO" ColumnName="INVOLUCRADO" />
+          <ScalarProperty Name="TIPOREQUERIMIENTO" ColumnName="TIPOREQUERIMIENTO" />
+          <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
+          <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
+          <ScalarProperty Name="AREA" ColumnName="AREA" />
+          <ScalarProperty Name="FECREGISTRO" ColumnName="FECREGISTRO" />
+          <ScalarProperty Name="FECINIPLAZO" ColumnName="FECINIPLAZO" />
+          <ScalarProperty Name="FECFINPLAZO" ColumnName="FECFINPLAZO" />
+          <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+          <ScalarProperty Name="NROREQUERIMIENTO" ColumnName="NROREQUERIMIENTO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="TAREA" ColumnName="TAREA" />
+          <ScalarProperty Name="ID_SOLICITANTE" ColumnName="ID_SOLICITANTE" />
+          <ScalarProperty Name="ID_RESPONSABLE" ColumnName="ID_RESPONSABLE" />
+          <ScalarProperty Name="ID_ALTERNO" ColumnName="ID_ALTERNO" />
+          <ScalarProperty Name="ID_INVOLUCRADO" ColumnName="ID_INVOLUCRADO" />
+          <ScalarProperty Name="IDAREA" ColumnName="IDAREA" />
+          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+          <ScalarProperty Name="FECHAINIPLAZO" ColumnName="FECHAINIPLAZO" />
+          <ScalarProperty Name="FECHAFINPLAZO" ColumnName="FECHAFINPLAZO" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_TareaAsignadas">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_TareaAsignadas">
+        <MappingFragment StoreEntitySet="VIEW_TareaAsignadas">
+          <ScalarProperty Name="SOLICITANTE" ColumnName="SOLICITANTE" />
+          <ScalarProperty Name="RESPONSABLE" ColumnName="RESPONSABLE" />
+          <ScalarProperty Name="ALTERNO" ColumnName="ALTERNO" />
+          <ScalarProperty Name="INVOLUCRADO" ColumnName="INVOLUCRADO" />
+          <ScalarProperty Name="TIPOREQUERIMIENTO" ColumnName="TIPOREQUERIMIENTO" />
+          <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
+          <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
+          <ScalarProperty Name="AREA" ColumnName="AREA" />
+          <ScalarProperty Name="FECREGISTRO" ColumnName="FECREGISTRO" />
+          <ScalarProperty Name="FECINIPLAZO" ColumnName="FECINIPLAZO" />
+          <ScalarProperty Name="FECFINPLAZO" ColumnName="FECFINPLAZO" />
+          <ScalarProperty Name="IDPERSONA" ColumnName="IDPERSONA" />
+          <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+          <ScalarProperty Name="NROREQUERIMIENTO" ColumnName="NROREQUERIMIENTO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="TAREA" ColumnName="TAREA" />
+          <ScalarProperty Name="ID_SOLICITANTE" ColumnName="ID_SOLICITANTE" />
+          <ScalarProperty Name="ID_RESPONSABLE" ColumnName="ID_RESPONSABLE" />
+          <ScalarProperty Name="ID_ALTERNO" ColumnName="ID_ALTERNO" />
+          <ScalarProperty Name="ID_INVOLUCRADO" ColumnName="ID_INVOLUCRADO" />
+          <ScalarProperty Name="IDAREA" ColumnName="IDAREA" />
+          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+          <ScalarProperty Name="FECHAINIPLAZO" ColumnName="FECHAINIPLAZO" />
+          <ScalarProperty Name="FECHAFINPLAZO" ColumnName="FECHAFINPLAZO" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIOMODIFICACION" ColumnName="USUARIOMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_Ticket">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Ticket">
+        <MappingFragment StoreEntitySet="VIEW_Ticket">
+          <ScalarProperty Name="SOLICITANTE" ColumnName="SOLICITANTE" />
+          <ScalarProperty Name="RESPONSABLE" ColumnName="RESPONSABLE" />
+          <ScalarProperty Name="TIPOREQUERIMIENTO" ColumnName="TIPOREQUERIMIENTO" />
+          <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
+          <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
+          <ScalarProperty Name="FECREGISTRO" ColumnName="FECREGISTRO" />
+          <ScalarProperty Name="FECINIPLAZO" ColumnName="FECINIPLAZO" />
+          <ScalarProperty Name="FECFINPLAZO" ColumnName="FECFINPLAZO" />
+          <ScalarProperty Name="IDTICKET" ColumnName="IDTICKET" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+          <ScalarProperty Name="IDSOLICITANTE" ColumnName="IDSOLICITANTE" />
+          <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
+          <ScalarProperty Name="FECHAINI" ColumnName="FECHAINI" />
+          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="SOLUCION" ColumnName="SOLUCION" />
+          <ScalarProperty Name="DOCUMENTACION" ColumnName="DOCUMENTACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_MaestroDetalle">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_MaestroDetalle">
+        <MappingFragment StoreEntitySet="VIEW_MaestroDetalle">
+          <ScalarProperty Name="NomMaestro" ColumnName="NomMaestro" />
+          <ScalarProperty Name="CodMaestro" ColumnName="CodMaestro" />
+          <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
+          <ScalarProperty Name="DesEstado" ColumnName="DesEstado" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="IDMAESTRO" ColumnName="IDMAESTRO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

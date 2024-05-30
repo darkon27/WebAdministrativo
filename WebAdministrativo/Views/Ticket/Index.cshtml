@@ -1,0 +1,184 @@
+﻿@model IEnumerable<VIEW_Ticket>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="IdUsuario" class="spinner-input form-control" readonly value="@ViewBag.IdUsuarioAdmin">
+
+<!-- start: page -->
+<section class="panel">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabs">
+                <ul class="nav nav-tabs">
+                    <li id="ClickTarea" class="active">
+                        <a href="#popular" data-toggle="tab">
+               
+                            Consultar Ticket
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="popular" class="tab-pane active">
+                        <div class="panel-body">
+                                <div class="row">
+                                    <ul class="notifications" style="float:right">
+                                        <li>
+                                            <a href="#" onclick="SendParametrosList()" class="btn btn-primary">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Nuevo","Ticket")" class="btn btn-primary">
+                                                <i class="fa fa-file-o"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Solicitante</label>
+                                            <div class="input-group">
+                                                <div hidden>
+                                                    <input type="text" id="IDSOLICITANTE" name="IDSOLICITANTE" class="spinner-input form-control" readonly value="@ViewBag.IdUsuarioAdmin">
+                                                </div>
+                                                <input type="text" id="SOLICITANTE" class="spinner-input form-control" readonly value="@ViewBag.UserNameAdmin">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class=" control-label">Desde</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input type="text" id="FECHAINI" name="FECHAINI" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
+                                                       class="form-control" value="@ViewBag.FechaRegistro">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class=" control-label">Hasta</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input type="text" id="FECHAFIN" name="FECHAFIN" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
+                                                       class="form-control" value="@ViewBag.FechaRegistro">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label class="control-label">Incidencia</label>
+                                            <input type="text" id="DESCRIPCION" maxlength="30" name="DESCRIPCION" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Estado</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-tasks"></i>
+                                                </span>
+                                                <select id="ESTADO" name="ESTADO" class="form-control" required>
+                                                    <option> Seleccione....</option>
+                                                    @foreach (var item in ViewBag?.ListEstado)
+                                                    {
+                                                        <option value="@item.CODIGO">@item.NOMBRE</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div id="ContenedorTarea" class="form-group">
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                            <br />
+                            <form id="Frmpopular">
+                                <div class="row">
+                                    <div class="panel-body">
+
+                                        <table class="table table-hover mb-none" id="datatable-default">
+                                            <thead>
+                                                <tr class="dark">
+                                                    <th>Nro</th>
+                                                    <th>Fecha Registro</th>
+                                                    <th>Tipo</th>
+                                                    <th>Asunto</th>
+                                                    <th>Solicitante</th>
+                                                    <th>Responsable</th>
+                                                    <th>Estado</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@item.IDTICKET</td>
+                                                        <td>@item.FECREGISTRO</td>
+                                                        <td>@item.TIPOREQUERIMIENTO</td>
+                                                        <td>@item.DESCRIPCION</td>
+                                                        <td>@item.SOLICITANTE</td>
+                                                        <td>@item.RESPONSABLE</td>
+                                                        <td class="@item.COLORESTADO ">@item.DESESTADO</td>
+                                                        <td style="width:8%;">
+                                                            <a title="Ver" href="@Url.Action("Ver","Ticket", new { id=item.IDTICKET})"><i class="fa  fa-search"></i></a>
+                                                            @*<a title="Eliminar" onclick="getID(@item.ID_TAREA)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalMD"><i class="fa fa-trash-o"></i></a>*@
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end: page -->
+
+<div id="modalMD" class="modal-block modal-block-md mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Confirmación</h2>
+        </header>
+        <div class="panel-body">
+            <div class="modal-wrapper">
+                <div class="modal-text">
+                    <p>Esta seguro de eliminar el Ticket?</p>
+                </div>
+            </div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary modal-confirm" onclick="deleteTicket()">Si Estoy seguro</button>
+                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+

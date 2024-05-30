@@ -1,0 +1,134 @@
+﻿@model IEnumerable<VIEW_MaestroDetalle>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- start: page -->
+<section class="panel">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabs">
+                <ul class="nav nav-tabs">
+                    <li id="ClickTarea" class="active">
+                        <a href="#popular" data-toggle="tab">
+                            <span class="badge hidden-xs">1</span>
+                            Consultar Maestro 
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="popular" class="tab-pane active">
+
+                        <div class="panel-body">
+                            @using (Html.BeginForm("Buscar", "Maestro", FormMethod.Post))
+                            {
+                                <div class="row">
+                                    <ul class="notifications" style="float:right">
+                                        <li>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-search"></i>                                     
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Nuevo","Maestro")" class="btn btn-primary">
+                                                <i class="fa fa-file-o"></i>                                      
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Maestro</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-tasks"></i>
+                                                </span>
+                                                <select id="MAESTRO" name="MAESTRO" class="form-control" required>
+                                                    <option> Seleccione....</option>
+                                                    @foreach (var item in ViewBag?.ListTipo)
+                                                    {
+                                                        <option value="@item.CODIGO">@item.NOMBRE</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Nombre</label>
+                                            <input type="text" id="VIEW.NOMBRE" name="VIEW.NOMBRE" maxlength="30" name="NOMBRE" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Estado</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-tasks"></i>
+                                                </span>
+                                                <select id="ESTADO" name="ESTADO" class="form-control" required>
+                                                    <option> Seleccione....</option>
+                                                    @foreach (var item in ViewBag?.ListEstado)
+                                                    {
+                                                        <option value="@item.CODIGO">@item.NOMBRE</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div id="ContenedorTarea" class="form-group">
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <form id="Frmpopular">
+                                    <div class="row">
+                                        <div class="panel-body">
+                                            <table class="table table-bordered table-striped table-condensed mb-none">
+                                                <thead>
+                                                    <tr class="dark">
+                                                        <th>Nro</th>
+                                                        <th>Tipo</th>
+                                                        <th>Codigo</th>
+                                                        <th>nombre</th>
+                                                        <th>Estado</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in ViewBag?.ListaDetalle)
+                                                    {
+                                                        <tr>
+                                                            <td>@item.ID</td>
+                                                            <td>@item.NomMaestro</td>
+                                                            <td>@item.CODIGO</td>
+                                                            <td>@item.NOMBRE</td>
+                                                            <td class="@item.COLORESTADO ">@item.DesEstado</td>
+                                                            <td style="width:10%">
+                                                                <a title="Ver" href="@Url.Action("Ver","Maestro", new { id=item.ID})"><i class="fa  fa-search"></i></a>
+                                                                <a title="Modificar" href="@Url.Action("Modificar","Maestro", new { id=item.ID})"><i class="fa fa-pencil"></i></a>
+                                                                <a title="Anular" onclick="getID(@item.ID)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalAnular"><i class="fa fa-times"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end: page -->

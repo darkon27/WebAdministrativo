@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Tree Picker Plugin Example</title>
+    <link rel='stylesheet' href='jquery.simple-tree-picker.css'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Inter:400,700' type='text/css'>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+
+        /* Demo Styles */
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            position: relative;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            background-color: #fafafa;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+        h3 { margin: 20px 0 5px 0 }
+        a,
+        a:visited,
+        a:hover {
+            color: inherit;
+            text-decoration: underline;
+        }
+        .container {
+            text-align: left;
+            margin: 150px auto;
+            max-width: 700px;
+            color: #2d3a3f;
+            padding-top: 30px;
+        }
+        .subtitle { text-align: center }
+        .tree {
+            margin-bottom: 40px;
+        }
+        #selected {
+            display: table-row;
+            font-weight: bold;
+        }
+        p { margin-bottom: 10px }
+        p.sel { margin-bottom: 30px }
+
+    </style>
+</head>
+
+<body>
+<div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="https://www.jqueryscript.net/other/json-hierarchical-tree-picker.html">Download This Plugin</a></li>
+<li><a href="https://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul><div id="carbon-block"></div>
+<div class="jquery-script-ads"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2783044520727903"
+     crossorigin="anonymous"></script>
+<!-- jQuery_demo -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-2783044520727903"
+     data-ad-slot="2780937993"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+<div class="container">
+
+        <h1>Simple Tree Picker Plugin Example</h1>
+        <p class="subtitle" >A jQuery plugin for displaying JSON data as a collapsible, expandable, selectable, and hierarchical tree structure.</p>
+
+        <div class="tree"></div>
+        <p class="sel">Selected areas: <span id="selected">Nothing selected</span> </p>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-3.6.1.slim.min.js"></script>
+<script src="jquery.simple-tree-picker.js"></script>
+<script>
+	// Create tree object
+    var demoTreeData = JSON.parse('{"Number":"KI-125-25","Name":"All","Children":[{"Number":"WA-775-99","Name":"Main House","Children":[{"Number":"JI-105-09","Name":"Downstairs","Children":[]},{"Number":"TR-883-66","Name":"Upstairs","Children":[{"Number":"SS-002-99","Name":"Bedrooms","Children":[{"Number":"JI-656-09","Name":"Master Bedroom","Children":[]},{"Number":"ZZ-654-66","Name":"Guest Bedroom","Children":[]}]},{"Number":"SS-001-99","Name":"Other Rooms","Children":[{"Number":"JI-898-09","Name":"Great Room","Children":[]},{"Number":"ZZ-493-66","Name":"Bonus Room","Children":[]}]}]}]},{"Number":"QQ-542-10","Name":"Garage","Children":[]}]}');
+
+	// Initialize Simple Tree Picker
+	// Pass it an onclick function to update the view
+	// Pass it an initial selected state
+	$('.tree').simpleTreePicker( {
+		"tree": demoTreeData,
+		"onclick": function(){		
+			var selected = $(".tree").simpleTreePicker("display");
+			$("#selected").html( !!selected.length ? selected.toString().replace(/,/g,', ') : "Nothing Selected" );
+		},
+		"selected" : [ "ZZ-654-66","SS-001-99" ],
+        "name" : "room-selection-tree"
+	});
+	
+	// Update view with initial state (onclick isn't called for initial selection)
+	$("#selected").html( $(".tree").simpleTreePicker("display").toString().replace(/,/g,', ') );		
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1VDDWMRSTH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1VDDWMRSTH');
+</script><script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+</body>
+</html>

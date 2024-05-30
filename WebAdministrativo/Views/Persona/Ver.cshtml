@@ -1,0 +1,195 @@
+﻿@model PersonaViewModels
+@{
+    ViewBag.Title = "Modificar";
+}
+
+
+@using (Html.BeginForm("Actualizar", "Persona", FormMethod.Post))
+{
+
+<h2>
+    Ver Persona
+    <div class="row">
+        <ul class="notifications" style="float:right">
+            <li>
+                <a href="@Url.Action("Index","Persona")" class="btn btn-primary">
+                    <i class="fa fa-mail-reply "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</h2>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Id</label>
+                    <div class="input-group">
+                        <div hidden>
+                            <input type="text" name="VIEW.IDPERSONA" class="spinner-input form-control">
+                        </div>
+                        <input type="text" name="VIEW.IDPERSONA" class="spinner-input form-control" readonly>
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Tipo Persona</label>
+                    @Html.TextBoxFor(m => m.VIEW.DESTIPOPERSONA, new { @class = "form-control", @required = "required" })
+                  
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Tipo Documento</label>
+                    @Html.TextBoxFor(m => m.VIEW.DESTIPODOCUMENTO, new { @class = "form-control", @required = "required" })                 
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Documento</label>
+                    @Html.TextBoxFor(m => m.VIEW.DOCUMENTO, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Ape Paterno</label>
+                    @Html.TextBoxFor(m => m.VIEW.APEPATERNO, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Ape Materno</label>
+                    @Html.TextBoxFor(m => m.VIEW.APEMATERNO, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Nombre</label>
+                    @Html.TextBoxFor(m => m.VIEW.NOMBRE, new { @class = "form-control", @required = "required" })
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Est. Civil</label>
+                    @Html.TextBoxFor(m => m.VIEW.DESESTADOCIVIL, new { @class = "form-control", @required = "required" })                   
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Sexo</label>
+                    @Html.TextBoxFor(m => m.VIEW.DESSEXO, new { @class = "form-control", @required = "required" })                  
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">E-Mail</label>
+                    @Html.TextBoxFor(m => m.VIEW.EMAIL, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Fecha Nacimiento </label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHANACIMIENTO, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Edad</label>
+                    @Html.TextBoxFor(m => m.VIEW.Edad, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Dirección</label>
+                    @Html.TextBoxFor(m => m.VIEW.DIRECCION, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Celular</label>
+                    @Html.TextBoxFor(m => m.VIEW.CELULAR, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Telefono </label>
+                    @Html.TextBoxFor(m => m.VIEW.TELEFONO, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Estado</label>
+                    @Html.TextBoxFor(m => m.VIEW.DesEstado, new { @class = "form-control", @required = "required" })                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="panel-footer">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Usuario Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.USUARIOCREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHACREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">IP Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.IPCREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Usuario Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.USUARIOMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHAMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">IP Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.IPMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+        </div>
+    </footer>
+
+}
+
+
+
