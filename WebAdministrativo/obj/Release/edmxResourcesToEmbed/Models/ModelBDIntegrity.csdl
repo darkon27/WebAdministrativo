@@ -32,7 +32,7 @@
     <Property Name="ESTADO" Type="Int32" />
     <Property Name="USUARIOCREACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="SCI_PERSONA" Relationship="Self.FK__SCI_ALERT__IDPER__531856C7" FromRole="SCI_ALERTAS" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK__SCI_ALERT__IDPER__531856C7" FromRole="SCI_ALERTAS" ToRole="SCI_PERSONA" />
   </EntityType>
   <EntityType Name="SCI_CARACTERISTICAS">
     <Key>
@@ -92,9 +92,9 @@
     <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
     <Property Name="IPCREACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="IPMODIFICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="SCI_PERSONA" Relationship="Self.FK__SCI_CLIEN__IDCLI__6A158EC2" FromRole="SCI_CLIENTEMAST" ToRole="SCI_PERSONA" />
     <NavigationProperty Name="SCI_COMPROBANTE" Relationship="Self.FK__SCI_COMPR__IDCLI__71B6B08A" FromRole="SCI_CLIENTEMAST" ToRole="SCI_COMPROBANTE" />
     <NavigationProperty Name="SCI_COTIZACION" Relationship="Self.FK__SCI_COTIZ__IDCLI__6A30C649" FromRole="SCI_CLIENTEMAST" ToRole="SCI_COTIZACION" />
+    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK__SCI_CLIEN__IDCLI__6A158EC2" FromRole="SCI_CLIENTEMAST" ToRole="SCI_PERSONA" />
   </EntityType>
   <EntityType Name="SCI_COMPANY">
     <Key>
@@ -122,11 +122,11 @@
     <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
     <Property Name="IPCREACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="IPMODIFICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="SCI_PERSONA" Relationship="Self.FK__SCI_COMPA__IDEMP__5F98004F" FromRole="SCI_COMPANY" ToRole="SCI_PERSONA" />
     <NavigationProperty Name="SCI_PERFIL" Relationship="Self.FK__SCI_COMPA__IDPER__628FA481" FromRole="SCI_COMPANY" ToRole="SCI_PERFIL" />
-    <NavigationProperty Name="SCI_PERSONA1" Relationship="Self.FK__SCI_COMPA__IDREP__5EA3DC16" FromRole="SCI_COMPANY" ToRole="SCI_PERSONA" />
     <NavigationProperty Name="SCI_NEGOCIO" Relationship="Self.FK__SCI_NEGOC__IDCOM__76969D2E" FromRole="SCI_COMPANY" ToRole="SCI_NEGOCIO" />
     <NavigationProperty Name="SCI_PERFILUSUARIO" Relationship="Self.FK__SCI_PERFI__IDCOM__778AC167" FromRole="SCI_COMPANY" ToRole="SCI_PERFILUSUARIO" />
+    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK__SCI_COMPA__IDEMP__5F98004F" FromRole="SCI_COMPANY" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA1" Relationship="BDIntegrityModel.FK__SCI_COMPA__IDREP__5EA3DC16" FromRole="SCI_COMPANY" ToRole="SCI_PERSONA" />
   </EntityType>
   <EntityType Name="SCI_COMPROBANTE">
     <Key>
@@ -260,8 +260,8 @@
     <Property Name="IPREACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="IPMODIFICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="SCI_COTIZACION" Relationship="Self.FK__SCI_COTIZ__IDEMP__6B24EA82" FromRole="SCI_EMPLEADO" ToRole="SCI_COTIZACION" />
-    <NavigationProperty Name="SCI_PERSONA" Relationship="Self.FK__SCI_EMPLE__IDEMP__6644FDDE" FromRole="SCI_EMPLEADO" ToRole="SCI_PERSONA" />
     <NavigationProperty Name="SCI_NEGOCIO" Relationship="Self.FK__SCI_EMPLE__IDNEG__6EF57B66" FromRole="SCI_EMPLEADO" ToRole="SCI_NEGOCIO" />
+    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK__SCI_EMPLE__IDEMP__6644FDDE" FromRole="SCI_EMPLEADO" ToRole="SCI_PERSONA" />
   </EntityType>
   <EntityType Name="SCI_GARANTIA">
     <Key>
@@ -285,9 +285,9 @@
     <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
     <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="SCI_PERSONA" Relationship="Self.FK_SCI_GARA_IDCON" FromRole="SCI_GARANTIA" ToRole="SCI_PERSONA" />
-    <NavigationProperty Name="SCI_PERSONA1" Relationship="Self.FK_SCI_GARA_IDEMP" FromRole="SCI_GARANTIA" ToRole="SCI_PERSONA" />
     <NavigationProperty Name="SCI_GARANTIADETALLE" Relationship="Self.FK_SCI_GARDET_IDGAR" FromRole="SCI_GARANTIA" ToRole="SCI_GARANTIADETALLE" />
+    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK_SCI_GARA_IDCON" FromRole="SCI_GARANTIA" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA1" Relationship="BDIntegrityModel.FK_SCI_GARA_IDEMP" FromRole="SCI_GARANTIA" ToRole="SCI_PERSONA" />
   </EntityType>
   <EntityType Name="SCI_GARANTIADETALLE">
     <Key>
@@ -535,53 +535,6 @@
     <NavigationProperty Name="SCI_PERFIL" Relationship="Self.FK__SCI_PERFI__IDPER__787EE5A0" FromRole="SCI_PERFILUSUARIO" ToRole="SCI_PERFIL" />
     <NavigationProperty Name="SCI_USUARIO" Relationship="Self.FK__SCI_PERFI__IDUSU__797309D9" FromRole="SCI_PERFILUSUARIO" ToRole="SCI_USUARIO" />
   </EntityType>
-  <EntityType Name="SCI_PERSONA">
-    <Key>
-      <PropertyRef Name="IDPERSONA" />
-    </Key>
-    <Property Name="IDPERSONA" Type="Int32" Nullable="false" />
-    <Property Name="DOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="RUC" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="TIPODOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="APEPATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="APEMATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="NOMBRECOMPLETO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FECHANACIMIENTO" Type="DateTime" Precision="3" />
-    <Property Name="PASAPORTE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="BREVETE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="IDUBIGEO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-    <Property Name="TELEFONO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="CELULAR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DIRECCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="USUARIOMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
-    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
-    <Property Name="IPCREACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="IPMODIFICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="ESTADO" Type="Int32" />
-    <Property Name="TIPOPERSONA" Type="Int32" />
-    <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="ESTADOCIVIL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="RUTAFIRMA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="SCI_ALERTAS" Relationship="Self.FK__SCI_ALERT__IDPER__531856C7" FromRole="SCI_PERSONA" ToRole="SCI_ALERTAS" />
-    <NavigationProperty Name="SCI_CLIENTEMAST" Relationship="Self.FK__SCI_CLIEN__IDCLI__6A158EC2" FromRole="SCI_PERSONA" ToRole="SCI_CLIENTEMAST" />
-    <NavigationProperty Name="SCI_COMPANY" Relationship="Self.FK__SCI_COMPA__IDEMP__5F98004F" FromRole="SCI_PERSONA" ToRole="SCI_COMPANY" />
-    <NavigationProperty Name="SCI_COMPANY1" Relationship="Self.FK__SCI_COMPA__IDREP__5EA3DC16" FromRole="SCI_PERSONA" ToRole="SCI_COMPANY" />
-    <NavigationProperty Name="SCI_EMPLEADO" Relationship="Self.FK__SCI_EMPLE__IDEMP__6644FDDE" FromRole="SCI_PERSONA" ToRole="SCI_EMPLEADO" />
-    <NavigationProperty Name="SCI_GARANTIA" Relationship="Self.FK_SCI_GARA_IDCON" FromRole="SCI_PERSONA" ToRole="SCI_GARANTIA" />
-    <NavigationProperty Name="SCI_GARANTIA1" Relationship="Self.FK_SCI_GARA_IDEMP" FromRole="SCI_PERSONA" ToRole="SCI_GARANTIA" />
-    <NavigationProperty Name="SCI_UBIGEO" Relationship="Self.FK__SCI_PERSO__IDUBI__59DF26F9" FromRole="SCI_PERSONA" ToRole="SCI_UBIGEO" />
-    <NavigationProperty Name="SCI_TAREAS" Relationship="Self.FK__SCI_TAREA__ID_AL__30C33EC3" FromRole="SCI_PERSONA" ToRole="SCI_TAREAS" />
-    <NavigationProperty Name="SCI_TAREAS1" Relationship="Self.FK__SCI_TAREA__ID_IN__31B762FC" FromRole="SCI_PERSONA" ToRole="SCI_TAREAS" />
-    <NavigationProperty Name="SCI_TAREAS2" Relationship="Self.FK__SCI_TAREA__ID_RE__2FCF1A8A" FromRole="SCI_PERSONA" ToRole="SCI_TAREAS" />
-    <NavigationProperty Name="SCI_TAREAS3" Relationship="Self.FK__SCI_TAREA__ID_SO__2EDAF651" FromRole="SCI_PERSONA" ToRole="SCI_TAREAS" />
-    <NavigationProperty Name="SCI_USUARIO" Relationship="Self.FK__SCI_USUAR__IDUSU__0E52EF38" FromRole="SCI_PERSONA" ToRole="SCI_USUARIO" />
-    <NavigationProperty Name="SCI_TICKET" Relationship="Self.FK_TICKET_IDRES" FromRole="SCI_PERSONA" ToRole="SCI_TICKET" />
-    <NavigationProperty Name="SCI_TICKET1" Relationship="Self.FK_TICKET_IDSOL" FromRole="SCI_PERSONA" ToRole="SCI_TICKET" />
-  </EntityType>
   <EntityType Name="SCI_PRODUCTO">
     <Key>
       <PropertyRef Name="IDPRODUCTO" />
@@ -662,37 +615,10 @@
     <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
     <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
     <NavigationProperty Name="SCI_ACCIONES" Relationship="Self.FK__SCI_ACCIO__ID_TA__367C1819" FromRole="SCI_TAREAS" ToRole="SCI_ACCIONES" />
-    <NavigationProperty Name="SCI_PERSONA" Relationship="Self.FK__SCI_TAREA__ID_AL__30C33EC3" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
-    <NavigationProperty Name="SCI_PERSONA1" Relationship="Self.FK__SCI_TAREA__ID_IN__31B762FC" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
-    <NavigationProperty Name="SCI_PERSONA2" Relationship="Self.FK__SCI_TAREA__ID_RE__2FCF1A8A" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
-    <NavigationProperty Name="SCI_PERSONA3" Relationship="Self.FK__SCI_TAREA__ID_SO__2EDAF651" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
-  </EntityType>
-  <EntityType Name="SCI_TICKET">
-    <Key>
-      <PropertyRef Name="IDTICKET" />
-    </Key>
-    <Property Name="IDTICKET" Type="Int32" Nullable="false" />
-    <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="TIPO" Type="Int32" />
-    <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
-    <Property Name="IDSOLICITANTE" Type="Int32" />
-    <Property Name="IDRESPONSABLE" Type="Int32" />
-    <Property Name="FECHAINI" Type="DateTime" Precision="3" />
-    <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
-    <Property Name="CANTIDAD" Type="Int32" />
-    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-    <Property Name="ESTADO" Type="Int32" />
-    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
-    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
-    <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="SCI_PERSONA" Relationship="Self.FK_TICKET_IDRES" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
-    <NavigationProperty Name="SCI_PERSONA1" Relationship="Self.FK_TICKET_IDSOL" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_AL__30C33EC3" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA1" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_IN__31B762FC" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA2" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_RE__2FCF1A8A" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA3" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_SO__2EDAF651" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
   </EntityType>
   <EntityType Name="SCI_UBIGEO">
     <Key>
@@ -701,7 +627,7 @@
     <Property Name="IDUBIGEO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="ESTADO" Type="Int32" />
-    <NavigationProperty Name="SCI_PERSONA" Relationship="Self.FK__SCI_PERSO__IDUBI__59DF26F9" FromRole="SCI_UBIGEO" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK__SCI_PERSO__IDUBI__59DF26F9" FromRole="SCI_UBIGEO" ToRole="SCI_PERSONA" />
   </EntityType>
   <EntityType Name="SCI_USUARIO">
     <Key>
@@ -724,7 +650,7 @@
     <Property Name="IPCREACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="IPMODIFICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="SCI_PERFILUSUARIO" Relationship="Self.FK__SCI_PERFI__IDUSU__797309D9" FromRole="SCI_USUARIO" ToRole="SCI_PERFILUSUARIO" />
-    <NavigationProperty Name="SCI_PERSONA" Relationship="Self.FK__SCI_USUAR__IDUSU__0E52EF38" FromRole="SCI_USUARIO" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK__SCI_USUAR__IDUSU__0E52EF38" FromRole="SCI_USUARIO" ToRole="SCI_PERSONA" />
   </EntityType>
   <EntityType Name="VIEW_Accesos">
     <Key>
@@ -735,9 +661,9 @@
     <Property Name="IDPERSONA" Type="Int32" Nullable="false" />
     <Property Name="DESTIPOUSUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="NOMBRECOMPLETO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="APEPATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="APEMATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="APEPATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APEMATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="TIPODOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -944,39 +870,6 @@
     <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
     <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="VIEW_Ticket">
-    <Key>
-      <PropertyRef Name="IDTICKET" />
-    </Key>
-    <Property Name="SOLICITANTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="RESPONSABLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="TIPOREQUERIMIENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DESESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="COLORESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FECREGISTRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="FECINIPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="FECFINPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="IDTICKET" Type="Int32" Nullable="false" />
-    <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="TIPO" Type="Int32" />
-    <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
-    <Property Name="IDSOLICITANTE" Type="Int32" />
-    <Property Name="IDRESPONSABLE" Type="Int32" />
-    <Property Name="FECHAINI" Type="DateTime" Precision="3" />
-    <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
-    <Property Name="CANTIDAD" Type="Int32" />
-    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-    <Property Name="ESTADO" Type="Int32" />
-    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
-    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
-    <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-  </EntityType>
   <Association Name="FK__SCI_ACCIO__ID_TA__367C1819">
     <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="1" />
     <End Role="SCI_ACCIONES" Type="Self.SCI_ACCIONES" Multiplicity="*" />
@@ -986,18 +879,6 @@
       </Principal>
       <Dependent Role="SCI_ACCIONES">
         <PropertyRef Name="ID_TAREA" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SCI_ALERT__IDPER__531856C7">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
-    <End Role="SCI_ALERTAS" Type="Self.SCI_ALERTAS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_ALERTAS">
-        <PropertyRef Name="IDPERSONA" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1037,18 +918,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SCI_CLIEN__IDCLI__6A158EC2">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
-    <End Role="SCI_CLIENTEMAST" Type="Self.SCI_CLIENTEMAST" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_CLIENTEMAST">
-        <PropertyRef Name="IDCLIENTE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__SCI_COMPR__IDCLI__71B6B08A">
     <End Role="SCI_CLIENTEMAST" Type="Self.SCI_CLIENTEMAST" Multiplicity="0..1" />
     <End Role="SCI_COMPROBANTE" Type="Self.SCI_COMPROBANTE" Multiplicity="*" />
@@ -1073,18 +942,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SCI_COMPA__IDEMP__5F98004F">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
-    <End Role="SCI_COMPANY" Type="Self.SCI_COMPANY" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_COMPANY">
-        <PropertyRef Name="IDEMPRESA" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__SCI_COMPA__IDPER__628FA481">
     <End Role="SCI_PERFIL" Type="Self.SCI_PERFIL" Multiplicity="0..1" />
     <End Role="SCI_COMPANY" Type="Self.SCI_COMPANY" Multiplicity="*" />
@@ -1094,18 +951,6 @@
       </Principal>
       <Dependent Role="SCI_COMPANY">
         <PropertyRef Name="IDPERFIL" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SCI_COMPA__IDREP__5EA3DC16">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
-    <End Role="SCI_COMPANY" Type="Self.SCI_COMPANY" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_COMPANY">
-        <PropertyRef Name="IDREPRESENTANTE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1219,18 +1064,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SCI_EMPLE__IDEMP__6644FDDE">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
-    <End Role="SCI_EMPLEADO" Type="Self.SCI_EMPLEADO" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_EMPLEADO">
-        <PropertyRef Name="IDEMPLEADO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__SCI_EMPLE__IDNEG__6EF57B66">
     <End Role="SCI_NEGOCIO" Type="Self.SCI_NEGOCIO" Multiplicity="0..1" />
     <End Role="SCI_EMPLEADO" Type="Self.SCI_EMPLEADO" Multiplicity="*" />
@@ -1240,30 +1073,6 @@
       </Principal>
       <Dependent Role="SCI_EMPLEADO">
         <PropertyRef Name="IDNEGOCIO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SCI_GARA_IDCON">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
-    <End Role="SCI_GARANTIA" Type="Self.SCI_GARANTIA" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_GARANTIA">
-        <PropertyRef Name="IDCONTACTO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SCI_GARA_IDEMP">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
-    <End Role="SCI_GARANTIA" Type="Self.SCI_GARANTIA" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_GARANTIA">
-        <PropertyRef Name="IDEMPRESA" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1413,102 +1222,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SCI_PERSO__IDUBI__59DF26F9">
-    <End Role="SCI_UBIGEO" Type="Self.SCI_UBIGEO" Multiplicity="0..1" />
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_UBIGEO">
-        <PropertyRef Name="IDUBIGEO" />
-      </Principal>
-      <Dependent Role="SCI_PERSONA">
-        <PropertyRef Name="IDUBIGEO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SCI_TAREA__ID_AL__30C33EC3">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
-    <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_TAREAS">
-        <PropertyRef Name="ID_ALTERNO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SCI_TAREA__ID_IN__31B762FC">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
-    <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_TAREAS">
-        <PropertyRef Name="ID_INVOLUCRADO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SCI_TAREA__ID_RE__2FCF1A8A">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
-    <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_TAREAS">
-        <PropertyRef Name="ID_RESPONSABLE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SCI_TAREA__ID_SO__2EDAF651">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
-    <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_TAREAS">
-        <PropertyRef Name="ID_SOLICITANTE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SCI_USUAR__IDUSU__0E52EF38">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="1" />
-    <End Role="SCI_USUARIO" Type="Self.SCI_USUARIO" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_USUARIO">
-        <PropertyRef Name="IDUSUARIO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TICKET_IDRES">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
-    <End Role="SCI_TICKET" Type="Self.SCI_TICKET" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_TICKET">
-        <PropertyRef Name="IDRESPONSABLE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TICKET_IDSOL">
-    <End Role="SCI_PERSONA" Type="Self.SCI_PERSONA" Multiplicity="0..1" />
-    <End Role="SCI_TICKET" Type="Self.SCI_TICKET" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_TICKET">
-        <PropertyRef Name="IDSOLICITANTE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__SCI_PRODU__IDPRO__05889F0D">
     <End Role="SCI_PRODUCTO" Type="Self.SCI_PRODUCTO" Multiplicity="1" />
     <End Role="SCI_PRODUCTODETALLE" Type="Self.SCI_PRODUCTODETALLE" Multiplicity="*" />
@@ -1548,11 +1261,9 @@
     <EntitySet Name="SCI_PARAMETROS" EntityType="Self.SCI_PARAMETROS" />
     <EntitySet Name="SCI_PERFIL" EntityType="Self.SCI_PERFIL" />
     <EntitySet Name="SCI_PERFILUSUARIO" EntityType="Self.SCI_PERFILUSUARIO" />
-    <EntitySet Name="SCI_PERSONA" EntityType="Self.SCI_PERSONA" />
     <EntitySet Name="SCI_PRODUCTO" EntityType="Self.SCI_PRODUCTO" />
     <EntitySet Name="SCI_PRODUCTODETALLE" EntityType="Self.SCI_PRODUCTODETALLE" />
     <EntitySet Name="SCI_TAREAS" EntityType="Self.SCI_TAREAS" />
-    <EntitySet Name="SCI_TICKET" EntityType="Self.SCI_TICKET" />
     <EntitySet Name="SCI_UBIGEO" EntityType="Self.SCI_UBIGEO" />
     <EntitySet Name="SCI_USUARIO" EntityType="Self.SCI_USUARIO" />
     <EntitySet Name="VIEW_Accesos" EntityType="Self.VIEW_Accesos" />
@@ -1563,14 +1274,9 @@
     <EntitySet Name="VIEW_Maestro" EntityType="Self.VIEW_Maestro" />
     <EntitySet Name="VIEW_Tarea" EntityType="Self.VIEW_Tarea" />
     <EntitySet Name="VIEW_TareaAsignadas" EntityType="Self.VIEW_TareaAsignadas" />
-    <EntitySet Name="VIEW_Ticket" EntityType="Self.VIEW_Ticket" />
     <AssociationSet Name="FK__SCI_ACCIO__ID_TA__367C1819" Association="Self.FK__SCI_ACCIO__ID_TA__367C1819">
       <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
       <End Role="SCI_ACCIONES" EntitySet="SCI_ACCIONES" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SCI_ALERT__IDPER__531856C7" Association="Self.FK__SCI_ALERT__IDPER__531856C7">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_ALERTAS" EntitySet="SCI_ALERTAS" />
     </AssociationSet>
     <AssociationSet Name="FK__SCI_PRODU__IDCAR__7F10ABA8" Association="Self.FK__SCI_PRODU__IDCAR__7F10ABA8">
       <End Role="SCI_CARACTERISTICAS" EntitySet="SCI_CARACTERISTICAS" />
@@ -1584,10 +1290,6 @@
       <End Role="SCI_CLASIFICACION" EntitySet="SCI_CLASIFICACION" />
       <End Role="SCI_PRODUCTO" EntitySet="SCI_PRODUCTO" />
     </AssociationSet>
-    <AssociationSet Name="FK__SCI_CLIEN__IDCLI__6A158EC2" Association="Self.FK__SCI_CLIEN__IDCLI__6A158EC2">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_CLIENTEMAST" EntitySet="SCI_CLIENTEMAST" />
-    </AssociationSet>
     <AssociationSet Name="FK__SCI_COMPR__IDCLI__71B6B08A" Association="Self.FK__SCI_COMPR__IDCLI__71B6B08A">
       <End Role="SCI_CLIENTEMAST" EntitySet="SCI_CLIENTEMAST" />
       <End Role="SCI_COMPROBANTE" EntitySet="SCI_COMPROBANTE" />
@@ -1596,16 +1298,8 @@
       <End Role="SCI_CLIENTEMAST" EntitySet="SCI_CLIENTEMAST" />
       <End Role="SCI_COTIZACION" EntitySet="SCI_COTIZACION" />
     </AssociationSet>
-    <AssociationSet Name="FK__SCI_COMPA__IDEMP__5F98004F" Association="Self.FK__SCI_COMPA__IDEMP__5F98004F">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_COMPANY" EntitySet="SCI_COMPANY" />
-    </AssociationSet>
     <AssociationSet Name="FK__SCI_COMPA__IDPER__628FA481" Association="Self.FK__SCI_COMPA__IDPER__628FA481">
       <End Role="SCI_PERFIL" EntitySet="SCI_PERFIL" />
-      <End Role="SCI_COMPANY" EntitySet="SCI_COMPANY" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SCI_COMPA__IDREP__5EA3DC16" Association="Self.FK__SCI_COMPA__IDREP__5EA3DC16">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
       <End Role="SCI_COMPANY" EntitySet="SCI_COMPANY" />
     </AssociationSet>
     <AssociationSet Name="FK__SCI_NEGOC__IDCOM__76969D2E" Association="Self.FK__SCI_NEGOC__IDCOM__76969D2E">
@@ -1644,21 +1338,9 @@
       <End Role="SCI_PRODUCTO" EntitySet="SCI_PRODUCTO" />
       <End Role="SCI_COTIZACIONDETALLE" EntitySet="SCI_COTIZACIONDETALLE" />
     </AssociationSet>
-    <AssociationSet Name="FK__SCI_EMPLE__IDEMP__6644FDDE" Association="Self.FK__SCI_EMPLE__IDEMP__6644FDDE">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_EMPLEADO" EntitySet="SCI_EMPLEADO" />
-    </AssociationSet>
     <AssociationSet Name="FK__SCI_EMPLE__IDNEG__6EF57B66" Association="Self.FK__SCI_EMPLE__IDNEG__6EF57B66">
       <End Role="SCI_NEGOCIO" EntitySet="SCI_NEGOCIO" />
       <End Role="SCI_EMPLEADO" EntitySet="SCI_EMPLEADO" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SCI_GARA_IDCON" Association="Self.FK_SCI_GARA_IDCON">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_GARANTIA" EntitySet="SCI_GARANTIA" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SCI_GARA_IDEMP" Association="Self.FK_SCI_GARA_IDEMP">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_GARANTIA" EntitySet="SCI_GARANTIA" />
     </AssociationSet>
     <AssociationSet Name="FK_SCI_GARDET_IDGAR" Association="Self.FK_SCI_GARDET_IDGAR">
       <End Role="SCI_GARANTIA" EntitySet="SCI_GARANTIA" />
@@ -1708,43 +1390,75 @@
       <End Role="SCI_USUARIO" EntitySet="SCI_USUARIO" />
       <End Role="SCI_PERFILUSUARIO" EntitySet="SCI_PERFILUSUARIO" />
     </AssociationSet>
-    <AssociationSet Name="FK__SCI_PERSO__IDUBI__59DF26F9" Association="Self.FK__SCI_PERSO__IDUBI__59DF26F9">
-      <End Role="SCI_UBIGEO" EntitySet="SCI_UBIGEO" />
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SCI_TAREA__ID_AL__30C33EC3" Association="Self.FK__SCI_TAREA__ID_AL__30C33EC3">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SCI_TAREA__ID_IN__31B762FC" Association="Self.FK__SCI_TAREA__ID_IN__31B762FC">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SCI_TAREA__ID_RE__2FCF1A8A" Association="Self.FK__SCI_TAREA__ID_RE__2FCF1A8A">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SCI_TAREA__ID_SO__2EDAF651" Association="Self.FK__SCI_TAREA__ID_SO__2EDAF651">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SCI_USUAR__IDUSU__0E52EF38" Association="Self.FK__SCI_USUAR__IDUSU__0E52EF38">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_USUARIO" EntitySet="SCI_USUARIO" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TICKET_IDRES" Association="Self.FK_TICKET_IDRES">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_TICKET" EntitySet="SCI_TICKET" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TICKET_IDSOL" Association="Self.FK_TICKET_IDSOL">
-      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
-      <End Role="SCI_TICKET" EntitySet="SCI_TICKET" />
-    </AssociationSet>
     <AssociationSet Name="FK__SCI_PRODU__IDPRO__05889F0D" Association="Self.FK__SCI_PRODU__IDPRO__05889F0D">
       <End Role="SCI_PRODUCTO" EntitySet="SCI_PRODUCTO" />
       <End Role="SCI_PRODUCTODETALLE" EntitySet="SCI_PRODUCTODETALLE" />
     </AssociationSet>
     <EntitySet Name="VIEW_MaestroDetalle" EntityType="BDIntegrityModel.VIEW_MaestroDetalle" />
+    <EntitySet Name="SCI_PERSONA" EntityType="BDIntegrityModel.SCI_PERSONA" />
+    <AssociationSet Name="FK__SCI_ALERT__IDPER__531856C7" Association="BDIntegrityModel.FK__SCI_ALERT__IDPER__531856C7">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_ALERTAS" EntitySet="SCI_ALERTAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_CLIEN__IDCLI__6A158EC2" Association="BDIntegrityModel.FK__SCI_CLIEN__IDCLI__6A158EC2">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_CLIENTEMAST" EntitySet="SCI_CLIENTEMAST" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COMPA__IDEMP__5F98004F" Association="BDIntegrityModel.FK__SCI_COMPA__IDEMP__5F98004F">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_COMPANY" EntitySet="SCI_COMPANY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_COMPA__IDREP__5EA3DC16" Association="BDIntegrityModel.FK__SCI_COMPA__IDREP__5EA3DC16">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_COMPANY" EntitySet="SCI_COMPANY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_EMPLE__IDEMP__6644FDDE" Association="BDIntegrityModel.FK__SCI_EMPLE__IDEMP__6644FDDE">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_EMPLEADO" EntitySet="SCI_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SCI_GARA_IDCON" Association="BDIntegrityModel.FK_SCI_GARA_IDCON">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_GARANTIA" EntitySet="SCI_GARANTIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SCI_GARA_IDEMP" Association="BDIntegrityModel.FK_SCI_GARA_IDEMP">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_GARANTIA" EntitySet="SCI_GARANTIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_PERSO__IDUBI__59DF26F9" Association="BDIntegrityModel.FK__SCI_PERSO__IDUBI__59DF26F9">
+      <End Role="SCI_UBIGEO" EntitySet="SCI_UBIGEO" />
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_TAREA__ID_AL__30C33EC3" Association="BDIntegrityModel.FK__SCI_TAREA__ID_AL__30C33EC3">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_TAREA__ID_IN__31B762FC" Association="BDIntegrityModel.FK__SCI_TAREA__ID_IN__31B762FC">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_TAREA__ID_RE__2FCF1A8A" Association="BDIntegrityModel.FK__SCI_TAREA__ID_RE__2FCF1A8A">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_TAREA__ID_SO__2EDAF651" Association="BDIntegrityModel.FK__SCI_TAREA__ID_SO__2EDAF651">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SCI_USUAR__IDUSU__0E52EF38" Association="BDIntegrityModel.FK__SCI_USUAR__IDUSU__0E52EF38">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_USUARIO" EntitySet="SCI_USUARIO" />
+    </AssociationSet>
+    <EntitySet Name="VIEW_Persona" EntityType="BDIntegrityModel.VIEW_Persona" />
+    <EntitySet Name="SCI_TICKET" EntityType="BDIntegrityModel.SCI_TICKET" />
+    <EntitySet Name="VIEW_Ticket" EntityType="BDIntegrityModel.VIEW_Ticket" />
+    <AssociationSet Name="FK_TICKET_IDRES" Association="BDIntegrityModel.FK_TICKET_IDRES">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TICKET" EntitySet="SCI_TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TICKET_IDSOL" Association="BDIntegrityModel.FK_TICKET_IDSOL">
+      <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
+      <End Role="SCI_TICKET" EntitySet="SCI_TICKET" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="VIEW_MaestroDetalle">
     <Key>
@@ -1764,4 +1478,342 @@
     <Property Name="CodMaestro" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="NomMaestro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="SCI_PERSONA">
+    <Key>
+      <PropertyRef Name="IDPERSONA" />
+    </Key>
+    <Property Name="IDPERSONA" Type="Int32" Nullable="false" />
+    <Property Name="DOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="RUC" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TIPODOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="APEPATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="APEMATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRECOMPLETO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECHANACIMIENTO" Type="DateTime" Precision="3" />
+    <Property Name="PASAPORTE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="BREVETE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IDUBIGEO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CELULAR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIOMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
+    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
+    <Property Name="IPCREACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IPMODIFICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="Int32" />
+    <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADOCIVIL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="RUTAFIRMA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TIPOPERSONA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SCI_ALERTAS" Relationship="BDIntegrityModel.FK__SCI_ALERT__IDPER__531856C7" FromRole="SCI_PERSONA" ToRole="SCI_ALERTAS" />
+    <NavigationProperty Name="SCI_CLIENTEMAST" Relationship="BDIntegrityModel.FK__SCI_CLIEN__IDCLI__6A158EC2" FromRole="SCI_PERSONA" ToRole="SCI_CLIENTEMAST" />
+    <NavigationProperty Name="SCI_COMPANY" Relationship="BDIntegrityModel.FK__SCI_COMPA__IDEMP__5F98004F" FromRole="SCI_PERSONA" ToRole="SCI_COMPANY" />
+    <NavigationProperty Name="SCI_COMPANY1" Relationship="BDIntegrityModel.FK__SCI_COMPA__IDREP__5EA3DC16" FromRole="SCI_PERSONA" ToRole="SCI_COMPANY" />
+    <NavigationProperty Name="SCI_EMPLEADO" Relationship="BDIntegrityModel.FK__SCI_EMPLE__IDEMP__6644FDDE" FromRole="SCI_PERSONA" ToRole="SCI_EMPLEADO" />
+    <NavigationProperty Name="SCI_GARANTIA" Relationship="BDIntegrityModel.FK_SCI_GARA_IDCON" FromRole="SCI_PERSONA" ToRole="SCI_GARANTIA" />
+    <NavigationProperty Name="SCI_GARANTIA1" Relationship="BDIntegrityModel.FK_SCI_GARA_IDEMP" FromRole="SCI_PERSONA" ToRole="SCI_GARANTIA" />
+    <NavigationProperty Name="SCI_UBIGEO" Relationship="BDIntegrityModel.FK__SCI_PERSO__IDUBI__59DF26F9" FromRole="SCI_PERSONA" ToRole="SCI_UBIGEO" />
+    <NavigationProperty Name="SCI_TAREAS" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_AL__30C33EC3" FromRole="SCI_PERSONA" ToRole="SCI_TAREAS" />
+    <NavigationProperty Name="SCI_TAREAS1" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_IN__31B762FC" FromRole="SCI_PERSONA" ToRole="SCI_TAREAS" />
+    <NavigationProperty Name="SCI_TAREAS2" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_RE__2FCF1A8A" FromRole="SCI_PERSONA" ToRole="SCI_TAREAS" />
+    <NavigationProperty Name="SCI_TAREAS3" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_SO__2EDAF651" FromRole="SCI_PERSONA" ToRole="SCI_TAREAS" />
+    <NavigationProperty Name="SCI_USUARIO" Relationship="BDIntegrityModel.FK__SCI_USUAR__IDUSU__0E52EF38" FromRole="SCI_PERSONA" ToRole="SCI_USUARIO" />
+    <NavigationProperty Name="SCI_TICKET" Relationship="BDIntegrityModel.FK_TICKET_IDRES" FromRole="SCI_PERSONA" ToRole="SCI_TICKET" />
+    <NavigationProperty Name="SCI_TICKET1" Relationship="BDIntegrityModel.FK_TICKET_IDSOL" FromRole="SCI_PERSONA" ToRole="SCI_TICKET" />
+  </EntityType>
+  <Association Name="FK__SCI_ALERT__IDPER__531856C7">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+    <End Type="BDIntegrityModel.SCI_ALERTAS" Role="SCI_ALERTAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_ALERTAS">
+        <PropertyRef Name="IDPERSONA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_CLIEN__IDCLI__6A158EC2">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="1" />
+    <End Type="BDIntegrityModel.SCI_CLIENTEMAST" Role="SCI_CLIENTEMAST" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_CLIENTEMAST">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COMPA__IDEMP__5F98004F">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="1" />
+    <End Type="BDIntegrityModel.SCI_COMPANY" Role="SCI_COMPANY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_COMPANY">
+        <PropertyRef Name="IDEMPRESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_COMPA__IDREP__5EA3DC16">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="1" />
+    <End Type="BDIntegrityModel.SCI_COMPANY" Role="SCI_COMPANY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_COMPANY">
+        <PropertyRef Name="IDREPRESENTANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_EMPLE__IDEMP__6644FDDE">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="1" />
+    <End Type="BDIntegrityModel.SCI_EMPLEADO" Role="SCI_EMPLEADO" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_EMPLEADO">
+        <PropertyRef Name="IDEMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SCI_GARA_IDCON">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="1" />
+    <End Type="BDIntegrityModel.SCI_GARANTIA" Role="SCI_GARANTIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_GARANTIA">
+        <PropertyRef Name="IDCONTACTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SCI_GARA_IDEMP">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="1" />
+    <End Type="BDIntegrityModel.SCI_GARANTIA" Role="SCI_GARANTIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_GARANTIA">
+        <PropertyRef Name="IDEMPRESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_PERSO__IDUBI__59DF26F9">
+    <End Type="BDIntegrityModel.SCI_UBIGEO" Role="SCI_UBIGEO" Multiplicity="0..1" />
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_UBIGEO">
+        <PropertyRef Name="IDUBIGEO" />
+      </Principal>
+      <Dependent Role="SCI_PERSONA">
+        <PropertyRef Name="IDUBIGEO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_TAREA__ID_AL__30C33EC3">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+    <End Type="BDIntegrityModel.SCI_TAREAS" Role="SCI_TAREAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TAREAS">
+        <PropertyRef Name="ID_ALTERNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_TAREA__ID_IN__31B762FC">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+    <End Type="BDIntegrityModel.SCI_TAREAS" Role="SCI_TAREAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TAREAS">
+        <PropertyRef Name="ID_INVOLUCRADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_TAREA__ID_RE__2FCF1A8A">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+    <End Type="BDIntegrityModel.SCI_TAREAS" Role="SCI_TAREAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TAREAS">
+        <PropertyRef Name="ID_RESPONSABLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_TAREA__ID_SO__2EDAF651">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+    <End Type="BDIntegrityModel.SCI_TAREAS" Role="SCI_TAREAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TAREAS">
+        <PropertyRef Name="ID_SOLICITANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SCI_USUAR__IDUSU__0E52EF38">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="1" />
+    <End Type="BDIntegrityModel.SCI_USUARIO" Role="SCI_USUARIO" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_USUARIO">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VIEW_Persona">
+    <Key>
+      <PropertyRef Name="IDPERSONA" />
+      <PropertyRef Name="DesEstado" />
+      <PropertyRef Name="Edad" />
+      <PropertyRef Name="Departamento" />
+      <PropertyRef Name="Provincia" />
+      <PropertyRef Name="Distrito" />
+    </Key>
+    <Property Name="DESTIPOPERSONA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESTIPODOCUMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESESTADOCIVIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESSEXO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDPERSONA" Type="Int32" Nullable="false" />
+    <Property Name="DOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="RUC" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TIPODOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="APEPATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="APEMATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRECOMPLETO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECHANACIMIENTO" Type="DateTime" Precision="3" />
+    <Property Name="PASAPORTE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="BREVETE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IDUBIGEO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CELULAR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIOMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
+    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
+    <Property Name="IPCREACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IPMODIFICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="Int32" />
+    <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADOCIVIL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="RUTAFIRMA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TIPOPERSONA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="DesEstado" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Edad" Type="Int32" Nullable="false" />
+    <Property Name="Departamento" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Provincia" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Distrito" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SCI_TICKET">
+    <Key>
+      <PropertyRef Name="IDTICKET" />
+    </Key>
+    <Property Name="IDTICKET" Type="Int32" Nullable="false" />
+    <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO" Type="Int32" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
+    <Property Name="IDSOLICITANTE" Type="Int32" />
+    <Property Name="IDRESPONSABLE" Type="Int32" />
+    <Property Name="FECHAINI" Type="DateTime" Precision="3" />
+    <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
+    <Property Name="CANTIDAD" Type="Int32" />
+    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="Int32" />
+    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
+    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
+    <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACONTRATO" Type="DateTime" Precision="3" />
+    <Property Name="TIPOTICKET" Type="Int32" />
+    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK_TICKET_IDRES" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA1" Relationship="BDIntegrityModel.FK_TICKET_IDSOL" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
+  </EntityType>
+  <EntityType Name="VIEW_Ticket">
+    <Key>
+      <PropertyRef Name="IDTICKET" />
+    </Key>
+    <Property Name="SOLICITANTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RESPONSABLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESTIPOTICKET" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TIPOREQUERIMIENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="COLORESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECREGISTRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FECINIPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FECFINPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IDTICKET" Type="Int32" Nullable="false" />
+    <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO" Type="Int32" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
+    <Property Name="IDSOLICITANTE" Type="Int32" />
+    <Property Name="IDRESPONSABLE" Type="Int32" />
+    <Property Name="FECHAINI" Type="DateTime" Precision="3" />
+    <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
+    <Property Name="CANTIDAD" Type="Int32" />
+    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="Int32" />
+    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
+    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
+    <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACONTRATO" Type="DateTime" Precision="3" />
+    <Property Name="TIPOTICKET" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_TICKET_IDRES">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+    <End Type="BDIntegrityModel.SCI_TICKET" Role="SCI_TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TICKET">
+        <PropertyRef Name="IDRESPONSABLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TICKET_IDSOL">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+    <End Type="BDIntegrityModel.SCI_TICKET" Role="SCI_TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TICKET">
+        <PropertyRef Name="IDSOLICITANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

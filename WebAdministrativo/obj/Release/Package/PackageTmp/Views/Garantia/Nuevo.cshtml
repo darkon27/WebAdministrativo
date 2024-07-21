@@ -2,18 +2,35 @@
 @{
     ViewBag.Title = "Nuevo";
 }
-<div style="color:chartreuse">
-    @ViewBag.Message
-</div>
+<script src="~/Content/assets/vendor/jquery-validation/jquery.validate.js"></script>
+<script src="~/Content/assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 
-
-@using (Html.BeginForm("Guardar", "Garantia", FormMethod.Post))
-{
-    <h2>
-        Nueva Garantia
-        <a style="float:right" class="btn btn-primary" href="@Url.Action("Index","Garantia")"><i class="flaticon-envelope"></i>Regresar</a>
-    </h2>
-    <div class="panel-body">
+<div class="panel-body">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-@TempData["MessageType"]">
+            @TempData["Message"]
+        </div>
+    }
+    @using (Html.BeginForm("Guardar", "Garantia", FormMethod.Post, new { @id = "garantiaForm" }))
+    {
+        <h2>
+            Nueva Garantia
+        </h2>
+        <div class="row">
+            <ul class="notifications" style="float:right">
+                <li>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"></i>
+                    </button>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Garantia")" class="btn btn-primary">
+                        <i class="fa fa-mail-reply "></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
@@ -27,8 +44,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-3">
+            <div class="col-sm-9">
                 <div class="form-group">
                     <label class="control-label">Contacto</label>
                     <div class="input-group">
@@ -39,17 +55,37 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Ruc</label>
+                    <div class="input-group">
+                        <input type="text" id="rucInput" class="spinner-input form-control">
+                        <span class="input-group-addon">
+                            <a title="Buscar Ruc" href="#" onclick="BuscarRuc(); return false;"><i class="fa fa-search"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <div hidden>
+                        <label class="control-label">ID Empresa</label>
+                        @Html.TextBoxFor(m => m.Garantia.IDEMPRESA, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
                 <div class="form-group">
                     <label class="control-label">Empresa</label>
                     <div class="input-group">
-                        <div class="spinner-buttons input-group-btn">
-                            <button type="button" class="btn btn-default spinner-up">
-                                <i class="fa fa-user"></i>      
-                                @*<input type="text" name="Garantia.IDEMPRESA" class="spinner-input form-control">*@
-                            </button>
-                        </div>            
-                        <input type="text" id="txtEMPRESAFiltro" class="spinner-input form-control">
+                        <span class="input-group-addon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        @Html.TextBoxFor(m => m.VIEW.EMPRESA, new { @class = "form-control", @oninput = "convertirAMayusculas(this)" })
+                        @*@Html.ValidationMessageFor(m => m.VIEW.EMPRESA, "", new { @class = "text-danger" })*@
+
                     </div>
                 </div>
             </div>
@@ -60,12 +96,14 @@
                 <div class="form-group">
                     <label class="control-label">Referencia</label>
                     @Html.TextBoxFor(m => m.Garantia.REFERENCIA, new { @class = "form-control", @required = "required", @oninput = "convertirAMayusculas(this)" })
+
                 </div>
             </div>
             <div class="col-sm-9">
                 <div class="form-group">
                     <label class="control-label">Descripcion</label>
                     @Html.TextBoxFor(m => m.Garantia.DESCRIPCION, new { @class = "form-control", @required = "required", @oninput = "convertirAMayusculas(this)" })
+
                 </div>
             </div>
         </div>
@@ -74,39 +112,35 @@
                 <div class="form-group">
                     <label class="control-label">Observación</label>
                     @Html.TextBoxFor(m => m.Garantia.OBSERVACION, new { @class = "form-control", @required = "required", @oninput = "convertirAMayusculas(this)", @rows = "3" })
+                    @*@Html.ValidationMessageFor(m => m.Garantia.OBSERVACION, "", new { @class = "text-danger" })*@
                 </div>
             </div>
         </div>
+        <br />
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="form-group">
                     <label class="control-label">Item</label>
-                    <div class="input-group">
-                        <input type="text" id="txtiTEM" class="spinner-input form-control">   
-                        <span class="input-group-addon">
-                            <a title="Agregar"  href="#" onclick="Conceptoonclick(); return false;"><i class="fa fa-check"></i></a>                         
-                        </span>
-                    </div>                 
+                    <input type="text" id="txtiTEM" class="spinner-input form-control">
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-7">
                 <div class="form-group">
                     <label class="control-label">Descripcion</label>
                     <input type="text" id="txtDESCRIPCION" class="spinner-input form-control">
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="form-group">
-                    <label class="control-label">Cantiddad</label>
+                    <label class="control-label">Cantidad</label>
                     <input type="text" id="txtCANTIDAD" class="spinner-input form-control">
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-1">
                 <br />
                 <div class="form-group">
                     <label class="control-label"></label>
                     <a title="Agregar" class="btn btn-default spinner-up" href="#" onclick="AgregarConcepto(); return false;"><i class="fa fa-plus-square"></i></a>
-                    @*<input type="button" style="float:right" value="Agregar" class="btn btn-primary" onclick="AgregarConcepto(); return false;" />*@
                 </div>
             </div>
         </div>
@@ -128,13 +162,11 @@
                 </table>
             </div>
         </div>
+    }
+</div>
+<footer class="panel-footer">
+</footer>
 
-    </div>
-    <footer class="panel-footer">
-
-        <input type="submit" style="float:right" value="Guardar" class="btn btn-primary" />
-    </footer>
-}
 
 
 <div id="modalAnular" class="modal-block modal-block-md mfp-hide">
@@ -183,13 +215,49 @@
     </section>
 </div>
 
+<script>
+    document.getElementById('txtCANTIDAD').addEventListener('input', function (e) {
+        var value = e.target.value;
+        e.target.value = value.replace(/[^0-9]/g, '');
+    });
+
+    document.getElementById('rucInput').addEventListener('input', function (e) {
+        var value = e.target.value;
+        e.target.value = value.replace(/[^0-9]/g, '');
+    });
+</script>
+
+<script>
+function BuscarRuc() {
+    var ruc = document.getElementById("rucInput").value;
+    if (ruc) {
+        $.ajax({
+            url: '@Url.Action("BuscarEmpresaPorRuc", "Garantia")',
+            type: 'GET',
+            data: { ruc: ruc },
+            success: function (response) {
+                if (response.success) {
+                    document.getElementById("Garantia_IDEMPRESA").value = response.idEmpresa;
+                    document.getElementById("VIEW_EMPRESA").value = response.nombreEmpresa;
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function () {
+                alert("Error al buscar la empresa. Inténtelo de nuevo.");
+            }
+        });
+    } else {
+        alert("Por favor ingrese un RUC.");
+    }
+}
+</script>
 
 <script>
     var num = 0;
     function AgregarConcepto() {
 
-
-        console.log("hola");
+      //  console.log("hola");
         let Cantidad = document.getElementById("txtCANTIDAD").value;
         let Item = document.getElementById("txtiTEM").value;
         let Descripcion = document.getElementById("txtDESCRIPCION").value;
@@ -235,7 +303,7 @@
         HiddenItem.type = "hidden";
 
         HiddenDescripcion.name = "ListaDetalle[" + num + "].DESCRIPCION";
-        HiddenDescripcion.value = Item;
+        HiddenDescripcion.value = Descripcion;
         HiddenDescripcion.type = "hidden";
 
         DivConceptos.appendChild(HiddenIndex);

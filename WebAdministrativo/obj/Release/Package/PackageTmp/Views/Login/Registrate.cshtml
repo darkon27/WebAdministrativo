@@ -1,17 +1,12 @@
 ﻿@model VIEW_Accesos
-@{
-    ViewBag.Title = "Registrate";
-    Layout = null;
-}
-
+@{ ViewBag.Title = "Registrate";
+                Layout = null; }
 
 <!doctype html>
 <html class="fixed">
 <head>
-
     <!-- Basic -->
     <meta charset="UTF-8">
-
     <meta name="keywords" content="HTML5 Admin Template" />
     <meta name="description" content="Porto Admin - Responsive HTML5 Template">
     <meta name="author" content="okler.net">
@@ -39,7 +34,6 @@
 
     <!-- Head Libs -->
     <script src="~/Content/assets/vendor/modernizr/modernizr.js"></script>
-
 </head>
 <body>
     <!-- start: page -->
@@ -53,113 +47,107 @@
                     <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> REGISTRATE</h2>
                 </div>
                 <div class="panel-body">
+                    @if (TempData["Message"] != null)
+                    {
+        <div class="alert alert-info">
+            @TempData["Message"]
+        </div>}
+
                     @using (Html.BeginForm("Grabar", "Login", FormMethod.Post))
                     {
-                    <form id="FrmSendData">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label class="control-label">Tipo Documento</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <select name="TipoDocumento" class="form-control" required>
-                                            <option> Seleccione....</option>
-                                            @foreach (var item in  ViewBag.ListTipoDocumento )
-                                                {
-                                                    <option value="@item.CODIGO"> @item.DESCRIPCION</option>
-                                                }
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label>Documento</label>
-                                    @Html.TextBoxFor(m => m.DOCUMENTO, new { @class = "form-control", @required = "required" })
-                                </div>
-                            </div>
+        <form id="FrmSendData">
+            <div class="row">
+                <ul class="notifications" style="float:right">
+                    <li>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-save"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Login")" class="btn btn-primary">
+                            <i class="fa fa-mail-reply "></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="control-label">Tipo Documento</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <select id="TipoDocumento" name="TipoDocumento" class="form-control" required>
+                                <option> Seleccione....</option>
+                                @foreach (var item in ViewBag.ListTipoDocumento)
+                                {
+                <option value="@item.CODIGO"> @item.DESCRIPCION</option>}
+                            </select>
                         </div>
-
-                        <div class="form-group">
-                            <label>Nombres</label>
-                            @Html.TextBoxFor(m => m.NOMBRE, new { @class = "form-control", @required = "required" })
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label>Ape. Paterno</label>
-                                    @Html.TextBoxFor(m => m.APEPATERNO, new { @class = "form-control", @required = "required" })
-                                </div>
-                                <div class="col-sm-6">
-                                    <label>Ape. Materno</label>
-                                    @Html.TextBoxFor(m => m.APEMATERNO, new { @class = "form-control", @required = "required" })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label>E-mail Address</label>                       
-                            @Html.TextBoxFor(m => m.EMAIL, new { @class = "form-control", @required = "required" })
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label>Usuario</label>
-                                    @Html.TextBoxFor(m => m.USUARIO, new { @class = "form-control", @required = "required" })
-
-                                    @*<label>Sexo</label>
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fa fa-user"></i>
-                    </span>
-                    <select name="Sexo" class="form-control" required>
-                        <option> Seleccione....</option>
-                        @foreach (var item in ViewBag.ListRESPONSABLE)
-        {
-            <option value="@item.IDPERSONA"> @item.NOMBRECOMPLETO</option>
-        }
-                    </select>
-                </div>*@
-                                </div>
-                                <div class="col-sm-6">
-                                    <label>Fec. Nacimiento </label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </span>
-                                        @Html.TextBoxFor(m => m.FECHAEXPIRACION, new { @class = "form-control", @required = "required", Type = "date", @placeholder = "__/__/____" })
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label>Password</label>
-                                    @Html.TextBoxFor(m => m.PASSWORD, new { @class = "form-control", @required = "required", @placeholder = "Password" })                              
-                                </div>
-                                <div class="col-sm-6">
-                                    <label>Password Confirmation</label>
-                                    @Html.TextBoxFor(m => m.SQLPASSWORD, new { @class = "form-control", @required = "required", @placeholder = "Password" })
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-8">
-
-                            </div>
-                            <div class="col-sm-4 text-right">
-                                <button type="submit" class="btn btn-primary hidden-xs">Registrar</button>
-                            </div>
-                        </div>
-                        <span class="mt-lg mb-lg line-thru text-center text-uppercase">
-                            <span>or</span>
-                        </span>
-                    </form>
-                    }
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Documento</label>
+                        @Html.TextBoxFor(m => m.DOCUMENTO, new { @class = "form-control", @required = "required", @maxlength = "15" })
+                    </div>
                 </div>
             </div>
 
+            <div class="form-group">
+                <label>Nombres</label>
+                @Html.TextBoxFor(m => m.NOMBRE, new { @class = "form-control", @required = "required", @maxlength = "50" })
+            </div>
+            <div class="form-group" id="ApeDiv">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Ape. Paterno</label>
+                        @Html.TextBoxFor(m => m.APEPATERNO, new { @class = "form-control", @required = "required", @maxlength = "50" })
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Ape. Materno</label>
+                        @Html.TextBoxFor(m => m.APEMATERNO, new { @class = "form-control", @required = "required", @maxlength = "50" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>E-mail Address</label>
+                @Html.TextBoxFor(m => m.EMAIL, new { @class = "form-control", @required = "required", @maxlength = "100" })
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Usuario</label>
+                        @Html.TextBoxFor(m => m.USUARIO, new { @class = "form-control", @required = "required", @maxlength = "20" })
+                    </div>
+                    <div class="col-sm-6" id="NacimientoDiv">
+                        <label>Fec. Nacimiento </label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            @Html.TextBoxFor(m => m.FECHAEXPIRACION, new { @class = "form-control", @required = "required", Type = "date", @placeholder = "__/__/____" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Password</label>
+                        @Html.TextBoxFor(m => m.PASSWORD, new { @class = "form-control", @required = "required", @maxlength = "20", @placeholder = "Password" })
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Password Confirmation</label>
+                        @Html.TextBoxFor(m => m.SQLPASSWORD, new { @class = "form-control", @required = "required", @maxlength = "20", @placeholder = "Password" })
+                    </div>
+                </div>
+            </div>
+            <span class="mt-lg mb-lg line-thru text-center text-uppercase">
+                <span>or</span>
+            </span>
+        </form>}
+                </div>
+            </div>
             <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2024. All Rights Reserved.</p>
         </div>
     </section>
@@ -181,6 +169,24 @@
 
     <!-- Theme Initialization Files -->
     <script src="~/Content/assets/javascripts/theme.init.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#TipoDocumento').change(function () {
+                var selectedValue = $(this).val();
+                // Aquí puedes especificar el valor que debe ocultar los campos
+                if (selectedValue === 'R') {
+                    $('#ApeDiv').hide();
+                    $('#NacimientoDiv').hide();
 
+                } else {
+                    $('#ApeDiv').show();
+                    $('#NacimientoDiv').show();
+                }
+            });
+
+            // Opcional: Si deseas que los campos se oculten/mostrar correctamente al cargar la página según el valor seleccionado
+            $('#TipoDocumento').trigger('change');
+        });
+    </script>
 </body>
 </html>

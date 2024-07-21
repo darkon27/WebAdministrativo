@@ -1,0 +1,93 @@
+﻿@model MaestroDetalleViewModels
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<div class="panel-body">
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-@TempData["MessageType"]">
+            @TempData["Message"]
+        </div>
+    }
+
+    @using (Html.BeginForm("Guardar", "Maestro", FormMethod.Post))
+    {
+        <h2>
+            Nuevo Maestro
+        </h2>
+        <div class="row">
+            <ul class="notifications" style="float:right">
+                <li>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"></i>
+                    </button>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Maestro")" class="btn btn-primary">
+                        <i class="fa fa-mail-reply"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Codigo</label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.VIEW.CODIGO, new { @class = "form-control", @required = "required" })
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Maestro</label>
+                    <select id="VIEW.IDMAESTRO" name="VIEW.IDMAESTRO" class="form-control" required>
+                        <option>Seleccione...</option>
+                        @foreach (var item in ViewBag.ListTipo)
+                        {
+                            <option value="@item.IDMAESTRO">@item.NOMBRE</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Nombre</label>
+                    @Html.TextBoxFor(m => m.VIEW.NOMBRE, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Descripción</label>
+                    @Html.TextAreaFor(m => m.VIEW.DESCRIPCION, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Estado</label>
+                    <select id="VIEW.ESTADO" name="VIEW.ESTADO" class="form-control" required>
+                        <option>Seleccione...</option>
+                        @foreach (var item in ViewBag.ListEstado)
+                        {
+                            <option value="@item.CODIGO">@item.NOMBRE</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

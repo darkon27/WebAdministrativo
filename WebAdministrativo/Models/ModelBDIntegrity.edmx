@@ -611,6 +611,8 @@
           <Property Name="FECHAMODIFICACION" Type="datetime" />
           <Property Name="IPMODIFICACION" Type="varchar" MaxLength="25" />
           <Property Name="IPCREACION" Type="varchar" MaxLength="25" />
+          <Property Name="FECHACONTRATO" Type="datetime" />
+          <Property Name="TIPOTICKET" Type="int" />
         </EntityType>
         <EntityType Name="SCI_UBIGEO">
           <Key>
@@ -646,15 +648,18 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Accesos' no tiene defin
         <EntityType Name="VIEW_Accesos">
           <Key>
             <PropertyRef Name="IDPERSONA" />
+            
+            
+            
             <PropertyRef Name="IDUSUARIO" />
             <PropertyRef Name="DesEstado" />
           </Key>
           <Property Name="IDPERSONA" Type="int" Nullable="false" />
           <Property Name="DESTIPOUSUARIO" Type="varchar" MaxLength="50" />
           <Property Name="NOMBRECOMPLETO" Type="varchar" MaxLength="100" />
-          <Property Name="APEPATERNO" Type="varchar" MaxLength="40" />
-          <Property Name="APEMATERNO" Type="varchar" MaxLength="40" />
-          <Property Name="NOMBRE" Type="varchar" MaxLength="40" />
+          <Property Name="APEPATERNO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="APEMATERNO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="DOCUMENTO" Type="varchar" MaxLength="25" />
           <Property Name="TIPODOCUMENTO" Type="varchar" MaxLength="25" />
           <Property Name="EMAIL" Type="varchar" MaxLength="100" />
@@ -951,6 +956,7 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
           </Key>
           <Property Name="SOLICITANTE" Type="varchar" MaxLength="100" />
           <Property Name="RESPONSABLE" Type="varchar" MaxLength="100" />
+          <Property Name="DESTIPOTICKET" Type="varchar" MaxLength="50" />
           <Property Name="TIPOREQUERIMIENTO" Type="varchar" MaxLength="50" />
           <Property Name="DESESTADO" Type="varchar" MaxLength="50" />
           <Property Name="COLORESTADO" Type="varchar" MaxLength="100" />
@@ -977,6 +983,8 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
           <Property Name="FECHAMODIFICACION" Type="datetime" />
           <Property Name="IPMODIFICACION" Type="varchar" MaxLength="25" />
           <Property Name="IPCREACION" Type="varchar" MaxLength="25" />
+          <Property Name="FECHACONTRATO" Type="datetime" />
+          <Property Name="TIPOTICKET" Type="int" />
         </EntityType>
         <Association Name="FK__SCI_ACCIO__ID_TA__367C1819">
           <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="1" />
@@ -1817,6 +1825,7 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
             <DefiningQuery>SELECT 
     [VIEW_Ticket].[SOLICITANTE] AS [SOLICITANTE], 
     [VIEW_Ticket].[RESPONSABLE] AS [RESPONSABLE], 
+    [VIEW_Ticket].[DESTIPOTICKET] AS [DESTIPOTICKET], 
     [VIEW_Ticket].[TIPOREQUERIMIENTO] AS [TIPOREQUERIMIENTO], 
     [VIEW_Ticket].[DESESTADO] AS [DESESTADO], 
     [VIEW_Ticket].[COLORESTADO] AS [COLORESTADO], 
@@ -1842,7 +1851,9 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
     [VIEW_Ticket].[FECHACREACION] AS [FECHACREACION], 
     [VIEW_Ticket].[FECHAMODIFICACION] AS [FECHAMODIFICACION], 
     [VIEW_Ticket].[IPMODIFICACION] AS [IPMODIFICACION], 
-    [VIEW_Ticket].[IPCREACION] AS [IPCREACION]
+    [VIEW_Ticket].[IPCREACION] AS [IPCREACION], 
+    [VIEW_Ticket].[FECHACONTRATO] AS [FECHACONTRATO], 
+    [VIEW_Ticket].[TIPOTICKET] AS [TIPOTICKET]
     FROM [dbo].[VIEW_Ticket] AS [VIEW_Ticket]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__SCI_ACCIO__ID_TA__367C1819" Association="Self.FK__SCI_ACCIO__ID_TA__367C1819">
@@ -2650,33 +2661,6 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
           <NavigationProperty Name="SCI_PERSONA2" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_RE__2FCF1A8A" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
           <NavigationProperty Name="SCI_PERSONA3" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_SO__2EDAF651" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
           </EntityType>
-        <EntityType Name="SCI_TICKET">
-          <Key>
-            <PropertyRef Name="IDTICKET" />
-          </Key>
-          <Property Name="IDTICKET" Type="Int32" Nullable="false" />
-          <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="TIPO" Type="Int32" />
-          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
-          <Property Name="IDSOLICITANTE" Type="Int32" />
-          <Property Name="IDRESPONSABLE" Type="Int32" />
-          <Property Name="FECHAINI" Type="DateTime" Precision="3" />
-          <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
-          <Property Name="CANTIDAD" Type="Int32" />
-          <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="ESTADO" Type="Int32" />
-          <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
-          <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
-          <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK_TICKET_IDRES" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
-          <NavigationProperty Name="SCI_PERSONA1" Relationship="BDIntegrityModel.FK_TICKET_IDSOL" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
-          </EntityType>
         <EntityType Name="SCI_UBIGEO">
           <Key>
             <PropertyRef Name="IDUBIGEO" />
@@ -2718,9 +2702,9 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
           <Property Name="IDPERSONA" Type="Int32" Nullable="false" />
           <Property Name="DESTIPOUSUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NOMBRECOMPLETO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="APEPATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="APEMATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="APEPATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APEMATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="TIPODOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -2926,39 +2910,6 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
           <Property Name="USUARIOMODIFICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
           <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="VIEW_Ticket">
-          <Key>
-            <PropertyRef Name="IDTICKET" />
-          </Key>
-          <Property Name="SOLICITANTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="RESPONSABLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="TIPOREQUERIMIENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DESESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="COLORESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="FECREGISTRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="FECINIPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="FECFINPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="IDTICKET" Type="Int32" Nullable="false" />
-          <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="TIPO" Type="Int32" />
-          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
-          <Property Name="IDSOLICITANTE" Type="Int32" />
-          <Property Name="IDRESPONSABLE" Type="Int32" />
-          <Property Name="FECHAINI" Type="DateTime" Precision="3" />
-          <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
-          <Property Name="CANTIDAD" Type="Int32" />
-          <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="ESTADO" Type="Int32" />
-          <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
-          <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
-          <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__SCI_ACCIO__ID_TA__367C1819">
           <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="1" />
@@ -3354,7 +3305,6 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
           <EntitySet Name="SCI_PRODUCTO" EntityType="Self.SCI_PRODUCTO" />
           <EntitySet Name="SCI_PRODUCTODETALLE" EntityType="Self.SCI_PRODUCTODETALLE" />
           <EntitySet Name="SCI_TAREAS" EntityType="Self.SCI_TAREAS" />
-          <EntitySet Name="SCI_TICKET" EntityType="Self.SCI_TICKET" />
           <EntitySet Name="SCI_UBIGEO" EntityType="Self.SCI_UBIGEO" />
           <EntitySet Name="SCI_USUARIO" EntityType="Self.SCI_USUARIO" />
           <EntitySet Name="VIEW_Accesos" EntityType="Self.VIEW_Accesos" />
@@ -3365,7 +3315,6 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
           <EntitySet Name="VIEW_Maestro" EntityType="Self.VIEW_Maestro" />
           <EntitySet Name="VIEW_Tarea" EntityType="Self.VIEW_Tarea" />
           <EntitySet Name="VIEW_TareaAsignadas" EntityType="Self.VIEW_TareaAsignadas" />
-          <EntitySet Name="VIEW_Ticket" EntityType="Self.VIEW_Ticket" />
           <AssociationSet Name="FK__SCI_ACCIO__ID_TA__367C1819" Association="Self.FK__SCI_ACCIO__ID_TA__367C1819">
             <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
             <End Role="SCI_ACCIONES" EntitySet="SCI_ACCIONES" />
@@ -3540,6 +3489,9 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
             <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
             <End Role="SCI_USUARIO" EntitySet="SCI_USUARIO" />
           </AssociationSet>
+          <EntitySet Name="VIEW_Persona" EntityType="BDIntegrityModel.VIEW_Persona" />
+          <EntitySet Name="SCI_TICKET" EntityType="BDIntegrityModel.SCI_TICKET" />
+          <EntitySet Name="VIEW_Ticket" EntityType="BDIntegrityModel.VIEW_Ticket" />
           <AssociationSet Name="FK_TICKET_IDRES" Association="BDIntegrityModel.FK_TICKET_IDRES">
             <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
             <End Role="SCI_TICKET" EntitySet="SCI_TICKET" />
@@ -3548,8 +3500,7 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
             <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
             <End Role="SCI_TICKET" EntitySet="SCI_TICKET" />
           </AssociationSet>
-          <EntitySet Name="VIEW_Persona" EntityType="BDIntegrityModel.VIEW_Persona" />
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="VIEW_MaestroDetalle">
           <Key>
             <PropertyRef Name="ID" />
@@ -3614,7 +3565,7 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
           <NavigationProperty Name="SCI_USUARIO" Relationship="BDIntegrityModel.FK__SCI_USUAR__IDUSU__0E52EF38" FromRole="SCI_PERSONA" ToRole="SCI_USUARIO" />
           <NavigationProperty Name="SCI_TICKET" Relationship="BDIntegrityModel.FK_TICKET_IDRES" FromRole="SCI_PERSONA" ToRole="SCI_TICKET" />
           <NavigationProperty Name="SCI_TICKET1" Relationship="BDIntegrityModel.FK_TICKET_IDSOL" FromRole="SCI_PERSONA" ToRole="SCI_TICKET" />
-        </EntityType>
+          </EntityType>
         <Association Name="FK__SCI_ALERT__IDPER__531856C7">
           <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
           <End Type="BDIntegrityModel.SCI_ALERTAS" Role="SCI_ALERTAS" Multiplicity="*" />
@@ -3771,30 +3722,6 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TICKET_IDRES">
-          <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
-          <End Type="BDIntegrityModel.SCI_TICKET" Role="SCI_TICKET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SCI_PERSONA">
-              <PropertyRef Name="IDPERSONA" />
-            </Principal>
-            <Dependent Role="SCI_TICKET">
-              <PropertyRef Name="IDRESPONSABLE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TICKET_IDSOL">
-          <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
-          <End Type="BDIntegrityModel.SCI_TICKET" Role="SCI_TICKET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SCI_PERSONA">
-              <PropertyRef Name="IDPERSONA" />
-            </Principal>
-            <Dependent Role="SCI_TICKET">
-              <PropertyRef Name="IDSOLICITANTE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="VIEW_Persona">
           <Key>
             <PropertyRef Name="IDPERSONA" />
@@ -3841,7 +3768,96 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
           <Property Name="Provincia" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="Distrito" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
-      </Schema>
+        <EntityType Name="SCI_TICKET">
+          <Key>
+            <PropertyRef Name="IDTICKET" />
+          </Key>
+          <Property Name="IDTICKET" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO" Type="Int32" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="IDSOLICITANTE" Type="Int32" />
+          <Property Name="IDRESPONSABLE" Type="Int32" />
+          <Property Name="FECHAINI" Type="DateTime" Precision="3" />
+          <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
+          <Property Name="CANTIDAD" Type="Int32" />
+          <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Int32" />
+          <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
+          <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
+          <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FECHACONTRATO" Type="DateTime" Precision="3" />
+          <Property Name="TIPOTICKET" Type="Int32" />
+          <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK_TICKET_IDRES" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
+          <NavigationProperty Name="SCI_PERSONA1" Relationship="BDIntegrityModel.FK_TICKET_IDSOL" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
+        </EntityType>
+        <EntityType Name="VIEW_Ticket">
+          <Key>
+            <PropertyRef Name="IDTICKET" />
+          </Key>
+          <Property Name="SOLICITANTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RESPONSABLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESTIPOTICKET" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TIPOREQUERIMIENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COLORESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FECREGISTRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FECINIPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FECFINPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IDTICKET" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO" Type="Int32" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="IDSOLICITANTE" Type="Int32" />
+          <Property Name="IDRESPONSABLE" Type="Int32" />
+          <Property Name="FECHAINI" Type="DateTime" Precision="3" />
+          <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
+          <Property Name="CANTIDAD" Type="Int32" />
+          <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Int32" />
+          <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
+          <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
+          <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FECHACONTRATO" Type="DateTime" Precision="3" />
+          <Property Name="TIPOTICKET" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_TICKET_IDRES">
+          <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+          <End Type="BDIntegrityModel.SCI_TICKET" Role="SCI_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCI_PERSONA">
+              <PropertyRef Name="IDPERSONA" />
+            </Principal>
+            <Dependent Role="SCI_TICKET">
+              <PropertyRef Name="IDRESPONSABLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TICKET_IDSOL">
+          <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+          <End Type="BDIntegrityModel.SCI_TICKET" Role="SCI_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCI_PERSONA">
+              <PropertyRef Name="IDPERSONA" />
+            </Principal>
+            <Dependent Role="SCI_TICKET">
+              <PropertyRef Name="IDSOLICITANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -4411,32 +4427,6 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SCI_TICKET">
-            <EntityTypeMapping TypeName="BDIntegrityModel.SCI_TICKET">
-              <MappingFragment StoreEntitySet="SCI_TICKET">
-                <ScalarProperty Name="IDTICKET" ColumnName="IDTICKET" />
-                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
-                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
-                <ScalarProperty Name="IDSOLICITANTE" ColumnName="IDSOLICITANTE" />
-                <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
-                <ScalarProperty Name="FECHAINI" ColumnName="FECHAINI" />
-                <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
-                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
-                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
-                <ScalarProperty Name="SOLUCION" ColumnName="SOLUCION" />
-                <ScalarProperty Name="DOCUMENTACION" ColumnName="DOCUMENTACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
-                <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
-                <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
-                <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
-                <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
-                <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SCI_UBIGEO">
             <EntityTypeMapping TypeName="BDIntegrityModel.SCI_UBIGEO">
               <MappingFragment StoreEntitySet="SCI_UBIGEO">
@@ -4686,40 +4676,6 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VIEW_Ticket">
-            <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Ticket">
-              <MappingFragment StoreEntitySet="VIEW_Ticket">
-                <ScalarProperty Name="SOLICITANTE" ColumnName="SOLICITANTE" />
-                <ScalarProperty Name="RESPONSABLE" ColumnName="RESPONSABLE" />
-                <ScalarProperty Name="TIPOREQUERIMIENTO" ColumnName="TIPOREQUERIMIENTO" />
-                <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
-                <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
-                <ScalarProperty Name="FECREGISTRO" ColumnName="FECREGISTRO" />
-                <ScalarProperty Name="FECINIPLAZO" ColumnName="FECINIPLAZO" />
-                <ScalarProperty Name="FECFINPLAZO" ColumnName="FECFINPLAZO" />
-                <ScalarProperty Name="IDTICKET" ColumnName="IDTICKET" />
-                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
-                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
-                <ScalarProperty Name="IDSOLICITANTE" ColumnName="IDSOLICITANTE" />
-                <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
-                <ScalarProperty Name="FECHAINI" ColumnName="FECHAINI" />
-                <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
-                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
-                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
-                <ScalarProperty Name="SOLUCION" ColumnName="SOLUCION" />
-                <ScalarProperty Name="DOCUMENTACION" ColumnName="DOCUMENTACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
-                <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
-                <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
-                <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
-                <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
-                <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="VIEW_MaestroDetalle">
             <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_MaestroDetalle">
               <MappingFragment StoreEntitySet="VIEW_MaestroDetalle">
@@ -4809,6 +4765,71 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
                 <ScalarProperty Name="DESESTADOCIVIL" ColumnName="DESESTADOCIVIL" />
                 <ScalarProperty Name="DESTIPODOCUMENTO" ColumnName="DESTIPODOCUMENTO" />
                 <ScalarProperty Name="DESTIPOPERSONA" ColumnName="DESTIPOPERSONA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCI_TICKET">
+            <EntityTypeMapping TypeName="BDIntegrityModel.SCI_TICKET">
+              <MappingFragment StoreEntitySet="SCI_TICKET">
+                <ScalarProperty Name="TIPOTICKET" ColumnName="TIPOTICKET" />
+                <ScalarProperty Name="FECHACONTRATO" ColumnName="FECHACONTRATO" />
+                <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+                <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+                <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+                <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+                <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+                <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="DOCUMENTACION" ColumnName="DOCUMENTACION" />
+                <ScalarProperty Name="SOLUCION" ColumnName="SOLUCION" />
+                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+                <ScalarProperty Name="FECHAINI" ColumnName="FECHAINI" />
+                <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
+                <ScalarProperty Name="IDSOLICITANTE" ColumnName="IDSOLICITANTE" />
+                <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="IDTICKET" ColumnName="IDTICKET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEW_Ticket">
+            <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Ticket">
+              <MappingFragment StoreEntitySet="VIEW_Ticket">
+                <ScalarProperty Name="TIPOTICKET" ColumnName="TIPOTICKET" />
+                <ScalarProperty Name="FECHACONTRATO" ColumnName="FECHACONTRATO" />
+                <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+                <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+                <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+                <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+                <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+                <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="DOCUMENTACION" ColumnName="DOCUMENTACION" />
+                <ScalarProperty Name="SOLUCION" ColumnName="SOLUCION" />
+                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+                <ScalarProperty Name="FECHAINI" ColumnName="FECHAINI" />
+                <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
+                <ScalarProperty Name="IDSOLICITANTE" ColumnName="IDSOLICITANTE" />
+                <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="IDTICKET" ColumnName="IDTICKET" />
+                <ScalarProperty Name="FECFINPLAZO" ColumnName="FECFINPLAZO" />
+                <ScalarProperty Name="FECINIPLAZO" ColumnName="FECINIPLAZO" />
+                <ScalarProperty Name="FECREGISTRO" ColumnName="FECREGISTRO" />
+                <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
+                <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
+                <ScalarProperty Name="TIPOREQUERIMIENTO" ColumnName="TIPOREQUERIMIENTO" />
+                <ScalarProperty Name="DESTIPOTICKET" ColumnName="DESTIPOTICKET" />
+                <ScalarProperty Name="RESPONSABLE" ColumnName="RESPONSABLE" />
+                <ScalarProperty Name="SOLICITANTE" ColumnName="SOLICITANTE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

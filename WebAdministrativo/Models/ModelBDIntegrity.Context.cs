@@ -54,7 +54,6 @@ namespace WebAdministrativo.Models
         public virtual DbSet<SCI_PRODUCTO> SCI_PRODUCTO { get; set; }
         public virtual DbSet<SCI_PRODUCTODETALLE> SCI_PRODUCTODETALLE { get; set; }
         public virtual DbSet<SCI_TAREAS> SCI_TAREAS { get; set; }
-        public virtual DbSet<SCI_TICKET> SCI_TICKET { get; set; }
         public virtual DbSet<SCI_UBIGEO> SCI_UBIGEO { get; set; }
         public virtual DbSet<SCI_USUARIO> SCI_USUARIO { get; set; }
         public virtual DbSet<VIEW_Accesos> VIEW_Accesos { get; set; }
@@ -65,9 +64,10 @@ namespace WebAdministrativo.Models
         public virtual DbSet<VIEW_Maestro> VIEW_Maestro { get; set; }
         public virtual DbSet<VIEW_Tarea> VIEW_Tarea { get; set; }
         public virtual DbSet<VIEW_TareaAsignadas> VIEW_TareaAsignadas { get; set; }
-        public virtual DbSet<VIEW_Ticket> VIEW_Ticket { get; set; }
         public virtual DbSet<VIEW_MaestroDetalle> VIEW_MaestroDetalle { get; set; }
         public virtual DbSet<SCI_PERSONA> SCI_PERSONA { get; set; }
         public virtual DbSet<VIEW_Persona> VIEW_Persona { get; set; }
+        public virtual DbSet<SCI_TICKET> SCI_TICKET { get; set; }
+        public virtual DbSet<VIEW_Ticket> VIEW_Ticket { get; set; }
     }
 }

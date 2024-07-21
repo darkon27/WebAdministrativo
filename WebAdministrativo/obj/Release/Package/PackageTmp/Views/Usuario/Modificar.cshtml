@@ -7,16 +7,30 @@
 @using (Html.BeginForm("Actualizar", "Usuario", FormMethod.Post))
 {
 
-    <h2>
-        Modificar usuario     
-            <a style="float:right" class="btn btn-primary" href="@Url.Action("Index","Usuario")"><i class="flaticon-envelope"></i>Regresar</a>  
-    </h2>
+<h2>
+    Modificar usuario
+    <div class="row">
+        <ul class="notifications" style="float:right">
+            <li>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i>
+                </button>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Usuario")" class="btn btn-primary">
+                    <i class="fa fa-mail-reply "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</h2>
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
                     <label class="control-label">Id</label>
-                    @Html.TextBoxFor(m => m.VIEW.IDUSUARIO, new { @class = "form-control", @redonly = "readonly" })
+                    @Html.HiddenFor(m => m.VIEW.IDUSUARIO, new { @class = "form-control", @redonly = "readonly" })
+                    @Html.TextBoxFor(m => m.VIEW.IDUSUARIO, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
                 </div>
             </div>
             <div class="col-sm-3">
@@ -60,7 +74,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <label>Fecha Expiración</label>
-                    @Html.TextBoxFor(m => m.VIEW.FECHAEXPIRACION, new { @class = "form-control", @redonly = "readonly", })
+                    @Html.TextBoxFor(m => m.VIEW.FECHAEXPIRACION, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
 
                 </div>
             </div>
@@ -124,20 +138,15 @@
             </div>
         </div>
         <div class="row">
-
             <div class="col-sm-12">
                 <div class="form-group">
                     <label class="control-label">Solución</label>
-
                 </div>
             </div>
-
         </div>
     </div>
 
     <footer class="panel-footer">
-        <input type="submit" style="float:right" class="btn btn-primary" value="Actualizar" />
-        <br />
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">

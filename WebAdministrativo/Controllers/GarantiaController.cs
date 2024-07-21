@@ -28,8 +28,13 @@ namespace WebAdministrativo.Controllers
                     ViewBag.TipoUsuarioAdmin = intem.DESTIPOUSUARIO;
                     ViewBag.IdUsuarioAdmin = intem.IDPERSONA;
                 }
+
+                DateTime fechaInicio = DateTime.Now.AddDays(-30);
                 GlobalAdmin.FechaRegistro = DateTime.Now.ToShortDateString();
                 ViewBag.FechaRegistro = GlobalAdmin.FechaRegistro;
+                var FechaIni = fechaInicio.ToShortDateString();
+                ViewBag.FechaInicio = FechaIni;
+                
                 List<SCI_MAESTRODETALLE> listMAESTRODETALLE = (List<SCI_MAESTRODETALLE>)Session["VIEW_MAESTRODETALLE"];
                 ViewBag.ListEstado = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 22).ToList();
             }
@@ -116,6 +121,25 @@ namespace WebAdministrativo.Controllers
             return View(ViewMode);
         }
 
+        public ActionResult BuscarEmpresaPorRuc(string ruc)
+        {
+            VIEW_Persona ViewMode = new VIEW_Persona();
+            ViewMode.TIPODOCUMENTO = "R";
+            //ViewMode.TIPOPERSONA = "J";
+            ViewMode.DOCUMENTO = ruc;
+            var empresa = PersonaService.Buscar(ViewMode); // Reemplaza esto con tu lógica de obtención de empresa
+            foreach (var item in empresa)
+            {
+                ViewMode = item;
+            }
+            if (ViewMode != null)
+            {
+                return Json(new { success = true, idEmpresa = ViewMode.IDPERSONA, nombreEmpresa = ViewMode.NOMBRECOMPLETO }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { success = false, message = "Empresa no encontrada" }, JsonRequestBehavior.AllowGet);
+        }
+
+
         [HttpPost]
         public ActionResult Guardar(GarantiaViewModels ViewModels)
         {            
@@ -128,7 +152,9 @@ namespace WebAdministrativo.Controllers
             try
             {
                 ViewModels.Garantia.IDGARANTIA = GarantiaService.InsertarGarantias(ViewModels);
-                TempData["ErrorMessage"] = "Registro Exitoso";
+                TempData["Message"] = "Registro Exitoso";
+                TempData["MessageType"] = "primary";
+                return RedirectToAction("Index");
             }
             catch (DbEntityValidationException ex)
             {
@@ -143,6 +169,8 @@ namespace WebAdministrativo.Controllers
                     }
                 }
                 UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|Guardar =" + msj + msjson);
+                TempData["Message"] = "Hubo un problema al guardar la garantía.";
+                TempData["MessageType"] = "danger";
             }
             //catch (DbUpdateConcurrencyException)
             //{
@@ -151,9 +179,8 @@ namespace WebAdministrativo.Controllers
             //    //context.SaveChanges();
             //    ViewBag.Message = "Registro Forzado ";
             //}
-
-            //ViewBag.Message = "Registro Forzado ";
-            return RedirectToAction("Index");
+      
+            return View("Nuevo", ViewModels);
         }
 
         [HttpGet]
@@ -195,8 +222,13 @@ namespace WebAdministrativo.Controllers
                     ViewBag.TipoUsuarioAdmin = intem.DESTIPOUSUARIO;
                     ViewBag.IdUsuarioAdmin = intem.IDPERSONA;
                 }
+                DateTime fechaInicio = DateTime.Now.AddDays(-30);
                 GlobalAdmin.FechaRegistro = DateTime.Now.ToShortDateString();
                 ViewBag.FechaRegistro = GlobalAdmin.FechaRegistro;
+                var FechaIni = fechaInicio.ToShortDateString();
+                ViewBag.FechaInicio = FechaIni;
+
+
                 List<SCI_MAESTRODETALLE> listMAESTRODETALLE = (List<SCI_MAESTRODETALLE>)Session["VIEW_MAESTRODETALLE"];
                 ViewBag.ListEstado = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 22).ToList();
 
@@ -273,13 +305,24 @@ namespace WebAdministrativo.Controllers
             try
             {
                 var respt = GarantiaService.Modificar(2, ViewModels);
-                TempData["ErrorMessage"] = respt.Message;
+                TempData["Message"] = "Registro Exitoso";
+                TempData["MessageType"] = "primary";
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbEntityValidationException ex)
             {
-                // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
-                context.Entry(ViewModels).Reload();
-                context.SaveChanges();
+                string msj = "Ocurrió un error al Guardar Garantias los datos. Inténtelo de nuevo.";
+                string msjson = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Mostrar el error en la consola o registrarlo en un log
+                        msjson += $"  Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}";
+                    }
+                }
+                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|Guardar =" + msj + msjson);
+                TempData["Message"] = "Hubo un problema al guardar la Garantia.";
+                TempData["MessageType"] = "danger";
             }
             //using (var transactionScope = new TransactionScope())
             //{
@@ -330,19 +373,25 @@ namespace WebAdministrativo.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public ActionResult Buscar(GarantiaViewModels _garantiaViewModels)
+        public JsonResult Buscar(SCI_GARANTIA filtro)
         {
-            List<VIEW_Garantia> ListGarantia = new List<VIEW_Garantia>();
-            if (_garantiaViewModels.VIEW != null)
-            {
-                VIEW_Garantia vIEW_Garantia = _garantiaViewModels.VIEW;
-                Session["FiltroBusqueda"] = new { NOMBRECOMPLETO = vIEW_Garantia.CONTACTO, FECHAREGISTRO  = vIEW_Garantia.FECHAFIN, ESTADO = vIEW_Garantia.ESTADO, DESCRIPCION = vIEW_Garantia.DESCRIPCION};
-                ListGarantia = GarantiaService.BuscarGarantias(vIEW_Garantia);
-            }
-            ViewBag.ListGarantia = ListGarantia;
-            Session["ResultadosBusqueda"] = ListGarantia;
-            return RedirectToAction("Index");
+            //VIEW_Garantia
+            TempData["Message"] = "";
+            TempData["MessageType"] = "";
+            var tickets = GarantiaService.Buscar(filtro);
+            object json = new { data = tickets };
+            return Json(json, JsonRequestBehavior.AllowGet);
+
+            //List<VIEW_Garantia> ListGarantia = new List<VIEW_Garantia>();
+            //if (_garantiaViewModels.VIEW != null)
+            //{
+            //    VIEW_Garantia vIEW_Garantia = _garantiaViewModels.VIEW;
+            //    Session["FiltroBusqueda"] = new { NOMBRECOMPLETO = vIEW_Garantia.CONTACTO, FECHAREGISTRO  = vIEW_Garantia.FECHAFIN, ESTADO = vIEW_Garantia.ESTADO, DESCRIPCION = vIEW_Garantia.DESCRIPCION};
+            //    ListGarantia = GarantiaService.BuscarGarantias(vIEW_Garantia);
+            //}
+            //ViewBag.ListGarantia = ListGarantia;
+            //Session["ResultadosBusqueda"] = ListGarantia;
+            //return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -368,13 +417,24 @@ namespace WebAdministrativo.Controllers
             try
             {
                 var respt = GarantiaService.Modificar(3, ViewModel);
-                TempData["ErrorMessage"] = respt.Message;
+                TempData["Message"] = "Registro Exitoso";
+                TempData["MessageType"] = "primary";
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbEntityValidationException ex)
             {
-                // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
-                context.Entry(usuarioExistente).Reload();
-                context.SaveChanges();
+                string msj = "Ocurrió un error al Guardar Garantias los datos. Inténtelo de nuevo.";
+                string msjson = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Mostrar el error en la consola o registrarlo en un log
+                        msjson += $"  Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}";
+                    }
+                }
+                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|Guardar =" + msj + msjson);
+                TempData["Message"] = "Hubo un problema al guardar la Garantia.";
+                TempData["MessageType"] = "danger";
             }
 
             // Redirigir al usuario a la página de índice
@@ -405,13 +465,24 @@ namespace WebAdministrativo.Controllers
             try
             {
                 var respt = GarantiaService.Modificar(3, ViewModel);
-                TempData["ErrorMessage"] = respt.Message;
+                TempData["Message"] = "Registro Exitoso";
+                TempData["MessageType"] = "primary";
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbEntityValidationException ex)
             {
-                // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
-                context.Entry(usuarioExistente).Reload();
-                context.SaveChanges();
+                string msj = "Ocurrió un error al Guardar Garantias los datos. Inténtelo de nuevo.";
+                string msjson = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Mostrar el error en la consola o registrarlo en un log
+                        msjson += $"  Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}";
+                    }
+                }
+                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|Guardar =" + msj + msjson);
+                TempData["Message"] = "Hubo un problema al guardar la Garantia.";
+                TempData["MessageType"] = "danger";
             }
 
             // Redirigir al usuario a la página de índice
@@ -439,19 +510,35 @@ namespace WebAdministrativo.Controllers
             try
             {
                 var respt = GarantiaService.Modificar(3, ViewModel);
-                TempData["ErrorMessage"] = respt.Message;
+                TempData["Message"] = "Registro Exitoso";
+                TempData["MessageType"] = "primary";
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbEntityValidationException ex)
             {
-                // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
-                context.Entry(usuarioExistente).Reload();
-                context.SaveChanges();
+                string msj = "Ocurrió un error al Guardar Garantias los datos. Inténtelo de nuevo.";
+                string msjson = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Mostrar el error en la consola o registrarlo en un log
+                        msjson += $"  Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}";
+                    }
+                }
+                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|Guardar =" + msj + msjson);
+                TempData["Message"] = "Hubo un problema al guardar la Garantia.";
+                TempData["MessageType"] = "danger";
             }
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
+            //    context.Entry(usuarioExistente).Reload();
+            //    context.SaveChanges();
+            //}
 
             // Redirigir al usuario a la página de índice
             return RedirectToAction("Asignar");
         }
-
 
     }
 }

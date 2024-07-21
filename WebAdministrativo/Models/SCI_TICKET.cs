@@ -34,6 +34,8 @@ namespace WebAdministrativo.Models
         public Nullable<System.DateTime> FECHAMODIFICACION { get; set; }
         public string IPMODIFICACION { get; set; }
         public string IPCREACION { get; set; }
+        public Nullable<System.DateTime> FECHACONTRATO { get; set; }
+        public Nullable<int> TIPOTICKET { get; set; }
     
         public virtual SCI_PERSONA SCI_PERSONA { get; set; }
         public virtual SCI_PERSONA SCI_PERSONA1 { get; set; }

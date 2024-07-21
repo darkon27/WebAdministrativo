@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@*@model IEnumerable<MenuGrupo>*@
+@{
+    ViewBag.Title = "_Layout";
+}
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -10,7 +14,7 @@
     <meta http-equiv="PRAGMA" content="NO-CACHE" />
     <!-- Flaticon CSS -->
     <!-- Web Fonts  -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+    @*<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">*@
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/assets/vendor/font-awesome/css/font-awesome.css" />
@@ -18,12 +22,27 @@
     <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap-datepicker/css/datepicker3.css" />
     <!-- Specific Page Vendor CSS -->
     <link rel="stylesheet" href="~/Content/assets/vendor/pnotify/pnotify.custom.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/select2/select2.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap-timepicker/css/bootstrap-timepicker.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/dropzone/css/basic.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/dropzone/css/dropzone.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/summernote/summernote.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/summernote/summernote-bs3.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/codemirror/lib/codemirror.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/codemirror/theme/monokai.css" />
     <!-- Theme CSS -->
     <link rel="stylesheet" href="~/Content/assets/stylesheets/theme.css" />
     <!-- Skin CSS -->
     <link rel="stylesheet" href="~/Content/assets/stylesheets/skins/default.css" />
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="~/Content/assets/stylesheets/theme-custom.css">
+    <!-- Estilos personalizados-->
+    <link rel="stylesheet" href="~/Content/assets/stylesheets/estilospg.css">
     <!-- Head Libs -->
     <script src="~/Content/assets/vendor/modernizr/modernizr.js"></script>
     <style>
@@ -35,6 +54,15 @@
                 text-transform: uppercase; /* Aplica mayúsculas a las opciones */
             }
     </style>
+    <script>
+        function formatDate(jsonDate) {
+            var date = new Date(parseInt(jsonDate.substr(6)));
+            var formattedDate = ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
+                ('0' + date.getDate()).slice(-2) + '/' +
+                date.getFullYear();
+            return formattedDate;
+        }
+    </script>
 </head>
 <body>
 
@@ -43,7 +71,7 @@
         <header class="header ">
             <div class="logo-container">
                 <a href="@Url.Action("Index","Home")" class="logo">
-                    <img src="~/Content/assets/images/logo.png" height="35" alt="Porto Admin" />
+                    <img src="~/img/GENESIS SOLUTIONS 364X186.png" height="35" alt="Porto Admin" />
                 </a>
                 <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
                     <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
@@ -131,18 +159,18 @@
                                     <li>
                                         <a href="#" class="clearfix">
                                             <figure class="image">
-                                                <img src="~/Content/assets/images/!sample-user.jpg" alt="Joseph Doe Junior" class="img-circle" />
+                                                <img src="~/Content/assets/images/!sample-user.jpg" alt="@ViewBag.UserNameAdmin" class="img-circle" />
                                             </figure>
-                                            <span class="title">Joseph Doe</span>
+                                            <span class="title">@ViewBag.UserNameAdmin</span>
                                             <span class="message">Lorem ipsum dolor sit.</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="clearfix">
                                             <figure class="image">
-                                                <img src="~/Content/assets/images/!sample-user.jpg" alt="Joseph Junior" class="img-circle" />
+                                                <img src="~/Content/assets/images/!sample-user.jpg" alt="@ViewBag.UserNameAdmin" class="img-circle" />
                                             </figure>
-                                            <span class="title">Joseph Junior</span>
+                                            <span class="title">@ViewBag.UserNameAdmin</span>
                                             <span class="message truncate">
                                                 Truncated message. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                                 Donec sit amet lacinia orci. Proin vestibulum eget risus non luctus. Nunc cursus lacinia lacinia. Nulla molestie malesuada est ac tincidunt.
@@ -157,7 +185,7 @@
                                     <li>
                                         <a href="#" class="clearfix">
                                             <figure class="image">
-                                                <img src="~/Content/assets/images/!sample-user.jpg" alt="Joe Junior" class="img-circle" />
+                                                <img src="~/Content/assets/images/!sample-user.jpg" alt="@ViewBag.UserNameAdmin" class="img-circle" />
                                             </figure>
                                             <span class="title">Joe Junior</span>
                                             <span class="message">Lorem ipsum dolor sit.</span>
@@ -245,9 +273,9 @@
                 <div id="userbox" class="userbox">
                     <a href="#" data-toggle="dropdown">
                         <figure class="profile-picture">
-                            <img src="~/Content/assets/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="~/Content/assets/images/!logged-user.jpg" />
+                            <img src="~/Content/assets/images/!logged-user.jpg" alt="@ViewBag.UserNameAdmin" class="img-circle" data-lock-picture="~/Content/assets/images/!logged-user.jpg" />
                         </figure>
-                        <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+                        <div class="profile-info" data-lock-name="@ViewBag.UserNameAdmin" data-lock-email="johndoe@okler.com">
                             <span class="name">@ViewBag.UserNameAdmin</span>
                             <span class="role">@ViewBag.TipoUsuarioAdmin</span>
                         </div>
@@ -259,13 +287,16 @@
                         <ul class="list-unstyled">
                             <li class="divider"></li>
                             <li>
-                                <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> My Profile</a>
+                                <a role="menuitem" tabindex="-1" href="@Url.Action("Profile","Login")">
+                                    <i class="fa fa-user"></i>
+                                    Mi perfil
+                                </a>
                             </li>
-                            <li>
+                            @*<li>
                                 <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> Lock Screen</a>
-                            </li>
+                            </li>*@
                             <li>
-                                <a role="menuitem" tabindex="-1" href="@Url.Action("Logout","Home")"><i class="fa fa-power-off"></i> Logout</a>
+                                <a role="menuitem" tabindex="-1" href="@Url.Action("Logout","Home")"><i class="fa fa-power-off"></i> Cerrar</a>
                             </li>
                         </ul>
                     </div>
@@ -294,187 +325,141 @@
                     <div class="nano">
                         <div class="nano-content">
                             <nav id="menu" class="nav-main" role="navigation">
-                                <ul class="nav nav-main">
-                                    <li class="nav-parent">
-                                        <a>
-                                            <i class="fa fa-table" aria-hidden="true"></i>
-                                            <span>Garantia</span>
-                                        </a>
-                                        <ul class="nav nav-children">
-                                            <li>
-                                                <a href="@Url.Action("Index","Garantia")">
-                                                    Garantia
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("Asignar","Garantia")">
-                                                    Asignar Garantia
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="tables-responsive.html">
-                                                    Reporte
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-parent">
-                                        <a>
-                                            <i class="fa fa-copy" aria-hidden="true"></i>
-                                            <span>Tareas</span>
-                                        </a>
-                                        <ul class="nav nav-children">
-                                            <li>
-                                                <a href="@Url.Action("Index","Tarea")">
-                                                    Tareas
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("Index","Acciones")">
-                                                    Acciones
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("Index","Alertas")">
-                                                    Alertas
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="pages-lock-screen.html">
-                                                    Reportes
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="pages-user-profile.html">
-                                                    Estadistica
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-parent nav-expanded nav-active">
-                                        <a>
-                                            <i class="fa fa-tasks" aria-hidden="true"></i>
-                                            <span>Tikets</span>
-                                        </a>
-                                        <ul class="nav nav-children">
-                                            <li>
-                                                <a href="@Url.Action("Index","Ticket")">
-                                                    Tikets
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("Asignar","Ticket")">
-                                                    Asignar Tikets
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="ui-elements-icons.html">
-                                                    Reportes
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="ui-elements-tabs.html">
-                                                    Estadistica
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-parent">
-                                        <a>
-                                            <i class="fa fa-columns" aria-hidden="true"></i>
-                                            <span>Maestro</span>
-                                        </a>
-                                        <ul class="nav nav-children">
-                                            <li>
-                                                <a href="@Url.Action("Index","Maestro")">
-                                                    Maestro
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("Index","Persona")">
-                                                    Persona
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="layouts-menu-collapsed.html">
-                                                    Menu Collapsed
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="layouts-scroll.html">
-                                                    Scroll
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-parent">
-                                        <a>
-                                            <i class="fa fa-list-alt" aria-hidden="true"></i>
-                                            <span>Seguridad</span>
-                                        </a>
-                                        <ul class="nav nav-children">
-                                            <li>
-                                                <a href="@Url.Action("Index","Usuario")">
-                                                    Usuario
-                                                </a>
-                                            </li>
-                                            <li class="nav-active">
-                                                <a href="forms-advanced.html">
-                                                    Advanced
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="forms-validation.html">
-                                                    Validation
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="forms-layouts.html">
-                                                    Layouts
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="forms-wizard.html">
-                                                    Wizard
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="forms-code-editor.html">
-                                                    Code Editor
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    @*
+                                <ul id="ContainerArbolIzquierdoSub" class="nav nav-main">
+                                    @foreach (var Elemento in ViewBag.lstSalida)
+                                    {
+                                        var listaMenuGrupo = Elemento.listaMenu_Items;
+                                        var IsActiveLabel = Elemento.IsActive;
 
-        <li class="nav-parent">
-            <a>
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>Maps</span>
-            </a>
-            <ul class="nav nav-children">
-                <li>
-                    <a href="maps-google-maps.html">
-                        Basic
-                    </a>
-                </li>
-                <li>
-                    <a href="maps-google-maps-builder.html">
-                        Map Builder
-                    </a>
-                </li>
-                <li>
-                    <a href="maps-vector.html">
-                        Vector
-                    </a>
-                </li>
-            </ul>
-        </li>
-                                    *@
-
+                                        <li class="@IsActiveLabel">
+                                            <a>
+                                                <i class="@Elemento.ICON" aria-hidden="true"></i>
+                                                <span>@Elemento.DESCRIPCION</span>
+                                            </a>
+                                            <ul class="nav nav-children">
+                                                @foreach (var item in listaMenuGrupo)
+                                                {
+                                                    <li>
+                                                        <a href="@Url.Action(@item.URL,@item.OBJETO)">
+                                                            @item.CONCEPTO
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
                                 </ul>
                             </nav>
+                            @*<nav id="menu" class="nav-main" role="navigation">
+            <ul class="nav nav-main">
+                <li class="nav-parent">
+                    <a>
+                        <i class="fa fa-table" aria-hidden="true"></i>
+                        <span>Garantia</span>
+                    </a>
+                    <ul class="nav nav-children">
+                        <li>
+                            <a href="@Url.Action("Index","Garantia")">
+                                Garantia
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Asignar","Garantia")">
+                                Asignar Garantia
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Widgets","Garantia")">
+                                Resumen
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-parent">
+                    <a>
+                        <i class="fa fa-copy" aria-hidden="true"></i>
+                        <span>Tareas</span>
+                    </a>
+                    <ul class="nav nav-children">
+                        <li>
+                            <a href="@Url.Action("Index","Tarea")">
+                                Tareas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Widgets","Tarea")">
+                                Resumen
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-parent nav-expanded nav-active">
+                    <a>
+                        <i class="fa fa-tasks" aria-hidden="true"></i>
+                        <span>Tikets</span>
+                    </a>
+                    <ul class="nav nav-children">
+                        <li>
+                            <a href="@Url.Action("Index","Ticket")">
+                                Tikets
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Asignar","Ticket")">
+                                Asignar Tikets
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Widgets","Ticket")">
+                                Resumen
+                            </a>
+                        </li>
 
+                    </ul>
+                </li>
+                <li class="nav-parent">
+                    <a>
+                        <i class="fa fa-columns" aria-hidden="true"></i>
+                        <span>Maestro</span>
+                    </a>
+                    <ul class="nav nav-children">
+                        <li>
+                            <a href="@Url.Action("Index","Maestro")">
+                                Maestro
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Persona")">
+                                Persona
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layouts-menu-collapsed.html">
+                                Menu Collapsed
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layouts-scroll.html">
+                                Scroll
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-parent">
+                    <a>
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
+                        <span>Seguridad</span>
+                    </a>
+                    <ul class="nav nav-children">
+                        <li>
+                            <a href="@Url.Action("Index","Usuario")">
+                                Usuario
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>*@
 
                             <hr class="separator" />
 
@@ -527,8 +512,6 @@
             </div>
         </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
     <!-- Vendor -->
     <script src="~/Content/assets/vendor/jquery/jquery.js"></script>
@@ -541,7 +524,32 @@
 
     <!-- Specific Page Vendor -->
     <script src="~/Content/assets/vendor/pnotify/pnotify.custom.js"></script>
+    <script src="~/Content/assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+    <script src="~/Content/assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
+    <script src="~/Content/assets/vendor/select2/select2.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/Content/assets/vendor/jquery-maskedinput/jquery.maskedinput.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="~/Content/assets/vendor/fuelux/js/spinner.js"></script>
+    <script src="~/Content/assets/vendor/dropzone/dropzone.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-markdown/js/markdown.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-markdown/js/to-markdown.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+    <script src="~/Content/assets/vendor/codemirror/lib/codemirror.js"></script>
+    <script src="~/Content/assets/vendor/codemirror/addon/selection/active-line.js"></script>
+    <script src="~/Content/assets/vendor/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="~/Content/assets/vendor/codemirror/mode/javascript/javascript.js"></script>
+    <script src="~/Content/assets/vendor/codemirror/mode/xml/xml.js"></script>
+    <script src="~/Content/assets/vendor/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="~/Content/assets/vendor/codemirror/mode/css/css.js"></script>
+    <script src="~/Content/assets/vendor/summernote/summernote.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+    <script src="~/Content/assets/vendor/ios7-switch/ios7-switch.js"></script>
 
+    <!-- Examples -->
+    <script src="~/Content/assets/javascripts/forms/examples.advanced.form.js"></script>
     <!-- Specific Page Vendor -->
     <script src="~/Content/assets/vendor/select2/select2.js"></script>
     <script src="~/Content/assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
@@ -572,32 +580,6 @@
             input.value = input.value.toUpperCase();
         }
 
-        function GoPageSelect(IdGrupo, IdMenu, Href) {
-            var perpObj = {
-                IdGrupoRequest: IdGrupo,
-                IdMenuRequest: IdMenu,
-                HrefRequest: Href
-
-            };
-            $.ajax({
-
-                url: "/MainAdmin/reqMenu",
-                data: JSON.stringify(perpObj),
-                type: "POST",
-                contentType: "application/json;charset=utf-8",
-                dataType: "json",
-                success: function (result) {
-                    window.location.href = result;
-
-                },
-                error: function (errormessage) {
-                    alert(errormessage.responseText);
-                }
-            });
-        }
-
-
-
         function CerrarSesion() {
 
             swal({
@@ -617,7 +599,7 @@
 
         function DeadSession() {
             $.ajax({
-                url: "/LoginAdmin/CerrarSesion",
+                url: "/Home/Logout",
                 data: "CERRAR",
                 type: "POST",
                 contentType: "application/json;charset=utf-8",
@@ -630,7 +612,7 @@
                             window.history.forward(1);
                         };
 
-                        window.location.href = '/LoginAdmin/Login';
+                        window.location.href = '/Login/Index';
                         location.reload();
                     }
                 },

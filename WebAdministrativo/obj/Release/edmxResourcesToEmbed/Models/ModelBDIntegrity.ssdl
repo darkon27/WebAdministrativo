@@ -506,10 +506,10 @@
     <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
     <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
     <Property Name="ESTADO" Type="int" />
-    <Property Name="TIPOPERSONA" Type="int" />
     <Property Name="SEXO" Type="varchar" MaxLength="1" />
     <Property Name="ESTADOCIVIL" Type="varchar" MaxLength="1" />
     <Property Name="RUTAFIRMA" Type="varchar" MaxLength="250" />
+    <Property Name="TIPOPERSONA" Type="varchar" MaxLength="1" />
   </EntityType>
   <EntityType Name="SCI_PRODUCTO">
     <Key>
@@ -606,6 +606,8 @@
     <Property Name="FECHAMODIFICACION" Type="datetime" />
     <Property Name="IPMODIFICACION" Type="varchar" MaxLength="25" />
     <Property Name="IPCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACONTRATO" Type="datetime" />
+    <Property Name="TIPOTICKET" Type="int" />
   </EntityType>
   <EntityType Name="SCI_UBIGEO">
     <Key>
@@ -647,9 +649,9 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Accesos' no tiene defin
     <Property Name="IDPERSONA" Type="int" Nullable="false" />
     <Property Name="DESTIPOUSUARIO" Type="varchar" MaxLength="50" />
     <Property Name="NOMBRECOMPLETO" Type="varchar" MaxLength="100" />
-    <Property Name="APEPATERNO" Type="varchar" MaxLength="40" />
-    <Property Name="APEMATERNO" Type="varchar" MaxLength="40" />
-    <Property Name="NOMBRE" Type="varchar" MaxLength="40" />
+    <Property Name="APEPATERNO" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="APEMATERNO" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="40" Nullable="false" />
     <Property Name="DOCUMENTO" Type="varchar" MaxLength="25" />
     <Property Name="TIPODOCUMENTO" Type="varchar" MaxLength="25" />
     <Property Name="EMAIL" Type="varchar" MaxLength="100" />
@@ -816,6 +818,54 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_MaestroDetalle' no tien
     <Property Name="NomMaestro" Type="varchar" MaxLength="50" />
   </EntityType>
   <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Persona' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_Persona">
+    <Key>
+      <PropertyRef Name="IDPERSONA" />
+      <PropertyRef Name="DesEstado" />
+      <PropertyRef Name="Edad" />
+      <PropertyRef Name="Departamento" />
+      <PropertyRef Name="Provincia" />
+      <PropertyRef Name="Distrito" />
+    </Key>
+    <Property Name="DESTIPOPERSONA" Type="varchar" MaxLength="50" />
+    <Property Name="DESTIPODOCUMENTO" Type="varchar" MaxLength="50" />
+    <Property Name="DESESTADOCIVIL" Type="varchar" MaxLength="50" />
+    <Property Name="DESSEXO" Type="varchar" MaxLength="50" />
+    <Property Name="IDPERSONA" Type="int" Nullable="false" />
+    <Property Name="DOCUMENTO" Type="varchar" MaxLength="25" />
+    <Property Name="RUC" Type="varchar" MaxLength="25" />
+    <Property Name="TIPODOCUMENTO" Type="varchar" MaxLength="25" />
+    <Property Name="APEPATERNO" Type="varchar" MaxLength="40" />
+    <Property Name="APEMATERNO" Type="varchar" MaxLength="40" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="40" />
+    <Property Name="NOMBRECOMPLETO" Type="varchar" MaxLength="100" />
+    <Property Name="FECHANACIMIENTO" Type="datetime" />
+    <Property Name="PASAPORTE" Type="varchar" MaxLength="25" />
+    <Property Name="BREVETE" Type="varchar" MaxLength="25" />
+    <Property Name="IDUBIGEO" Type="varchar" MaxLength="6" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="25" />
+    <Property Name="CELULAR" Type="varchar" MaxLength="25" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="500" />
+    <Property Name="USUARIOCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="USUARIOMODIFICACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACREACION" Type="datetime" />
+    <Property Name="FECHAMODIFICACION" Type="datetime" />
+    <Property Name="IPCREACION" Type="varchar" MaxLength="20" />
+    <Property Name="IPMODIFICACION" Type="varchar" MaxLength="20" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="SEXO" Type="varchar" MaxLength="1" />
+    <Property Name="ESTADOCIVIL" Type="varchar" MaxLength="1" />
+    <Property Name="RUTAFIRMA" Type="varchar" MaxLength="250" />
+    <Property Name="TIPOPERSONA" Type="varchar" MaxLength="1" />
+    <Property Name="DesEstado" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="Edad" Type="int" Nullable="false" />
+    <Property Name="Departamento" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Provincia" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Distrito" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Tarea' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="VIEW_Tarea">
     <Key>
@@ -898,6 +948,7 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
     </Key>
     <Property Name="SOLICITANTE" Type="varchar" MaxLength="100" />
     <Property Name="RESPONSABLE" Type="varchar" MaxLength="100" />
+    <Property Name="DESTIPOTICKET" Type="varchar" MaxLength="50" />
     <Property Name="TIPOREQUERIMIENTO" Type="varchar" MaxLength="50" />
     <Property Name="DESESTADO" Type="varchar" MaxLength="50" />
     <Property Name="COLORESTADO" Type="varchar" MaxLength="100" />
@@ -924,6 +975,8 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
     <Property Name="FECHAMODIFICACION" Type="datetime" />
     <Property Name="IPMODIFICACION" Type="varchar" MaxLength="25" />
     <Property Name="IPCREACION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHACONTRATO" Type="datetime" />
+    <Property Name="TIPOTICKET" Type="int" />
   </EntityType>
   <Association Name="FK__SCI_ACCIO__ID_TA__367C1819">
     <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="1" />
@@ -1651,6 +1704,46 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
     [VIEW_MaestroDetalle].[NomMaestro] AS [NomMaestro]
     FROM [dbo].[VIEW_MaestroDetalle] AS [VIEW_MaestroDetalle]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="VIEW_Persona" EntityType="Self.VIEW_Persona" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_Persona].[DESTIPOPERSONA] AS [DESTIPOPERSONA], 
+    [VIEW_Persona].[DESTIPODOCUMENTO] AS [DESTIPODOCUMENTO], 
+    [VIEW_Persona].[DESESTADOCIVIL] AS [DESESTADOCIVIL], 
+    [VIEW_Persona].[DESSEXO] AS [DESSEXO], 
+    [VIEW_Persona].[IDPERSONA] AS [IDPERSONA], 
+    [VIEW_Persona].[DOCUMENTO] AS [DOCUMENTO], 
+    [VIEW_Persona].[RUC] AS [RUC], 
+    [VIEW_Persona].[TIPODOCUMENTO] AS [TIPODOCUMENTO], 
+    [VIEW_Persona].[APEPATERNO] AS [APEPATERNO], 
+    [VIEW_Persona].[APEMATERNO] AS [APEMATERNO], 
+    [VIEW_Persona].[NOMBRE] AS [NOMBRE], 
+    [VIEW_Persona].[NOMBRECOMPLETO] AS [NOMBRECOMPLETO], 
+    [VIEW_Persona].[FECHANACIMIENTO] AS [FECHANACIMIENTO], 
+    [VIEW_Persona].[PASAPORTE] AS [PASAPORTE], 
+    [VIEW_Persona].[BREVETE] AS [BREVETE], 
+    [VIEW_Persona].[IDUBIGEO] AS [IDUBIGEO], 
+    [VIEW_Persona].[TELEFONO] AS [TELEFONO], 
+    [VIEW_Persona].[CELULAR] AS [CELULAR], 
+    [VIEW_Persona].[EMAIL] AS [EMAIL], 
+    [VIEW_Persona].[DIRECCION] AS [DIRECCION], 
+    [VIEW_Persona].[USUARIOCREACION] AS [USUARIOCREACION], 
+    [VIEW_Persona].[USUARIOMODIFICACION] AS [USUARIOMODIFICACION], 
+    [VIEW_Persona].[FECHACREACION] AS [FECHACREACION], 
+    [VIEW_Persona].[FECHAMODIFICACION] AS [FECHAMODIFICACION], 
+    [VIEW_Persona].[IPCREACION] AS [IPCREACION], 
+    [VIEW_Persona].[IPMODIFICACION] AS [IPMODIFICACION], 
+    [VIEW_Persona].[ESTADO] AS [ESTADO], 
+    [VIEW_Persona].[SEXO] AS [SEXO], 
+    [VIEW_Persona].[ESTADOCIVIL] AS [ESTADOCIVIL], 
+    [VIEW_Persona].[RUTAFIRMA] AS [RUTAFIRMA], 
+    [VIEW_Persona].[TIPOPERSONA] AS [TIPOPERSONA], 
+    [VIEW_Persona].[DesEstado] AS [DesEstado], 
+    [VIEW_Persona].[Edad] AS [Edad], 
+    [VIEW_Persona].[Departamento] AS [Departamento], 
+    [VIEW_Persona].[Provincia] AS [Provincia], 
+    [VIEW_Persona].[Distrito] AS [Distrito]
+    FROM [dbo].[VIEW_Persona] AS [VIEW_Persona]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="VIEW_Tarea" EntityType="Self.VIEW_Tarea" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [VIEW_Tarea].[SOLICITANTE] AS [SOLICITANTE], 
@@ -1724,6 +1817,7 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
       <DefiningQuery>SELECT 
     [VIEW_Ticket].[SOLICITANTE] AS [SOLICITANTE], 
     [VIEW_Ticket].[RESPONSABLE] AS [RESPONSABLE], 
+    [VIEW_Ticket].[DESTIPOTICKET] AS [DESTIPOTICKET], 
     [VIEW_Ticket].[TIPOREQUERIMIENTO] AS [TIPOREQUERIMIENTO], 
     [VIEW_Ticket].[DESESTADO] AS [DESESTADO], 
     [VIEW_Ticket].[COLORESTADO] AS [COLORESTADO], 
@@ -1749,7 +1843,9 @@ advertencia 6002: La tabla o vista 'BDIntegrity.dbo.VIEW_Ticket' no tiene defini
     [VIEW_Ticket].[FECHACREACION] AS [FECHACREACION], 
     [VIEW_Ticket].[FECHAMODIFICACION] AS [FECHAMODIFICACION], 
     [VIEW_Ticket].[IPMODIFICACION] AS [IPMODIFICACION], 
-    [VIEW_Ticket].[IPCREACION] AS [IPCREACION]
+    [VIEW_Ticket].[IPCREACION] AS [IPCREACION], 
+    [VIEW_Ticket].[FECHACONTRATO] AS [FECHACONTRATO], 
+    [VIEW_Ticket].[TIPOTICKET] AS [TIPOTICKET]
     FROM [dbo].[VIEW_Ticket] AS [VIEW_Ticket]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK__SCI_ACCIO__ID_TA__367C1819" Association="Self.FK__SCI_ACCIO__ID_TA__367C1819">

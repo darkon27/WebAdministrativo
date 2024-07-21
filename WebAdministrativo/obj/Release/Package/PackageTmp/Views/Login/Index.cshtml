@@ -57,12 +57,19 @@
                     <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Acceso al sistema</h2>
                 </div>
                 <div class="panel-body">
+                    @if (TempData["Message"] != null)
+                    {
+                        <div class="alert alert-@TempData["MessageType"]">
+                            @TempData["Message"]
+                        </div>
+                    }
+
                     @using (Html.BeginForm("ValidateUserAdmin", "Login", FormMethod.Post))
                     {
                         <div class="form-group mb-lg">
                             <label>Nombre de usuario</label>
                             <div class="input-group input-group-icon">
-                                @Html.TextBoxFor(m => m.EMAIL, new { @class = "form-control input-lg", @required = "required" })
+                                @Html.TextBoxFor(m => m.USUARIO, new { @class = "form-control input-lg", @required = "required" })
                                 <span class="input-group-addon">
                                     <span class="icon icon-lg">
                                         <i class="fa fa-user"></i>
@@ -96,9 +103,9 @@
                             <br />
                             <p class="text-center">
                                 ¿Aún no tienes una cuenta?
-                                <a href="@Url.Action("Registrate","Login")">¡Registrate!</a>
-                                <a href="@Url.Action("EnvioEmail","Login")">¡Prueba!</a>
-</div>
+                                @*<a href="@Url.Action("Registrate","Login")">¡Registrate!</a>*@
+                                @*<a href="@Url.Action("EnvioEmail","Login")">¡Prueba!</a>*@
+                        </div>
                     }
                     @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
                     {

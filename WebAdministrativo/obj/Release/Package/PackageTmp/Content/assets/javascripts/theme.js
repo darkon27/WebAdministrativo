@@ -722,7 +722,7 @@ window.theme = {};
 										'<div class="row">',
 											'<div class="col-xs-6">',
 												'<p class="mt-xs mb-none">',
-													'<a href="#">Not John Doe?</a>',
+													'<a href="#">Not {{username}}?</a>',
 												'</p>',
 											'</div>',
 											'<div class="col-xs-6 text-right">',

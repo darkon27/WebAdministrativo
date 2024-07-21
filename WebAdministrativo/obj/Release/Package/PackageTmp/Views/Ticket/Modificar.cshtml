@@ -7,150 +7,164 @@
 @using (Html.BeginForm("Actualizar", "Ticket", FormMethod.Post))
 {
 
-    <h2>
-        Modificar Ticket
-        <a style="float:right" class="btn btn-primary" href="@Url.Action("Asignar","Ticket")"><i class="flaticon-envelope"></i>Regresar</a>
-    </h2>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label class="control-label">Ticket</label>
-                    @Html.TextBoxFor(m => m.VIEW.IDTICKET, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
-                    @Html.HiddenFor(m => m.VIEW.IDTICKET, new { @class = "form-control" })
-                </div>
+<h2>
+    Modificar Ticket
+    <ul class="notifications" style="float:right">
+        <li>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-save"></i>
+            </button>
+        </li>
+        <li>
+            <a href="@Url.Action("Asignar","Ticket")" class="btn btn-primary">
+                <i class="fa fa-mail-reply "></i>
+            </a>
+        </li>
+    </ul>
+</h2>
+<div class="panel-body">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Ticket</label>
+                @Html.TextBoxFor(m => m.VIEW.IDTICKET, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                @Html.HiddenFor(m => m.VIEW.IDTICKET, new { @class = "form-control" })
             </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Fecha Generación</label>
-                    @Html.TextBoxFor(m => m.VIEW.FECHAREGISTRO, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
-                </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label>Fecha Generación</label>
+                @Html.TextBoxFor(m => m.VIEW.FECHAREGISTRO, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
             </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label class="control-label">Estado</label>
-                    @Html.TextBoxFor(m => m.VIEW.DESESTADO, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
-                </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Estado</label>
+                @Html.HiddenFor(m => m.VIEW.ESTADO, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.VIEW.DESESTADO, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
             </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label class="control-label">Tipo Ticket</label>
-                    <select name="VIEW.TIPO" class="form-control" required>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Tipo de Incidencia</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-th-list"></i>
+                    </span>
+                    <select name="VIEW.TIPOTICKET" class="form-control" required >
                         <option> Seleccione....</option>
-                        @foreach (var item in Model.ListTipo)
+                        @foreach (var item in Model?.ListTipoTicket)
                         {
-                            <option value="@item.CODIGO" @(item.CODIGO == Model.VIEW.TIPO.ToString() ? "selected" : "")>@item.NOMBRE</option>
+                            <option value="@item.CODIGO" @(item.CODIGO == Model.VIEW.TIPOTICKET.ToString() ? "selected" : "")>@item.NOMBRE</option>
 
                         }
                     </select>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="control-label">Solicitante</label>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="fa fa-user"></i>
-                        </span>
-                        <div hidden>
-                            @Html.TextBoxFor(m => m.VIEW.IDSOLICITANTE, new { @class = "form-control", @required = "required", @redonly = "readonly" })
-                        </div>
-                        @Html.TextBoxFor(m => m.VIEW.SOLICITANTE, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
 
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">Solicitante</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <div hidden>
+                        @Html.TextBoxFor(m => m.VIEW.IDSOLICITANTE, new { @class = "form-control", @required = "required", @redonly = "readonly" })
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="control-label">Responsable</label>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="fa fa-user"></i>
-                        </span>
-                        <select name="VIEW.IDRESPONSABLE" class="form-control" required>
-                            <option> Seleccione....</option>
-                            @foreach (var item in Model.ListRESPONSABLE)
-                            {
-                                <option value="@item.IDPERSONA" @(item.IDPERSONA == Model.VIEW.IDRESPONSABLE ? "selected" : "")>@item.NOMBRECOMPLETO</option>
-                            }
-                        </select>
-                    </div>
-                </div>
-            </div>
+                    @Html.TextBoxFor(m => m.VIEW.SOLICITANTE, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
 
-        </div>
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="form-group">
-                    <label class="control-label">Motivo Ticket</label>
-                    @Html.TextBoxFor(m => m.VIEW.DESCRIPCION, new { @class = "form-control", @required = "required", @redonly = "readonly" })
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="control-label">NRO Referencia</label>
-                    @Html.TextBoxFor(m => m.VIEW.CODIGO, new { @class = "form-control", @required = "required", @redonly = "readonly" })
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label class="control-label">Observación</label>
-                    @Html.TextAreaFor(m => m.VIEW.OBSERVACION, new { @class = "form-control", @required = "required", @redonly = "readonly" })
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">Responsable</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <select name="VIEW.IDRESPONSABLE" class="form-control" required>
+                        <option value="" disabled selected>Seleccione...</option>
+                        @foreach (var item in Model.ListRESPONSABLE)
+                        {
+                            <option value="@item.IDPERSONA" @(item.IDPERSONA == Model.VIEW.IDRESPONSABLE ? "selected" : "")>@item.NOMBRECOMPLETO</option>
+                        }
+                    </select>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label class=" control-label">Fecha de Asignacion </label>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </span>
-                        @Html.TextBoxFor(m => m.VIEW.FECHAINI, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label class=" control-label">Fecha Termino</label>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </span>
-                        @Html.TextBoxFor(m => m.VIEW.FECHAFIN, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-
-            </div>
-            <div class="col-sm-3">
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label class="control-label">Solución</label>
-                    @Html.TextAreaFor(m => m.VIEW.SOLUCION, new { @class = "form-control", @required = "required", @redonly = "readonly" })
-                </div>
-            </div>
-
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Tipo de Contratación / Documento</label>
+                <select name="VIEW.TIPO" class="form-control" required>
+                    <option value="" disabled selected>Seleccione...</option>
+                    @foreach (var item in Model.ListTipo)
+                    {
+                        <option value="@item.CODIGO" @(item.CODIGO == Model.VIEW.TIPO.ToString() ? "selected" : "")>@item.NOMBRE</option>
+
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Número</label>
+                @Html.TextBoxFor(m => m.VIEW.CODIGO, new { @class = "form-control", @required = "required", @redonly = "readonly" })
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class=" control-label">Fecha Contrato</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                    @Html.TextBoxFor(m => m.VIEW.FECHACONTRATO, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label">Motivo Ticket</label>
+                @Html.TextBoxFor(m => m.VIEW.DESCRIPCION, new { @class = "form-control", @required = "required", @redonly = "readonly" })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label">Observación</label>
+                @Html.TextAreaFor(m => m.VIEW.OBSERVACION, new { @class = "form-control", @required = "required", @redonly = "readonly" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label">Solución</label>
+                @Html.TextAreaFor(m => m.VIEW.SOLUCION, new { @class = "form-control",  @redonly = "readonly" })
+            </div>
+        </div>
+
+    </div>
+</div>
+
     <footer class="panel-footer">
-        <input type="submit" style="float:right" class="btn btn-primary" value="Actualizar" />
-        <br />
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">

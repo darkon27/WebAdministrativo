@@ -16,6 +16,7 @@ namespace WebAdministrativo.Models
     {
         public string SOLICITANTE { get; set; }
         public string RESPONSABLE { get; set; }
+        public string DESTIPOTICKET { get; set; }
         public string TIPOREQUERIMIENTO { get; set; }
         public string DESESTADO { get; set; }
         public string COLORESTADO { get; set; }
@@ -42,5 +43,7 @@ namespace WebAdministrativo.Models
         public Nullable<System.DateTime> FECHAMODIFICACION { get; set; }
         public string IPMODIFICACION { get; set; }
         public string IPCREACION { get; set; }
+        public Nullable<System.DateTime> FECHACONTRATO { get; set; }
+        public Nullable<int> TIPOTICKET { get; set; }
     }
 }

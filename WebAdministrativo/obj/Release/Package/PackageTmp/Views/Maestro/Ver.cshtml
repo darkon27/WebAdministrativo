@@ -1,0 +1,78 @@
+﻿@model MaestroDetalleViewModels
+@{
+    ViewBag.Title = "Ver";
+}
+
+
+@using (Html.BeginForm("Actualizar", "Maestro", FormMethod.Post))
+{
+<h2>
+    Ver Maestro
+    <div class="row">
+        <ul class="notifications" style="float:right">
+            <li>
+                <a href="@Url.Action("Index","Maestro")" class="btn btn-primary">
+                    <i class="fa fa-mail-reply "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</h2>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Id</label>
+                    @Html.TextBoxFor(m => m.VIEW.ID, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Estado</label>
+                    @Html.TextBoxFor(m => m.VIEW.DesEstado, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Tipo Maestro</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-th-list"></i>
+                        </span>
+                        @Html.TextBoxFor(m => m.VIEW.NomMaestro, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">codigo</label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.VIEW.CODIGO, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label class="control-label">Descripción Ticket</label>
+                    @Html.TextBoxFor(m => m.VIEW.DESCRIPCION, new { @class = "form-control", @required = "required", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="panel-footer">
+        <div class="row">
+           
+        </div>
+    </footer>
+
+}
+
+
+
+
+
+
+

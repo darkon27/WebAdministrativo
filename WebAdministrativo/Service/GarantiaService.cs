@@ -13,6 +13,63 @@ namespace WebAdministrativo.Service
 {
     public class GarantiaService
     {
+        public static List<VIEW_Garantia> Buscar(SCI_GARANTIA ViewMode)
+        {
+            List<VIEW_Garantia> garantias = new List<VIEW_Garantia>();
+            try
+            {
+                using (BDIntegrityEntities context = new BDIntegrityEntities())
+                {
+                    IQueryable<VIEW_Garantia> consulta = context.VIEW_Garantia.AsQueryable();
+                    if (ViewMode.FECHAINICIO != null)
+                    {
+                        consulta = consulta.Where(t => t.FECHAREGISTRO >= ViewMode.FECHAINICIO);
+                    }
+
+                    if (ViewMode.FECHAFIN != null)
+                    {
+                        consulta = consulta.Where(t => t.FECHAREGISTRO <= ViewMode.FECHAFIN);
+                    }
+                    if (!string.IsNullOrEmpty(ViewMode.ESTADO.ToString()))
+                    {
+                        consulta = consulta.Where(c => c.ESTADO == ViewMode.ESTADO);
+                    }
+                    if (!string.IsNullOrEmpty(ViewMode?.DESCRIPCION?.ToString()))
+                    {
+                        consulta = consulta.Where(c => c.DESCRIPCION.ToUpper().Contains(ViewMode.DESCRIPCION.ToUpper()));
+                    }
+                    if (!string.IsNullOrEmpty(ViewMode?.REFERENCIA?.ToString()))
+                    {
+                        consulta = consulta.Where(c => c.REFERENCIA.ToUpper().Contains(ViewMode.REFERENCIA.ToUpper()));
+                    }
+                    //if (!string.IsNullOrEmpty(ViewMode.IDEMPRESA.ToString()))
+                    //{
+                    //    consulta = consulta.Where(c => c.IDEMPRESA == ViewMode.IDEMPRESA);
+                    //}
+                    if (!string.IsNullOrEmpty(ViewMode.IDCONTACTO.ToString()))
+                    {
+                        consulta = consulta.Where(c => c.IDCONTACTO == ViewMode.IDCONTACTO);
+                    }
+                    garantias = consulta.ToList();
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                string msj = "Ocurrió un error al Buscar Garantias los datos. Inténtelo de nuevo.";
+                string msjson = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Mostrar el error en la consola o registrarlo en un log
+                        msjson += $"  Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}";
+                    }
+                }
+                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|BuscarGarantias =" + msj + msjson);
+            }
+            return garantias;
+        }
+
 
         public static List<VIEW_Garantia> BuscarGarantias(VIEW_Garantia vIEW_Garantia)
         {
@@ -188,12 +245,12 @@ namespace WebAdministrativo.Service
                                 existingDetalle.IPMODIFICACION = ViewModels.VIEW.IPMODIFICACION;
                             }
                             else
-                            { 
-                               // Actualizar el detalle existente
+                            {
+                                // Actualizar el detalle existente
                                 existingDetalle.IDGARANTIA = ViewModels.VIEW.IDGARANTIA;
                                 existingDetalle.IDEMPRESA = ViewModels.VIEW.IDEMPRESA;
                                 existingDetalle.FECHAREGISTRO = ViewModels.VIEW.FECHAREGISTRO;
-                                existingDetalle.CODIGO = ViewModels.VIEW.CODIGO;                            
+                                existingDetalle.CODIGO = ViewModels.VIEW.CODIGO;
                                 existingDetalle.DESCRIPCION = ViewModels.VIEW.DESCRIPCION;
                                 existingDetalle.IDCONTACTO = ViewModels.VIEW.IDCONTACTO;
                                 existingDetalle.EMAIL = ViewModels.VIEW.EMAIL;

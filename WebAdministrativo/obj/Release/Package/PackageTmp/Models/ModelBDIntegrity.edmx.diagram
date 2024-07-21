@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="86fc85c9b68442de8a6585b4e54a23dd" Name="Diagram1">
+      <Diagram DiagramId="86fc85c9b68442de8a6585b4e54a23dd" Name="Diagram1" ZoomLevel="84">
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_ACCIONES" Width="1.5" PointX="7.5" PointY="44.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_ALERTAS" Width="1.5" PointX="5.25" PointY="21" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_CARACTERISTICAS" Width="1.5" PointX="15.5" PointY="20.75" IsExpanded="true" />
@@ -31,11 +31,9 @@
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_PARAMETROS" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_PERFIL" Width="1.5" PointX="8" PointY="33.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_PERFILUSUARIO" Width="1.5" PointX="12.5" PointY="45" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDIntegrityModel.SCI_PERSONA" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_PRODUCTO" Width="1.5" PointX="17.75" PointY="33" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_PRODUCTODETALLE" Width="1.5" PointX="20" PointY="35.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_TAREAS" Width="1.5" PointX="5.25" PointY="42.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDIntegrityModel.SCI_TICKET" Width="1.5" PointX="5.25" PointY="49.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_UBIGEO" Width="1.5" PointX="0.75" PointY="36" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.SCI_USUARIO" Width="1.5" PointX="5.25" PointY="55.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.VIEW_Accesos" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
@@ -46,18 +44,13 @@
         <EntityTypeShape EntityType="BDIntegrityModel.VIEW_Maestro" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.VIEW_Tarea" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BDIntegrityModel.VIEW_TareaAsignadas" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDIntegrityModel.VIEW_Ticket" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_ACCIO__ID_TA__367C1819" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_ALERT__IDPER__531856C7" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_PRODU__IDCAR__7F10ABA8" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_PRODU__IDCAR__7F2BE32F" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_PRODU__IDCLA__7D286336" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_CLIEN__IDCLI__6A158EC2" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_COMPR__IDCLI__71B6B08A" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_COTIZ__IDCLI__6A30C649" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_COMPA__IDEMP__5F98004F" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_COMPA__IDPER__628FA481" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_COMPA__IDREP__5EA3DC16" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_NEGOC__IDCOM__76969D2E" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_PERFI__IDCOM__778AC167" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_COMPR__IDCOM__098E3A1B" ManuallyRouted="false" />
@@ -67,10 +60,7 @@
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_COTIZ__IDCOT__6C190EBB" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_COTIZ__IDEMP__6B24EA82" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_COTIZ__IDPRO__6CBCF143" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_EMPLE__IDEMP__6644FDDE" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_EMPLE__IDNEG__6EF57B66" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK_SCI_GARA_IDCON" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK_SCI_GARA_IDEMP" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK_SCI_GARDET_IDGAR" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_LISTA__IDLIS__70DDC3D8" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_LISTA__IDNEG__6FE99F9F" ManuallyRouted="false" />
@@ -83,17 +73,28 @@
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_PRODU__IDNEG__0004CFE1" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_PERFI__IDPER__787EE5A0" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_PERFI__IDUSU__797309D9" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_PERSO__IDUBI__59DF26F9" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_TAREA__ID_AL__30C33EC3" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_TAREA__ID_IN__31B762FC" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_TAREA__ID_RE__2FCF1A8A" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_TAREA__ID_SO__2EDAF651" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK__SCI_USUAR__IDUSU__0E52EF38" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK_TICKET_IDRES" ManuallyRouted="false" />
-        <AssociationConnector Association="BDIntegrityModel.FK_TICKET_IDSOL" ManuallyRouted="false" />
         <AssociationConnector Association="BDIntegrityModel.FK__SCI_PRODU__IDPRO__05889F0D" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BDIntegrityModel.VIEW_MaestroDetalle" Width="1.5" PointX="11.375" PointY="0.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="BDIntegrityModel.SCI_PERSONA" Width="1.5" PointX="3" PointY="32.375" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_ALERT__IDPER__531856C7" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_CLIEN__IDCLI__6A158EC2" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_COMPA__IDEMP__5F98004F" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_COMPA__IDREP__5EA3DC16" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_EMPLE__IDEMP__6644FDDE" />
+        <AssociationConnector Association="BDIntegrityModel.FK_SCI_GARA_IDCON" />
+        <AssociationConnector Association="BDIntegrityModel.FK_SCI_GARA_IDEMP" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_PERSO__IDUBI__59DF26F9" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_TAREA__ID_AL__30C33EC3" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_TAREA__ID_IN__31B762FC" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_TAREA__ID_RE__2FCF1A8A" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_TAREA__ID_SO__2EDAF651" />
+        <AssociationConnector Association="BDIntegrityModel.FK__SCI_USUAR__IDUSU__0E52EF38" />
+        <EntityTypeShape EntityType="BDIntegrityModel.VIEW_Persona" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="BDIntegrityModel.SCI_TICKET" Width="1.5" PointX="5.25" PointY="65.125" />
+        <EntityTypeShape EntityType="BDIntegrityModel.VIEW_Ticket" Width="1.5" PointX="9.375" PointY="12.75" />
+        <AssociationConnector Association="BDIntegrityModel.FK_TICKET_IDRES" />
+        <AssociationConnector Association="BDIntegrityModel.FK_TICKET_IDSOL" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -1,0 +1,27 @@
+﻿.estado-success, .estado-warning, .estado-danger, .estado-dark, .estado-active {
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.estado-success {
+    background-color: #198754
+}
+
+.estado-warning {
+    background-color: #ffc107
+}
+
+.estado-danger {
+    background-color: #dc3545
+}
+
+.estado-dark {
+    background-color: #212529
+}
+
+.estado-active {
+    background-color: #ffff
+}

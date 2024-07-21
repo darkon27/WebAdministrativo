@@ -19,11 +19,11 @@ namespace WebAdministrativo.Service
                     IQueryable<VIEW_Accesos> consulta = context.VIEW_Accesos.AsQueryable();
                     if (!string.IsNullOrEmpty(ViewMode.PASSWORD))
                     {
-                        consulta = consulta.Where(c => c.PASSWORD == ViewMode.PASSWORD);
+                        consulta = consulta.Where(c => c.PASSWORD == ViewMode.PASSWORD.Trim());
                     }
                     if (!string.IsNullOrEmpty(ViewMode.USUARIO))
                     {
-                        consulta = consulta.Where(c => c.USUARIO == ViewMode.USUARIO);
+                        consulta = consulta.Where(c => c.USUARIO == ViewMode.USUARIO.Trim());
                     }
                     Model = consulta.ToList();
                 }

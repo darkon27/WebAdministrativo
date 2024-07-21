@@ -97,31 +97,50 @@ namespace WebAdministrativo.Controllers
 
         public ActionResult Consultar(VIEW_Accesos Usu)
         {
-            List<VIEW_Garantia> ListGarantia = new List<VIEW_Garantia>();
+    
             if (Usu != null)
             {
                 VIEW_Garantia vIEW_Garantia = new VIEW_Garantia();
                 vIEW_Garantia.USUARIOCREACION = Usu.USUARIO.Trim();
                 vIEW_Garantia.REFERENCIA = Usu.NOMBRE.Trim();
-                ListGarantia = GarantiaService.BuscarGarantias(vIEW_Garantia);
+             var   ListGarantia = GarantiaService.BuscarGarantias(vIEW_Garantia);
                 if (ListGarantia.Count > 0)
                 {
                     int indicar = 0;
-                   string fecFin="";
+                    string fecFin = "";
                     foreach (var item in ListGarantia)
                     {
-                        if (item.FECHAFIN >= DateTime.Now)
-                        {                           
+                        if (item.ESTADO == 1)
+                        {
                             indicar = 1;
+                            TempData["Message"] = "La Garantia se encuetra en Pendiente de aprobación :: " + fecFin;
+                            TempData["MessageType"] = "warning";
                         }
-                        fecFin = item.FECFINPLAZO;
+                        if (item.ESTADO == 5)
+                        {
+                            fecFin = item.FECHAMODIFICACION.ToString();
+                            indicar = 1;
+                            TempData["Message"] = "La Garantia se encuetra Anulada :: " + fecFin;
+                            TempData["MessageType"] = "dark";
+                        }
+                        else
+                        {
+                            if (item.FECHAFIN >= DateTime.Now)
+                            {
+                                fecFin = item.FECFINPLAZO;
+                                indicar = 1;
+                                TempData["Message"] = "La Garantia todavia esta vigente :: " + fecFin;
+                                TempData["MessageType"] = "primary";
+                            }
+                        }
+                        fecFin = item.FECHAMODIFICACION.ToString();
                     }
-                    if (indicar == 1)
-                    {
-                        TempData["Message"] = "La Garantia todavia esta vigente :: " + fecFin;
-                        TempData["MessageType"] = "primary";
-                    }
-                    else
+                    //if (indicar == 1)
+                    //{
+                    //    TempData["Message"] = "La Garantia todavia esta vigente :: " + fecFin;
+                    //    TempData["MessageType"] = "primary";
+                    //}
+                    if (indicar == 0)
                     {
                         TempData["Message"] = "La Garantia ya caduco :: " + fecFin;
                         TempData["MessageType"] = "danger";

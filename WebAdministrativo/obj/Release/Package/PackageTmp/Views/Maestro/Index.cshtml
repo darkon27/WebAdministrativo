@@ -3,40 +3,37 @@
     ViewBag.Title = "Index";
 }
 
-<!-- start: page -->
-<section class="panel">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="tabs">
-                <ul class="nav nav-tabs">
-                    <li id="ClickTarea" class="active">
-                        <a href="#popular" data-toggle="tab">
-                            <span class="badge hidden-xs">1</span>
-                            Consultar Maestro 
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div id="popular" class="tab-pane active">
-
-                        <div class="panel-body">
-                            @using (Html.BeginForm("Buscar", "Maestro", FormMethod.Post))
-                            {
+    <!-- start: page -->
+    <section class="panel">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabs">
+                    <ul class="nav nav-tabs">
+                        <li id="ClickTarea" class="active">
+                            <a href="#popular" data-toggle="tab">
+                          
+                                Consultar Maestro
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="popular" class="tab-pane active">
+                            <div class="panel-body">
                                 <div class="row">
                                     <ul class="notifications" style="float:right">
-                                        <li>
-                                            <button type="submit" class="btn btn-primary">
-                                                <i class="fa fa-search"></i>                                     
-                                            </button>
+                                        <li>                                          
+                                            <a href="#" onclick="SendParametrosList()" class="btn btn-primary">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                           
                                         </li>
                                         <li>
                                             <a href="@Url.Action("Nuevo","Maestro")" class="btn btn-primary">
-                                                <i class="fa fa-file-o"></i>                                      
+                                                <i class="fa fa-file-o"></i>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
@@ -45,11 +42,11 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-tasks"></i>
                                                 </span>
-                                                <select id="MAESTRO" name="MAESTRO" class="form-control" required>
-                                                    <option> Seleccione....</option>
+                                                <select id="IDMAESTRO" name="IDMAESTRO" class="form-control" required>
+                                                    <option value="0"> Seleccione....</option>
                                                     @foreach (var item in ViewBag?.ListTipo)
                                                     {
-                                                        <option value="@item.CODIGO">@item.NOMBRE</option>
+                                                        <option value="@item.IDMAESTRO">@item.NOMBRE</option>
                                                     }
                                                 </select>
                                             </div>
@@ -57,8 +54,8 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label class="control-label">Nombre</label>
-                                            <input type="text" id="VIEW.NOMBRE" name="VIEW.NOMBRE" maxlength="30" name="NOMBRE" class="form-control">
+                                            <label class="control-label">Incidencia</label>
+                                            <input type="text" id="DESCRIPCION" name="DESCRIPCION" maxlength="30"  class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -89,7 +86,7 @@
                                 <form id="Frmpopular">
                                     <div class="row">
                                         <div class="panel-body">
-                                            <table class="table table-bordered table-striped table-condensed mb-none">
+                                            <table class="table table-hover mb-none" id="datatable-default">
                                                 <thead>
                                                     <tr class="dark">
                                                         <th>Nro</th>
@@ -101,7 +98,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach (var item in ViewBag?.ListaDetalle)
+                                                    @foreach (var item in Model)
                                                     {
                                                         <tr>
                                                             <td>@item.ID</td>
@@ -110,9 +107,9 @@
                                                             <td>@item.NOMBRE</td>
                                                             <td class="@item.COLORESTADO ">@item.DesEstado</td>
                                                             <td style="width:10%">
-                                                                <a title="Ver" href="@Url.Action("Ver","Maestro", new { id=item.ID})"><i class="fa  fa-search"></i></a>
-                                                                <a title="Modificar" href="@Url.Action("Modificar","Maestro", new { id=item.ID})"><i class="fa fa-pencil"></i></a>
-                                                                <a title="Anular" onclick="getID(@item.ID)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalAnular"><i class="fa fa-times"></i></a>
+                                                                <a title="Ver"        href="@Url.Action("Ver","Maestro", new { id=item.ID})"><i class="fa fa-search"></i></a>
+                                                                <a title="Modificar"  href="@Url.Action("Modificar","Maestro", new { id=item.ID})"><i class="fa fa-pencil"></i></a>
+                                                                <a title="Anular"     class="modal-basic" href="#modalAnular" onclick="openAnularModal(@item.ID)"><i class="fa fa-times"></i></a>
                                                             </td>
                                                         </tr>
                                                     }
@@ -121,14 +118,115 @@
                                         </div>
                                     </div>
                                 </form>
-                            }
-                        </div>
 
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- end: page -->
+
+<div id="modalAnular" class="modal-block modal-block-md mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Confirmación</h2>
+        </header>
+        <div class="panel-body">
+            <div class="modal-wrapper">
+                <div class="modal-text">
+                    <p>Esta seguro de Anular el Registro?</p>
+                </div>
+            </div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary modal-confirm" onclick="modalAnular()">Si Estoy seguro</button>
+                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+
+<input type="hidden" value="" name="ID" id="ID" />
+<script>
+
+    function EditRowAcc(id) {
+        let url= '@Url.Action("Modificar", "Maestro")'
+        url = url + '/' + $("#ID").val();
+        window.location.href = url;
+    }
+
+    function modalAnular(id) {
+        let url= '@Url.Action("modalAnular", "Maestro")'
+        url = url + '/' + $("#ID").val();
+        window.location.href = url;
+    }
+
+    var dt;
+    // Función para abrir el modal de anular con el ID correspondiente
+    function openAnularModal(id) {
+        // Muestra el modal utilizando Magnific Popup
+        $.magnificPopup.open({
+            items: {
+                src: '#modalAnular'
+            },
+            type: 'inline'
+        });
+        $("#ID").val(id);
+    }
+
+    function SendParametrosList() {
+        // Definir la variable dt fuera del ámbito de la función para que sea accesible globalmente
+        dt = $("#datatable-default").DataTable({
+            destroy: true,
+            responsive: true,
+            searching: false,
+            lengthChange: false,
+            language: {
+                "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros"
+            },
+            ajax: {
+                method: "POST",
+                url: "Maestro/Buscar",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: function (d) {
+                    d.IDMAESTRO = $('#IDMAESTRO').val();
+                    d.DESCRIPCION = $('#DESCRIPCION').val();
+                    d.ESTADO = $('#ESTADO').val();
+                    return JSON.stringify(d);
+                },
+                dataSrc: "data"
+            },
+            columns: [
+                { "data": "ID" },
+                { "data": "NomMaestro" },
+                { "data": "CODIGO" },
+                { "data": "NOMBRE" },
+                {
+                    "render": function (data, type, JsonResultRow, meta) {
+                        return '<span class= " estado-' + JsonResultRow.COLORESTADO + '"  >' + JsonResultRow.DesEstado + ' </span>';
+                    }
+                },
+                {
+                    "data": "ID",
+                    'orderable': false,
+                    'render': function (data, type, full, meta) {
+                        var html = '<a title="Ver"  class="mb-xs mt-xs mr-xs modal-basic"  href="/Maestro/Ver/' + data + '"><i class="fa fa-search"></i></a>';
+                        html += '<a title="Editar"  class="mb-xs mt-xs mr-xs modal-basic"  href="/Maestro/Modificar/' + data + '"><i class="fa fa-pencil"></i></a>';
+                        html += '<a title="Anular"  class="mb-xs mt-xs mr-xs modal-basic"  href="#" onclick="openAnularModal(' + data + ')" ><i class="fa fa-times"></i></a>';
+                        return html;
+                    }
+                }
+            ]
+        });
+    }
+
+</script>

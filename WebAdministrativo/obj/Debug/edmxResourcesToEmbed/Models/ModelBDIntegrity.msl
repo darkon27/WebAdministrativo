@@ -565,32 +565,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SCI_TICKET">
-      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_TICKET">
-        <MappingFragment StoreEntitySet="SCI_TICKET">
-          <ScalarProperty Name="IDTICKET" ColumnName="IDTICKET" />
-          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
-          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
-          <ScalarProperty Name="IDSOLICITANTE" ColumnName="IDSOLICITANTE" />
-          <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
-          <ScalarProperty Name="FECHAINI" ColumnName="FECHAINI" />
-          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
-          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
-          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
-          <ScalarProperty Name="SOLUCION" ColumnName="SOLUCION" />
-          <ScalarProperty Name="DOCUMENTACION" ColumnName="DOCUMENTACION" />
-          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
-          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
-          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
-          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
-          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
-          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SCI_UBIGEO">
       <EntityTypeMapping TypeName="BDIntegrityModel.SCI_UBIGEO">
         <MappingFragment StoreEntitySet="SCI_UBIGEO">
@@ -840,40 +814,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="VIEW_Ticket">
-      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Ticket">
-        <MappingFragment StoreEntitySet="VIEW_Ticket">
-          <ScalarProperty Name="SOLICITANTE" ColumnName="SOLICITANTE" />
-          <ScalarProperty Name="RESPONSABLE" ColumnName="RESPONSABLE" />
-          <ScalarProperty Name="TIPOREQUERIMIENTO" ColumnName="TIPOREQUERIMIENTO" />
-          <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
-          <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
-          <ScalarProperty Name="FECREGISTRO" ColumnName="FECREGISTRO" />
-          <ScalarProperty Name="FECINIPLAZO" ColumnName="FECINIPLAZO" />
-          <ScalarProperty Name="FECFINPLAZO" ColumnName="FECFINPLAZO" />
-          <ScalarProperty Name="IDTICKET" ColumnName="IDTICKET" />
-          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
-          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
-          <ScalarProperty Name="IDSOLICITANTE" ColumnName="IDSOLICITANTE" />
-          <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
-          <ScalarProperty Name="FECHAINI" ColumnName="FECHAINI" />
-          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
-          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
-          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
-          <ScalarProperty Name="SOLUCION" ColumnName="SOLUCION" />
-          <ScalarProperty Name="DOCUMENTACION" ColumnName="DOCUMENTACION" />
-          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
-          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
-          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
-          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
-          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
-          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="VIEW_MaestroDetalle">
       <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_MaestroDetalle">
         <MappingFragment StoreEntitySet="VIEW_MaestroDetalle">
@@ -963,6 +903,71 @@
           <ScalarProperty Name="DESESTADOCIVIL" ColumnName="DESESTADOCIVIL" />
           <ScalarProperty Name="DESTIPODOCUMENTO" ColumnName="DESTIPODOCUMENTO" />
           <ScalarProperty Name="DESTIPOPERSONA" ColumnName="DESTIPOPERSONA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCI_TICKET">
+      <EntityTypeMapping TypeName="BDIntegrityModel.SCI_TICKET">
+        <MappingFragment StoreEntitySet="SCI_TICKET">
+          <ScalarProperty Name="TIPOTICKET" ColumnName="TIPOTICKET" />
+          <ScalarProperty Name="FECHACONTRATO" ColumnName="FECHACONTRATO" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="DOCUMENTACION" ColumnName="DOCUMENTACION" />
+          <ScalarProperty Name="SOLUCION" ColumnName="SOLUCION" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+          <ScalarProperty Name="FECHAINI" ColumnName="FECHAINI" />
+          <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
+          <ScalarProperty Name="IDSOLICITANTE" ColumnName="IDSOLICITANTE" />
+          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="IDTICKET" ColumnName="IDTICKET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_Ticket">
+      <EntityTypeMapping TypeName="BDIntegrityModel.VIEW_Ticket">
+        <MappingFragment StoreEntitySet="VIEW_Ticket">
+          <ScalarProperty Name="TIPOTICKET" ColumnName="TIPOTICKET" />
+          <ScalarProperty Name="FECHACONTRATO" ColumnName="FECHACONTRATO" />
+          <ScalarProperty Name="IPCREACION" ColumnName="IPCREACION" />
+          <ScalarProperty Name="IPMODIFICACION" ColumnName="IPMODIFICACION" />
+          <ScalarProperty Name="FECHAMODIFICACION" ColumnName="FECHAMODIFICACION" />
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="USUARIODMODIFICACION" ColumnName="USUARIODMODIFICACION" />
+          <ScalarProperty Name="USUARIOCREACION" ColumnName="USUARIOCREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="DOCUMENTACION" ColumnName="DOCUMENTACION" />
+          <ScalarProperty Name="SOLUCION" ColumnName="SOLUCION" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+          <ScalarProperty Name="FECHAINI" ColumnName="FECHAINI" />
+          <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
+          <ScalarProperty Name="IDSOLICITANTE" ColumnName="IDSOLICITANTE" />
+          <ScalarProperty Name="FECHAREGISTRO" ColumnName="FECHAREGISTRO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="IDTICKET" ColumnName="IDTICKET" />
+          <ScalarProperty Name="FECFINPLAZO" ColumnName="FECFINPLAZO" />
+          <ScalarProperty Name="FECINIPLAZO" ColumnName="FECINIPLAZO" />
+          <ScalarProperty Name="FECREGISTRO" ColumnName="FECREGISTRO" />
+          <ScalarProperty Name="COLORESTADO" ColumnName="COLORESTADO" />
+          <ScalarProperty Name="DESESTADO" ColumnName="DESESTADO" />
+          <ScalarProperty Name="TIPOREQUERIMIENTO" ColumnName="TIPOREQUERIMIENTO" />
+          <ScalarProperty Name="DESTIPOTICKET" ColumnName="DESTIPOTICKET" />
+          <ScalarProperty Name="RESPONSABLE" ColumnName="RESPONSABLE" />
+          <ScalarProperty Name="SOLICITANTE" ColumnName="SOLICITANTE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

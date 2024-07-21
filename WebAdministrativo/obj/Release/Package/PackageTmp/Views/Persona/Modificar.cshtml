@@ -1,0 +1,342 @@
+﻿@model PersonaViewModels
+@{
+    ViewBag.Title = "Modificar";
+}
+
+
+@using (Html.BeginForm("Actualizar", "Persona", FormMethod.Post))
+{
+
+    <h2>
+        Modificar Persona
+    </h2>
+    <div class="row">
+        <ul class="notifications" style="float:right">
+            <li>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i>
+                </button>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Persona")" class="btn btn-primary">
+                    <i class="fa fa-mail-reply "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    @* Mostrar mensajes de éxito y error *@
+    @*@if(TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if(TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }*@
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Id</label>
+                    <div class="input-group">
+                        @Html.HiddenFor(m => m.VIEW.IDPERSONA, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.VIEW.IDPERSONA, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Tipo Persona</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select id="tipoPersona" name="VIEW.TIPOPERSONA" class="form-control " required>
+                            <option value="0"> Seleccione....</option>
+                            @foreach (var item in Model.ListTipoPersona)
+                            {
+                                <option value="@item.CODIGO" @(item.CODIGO == Model.VIEW.TIPOPERSONA.ToString() ? "selected" : "")>@item.NOMBRE</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Tipo Documento</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select name="VIEW.TIPODOCUMENTO" class="form-control" required>
+                            <option value="0"> Seleccione....</option>
+                            @foreach (var item in Model.ListTipoDocumento)
+                            {
+                                <option value="@item.CODIGO" @(item.CODIGO == Model.VIEW.TIPODOCUMENTO.ToString() ? "selected" : "")>@item.NOMBRE</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Documento</label>
+                    @Html.TextBoxFor(m => m.VIEW.DOCUMENTO, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" id="apepaternoDiv">
+                <div class="form-group">
+                    <label class="control-label">Ape Paterno</label>
+                    @Html.TextBoxFor(m => m.VIEW.APEPATERNO, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-3" id="apematernoDiv">
+                <div class="form-group">
+                    <label class="control-label">Ape Materno</label>
+                    @Html.TextBoxFor(m => m.VIEW.APEMATERNO, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group" id="nombreField">
+                    @Html.LabelFor(m => m.VIEW.NOMBRE, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.VIEW.NOMBRE, new { @class = "form-control", @required = "required" })
+                    @Html.ValidationMessageFor(m => m.VIEW.NOMBRE, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group" id="nombreCompletoField" style="display: none;">
+                    @Html.LabelFor(m => m.VIEW.NOMBRECOMPLETO, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.VIEW.NOMBRECOMPLETO, new { @class = "form-control", @required = "required" })
+                    @Html.ValidationMessageFor(m => m.VIEW.NOMBRECOMPLETO, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" id="CivilDiv">
+                <div class="form-group">
+                    <label class="control-label">Est. Civil</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select name="VIEW.ESTADOCIVIL" class="form-control" required>
+                            <option value="0"> Seleccione....</option>
+                            @foreach (var item in Model.ListEstCivil)
+                            {
+                                <option value="@item.CODIGO" @(item.CODIGO == Model.VIEW?.ESTADOCIVIL ? "selected" : "")>@item.NOMBRE</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3" id="SexoDiv">
+                <div class="form-group">
+                    <label class="control-label">Sexo</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select name="VIEW.SEXO" class="form-control" required>
+                            <option> Seleccione....</option>
+                            @foreach (var item in Model.ListSexo)
+                            {
+                                <option value="@item.CODIGO" @(item.CODIGO == Model.VIEW.SEXO?.ToString() ? "selected" : "")>@item.NOMBRE</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">E-Mail</label>
+                    @Html.TextBoxFor(m => m.VIEW.EMAIL, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" id="NacimientoDiv">
+                <div class="form-group">
+                    <label class="control-label">Fecha Nacimiento </label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHANACIMIENTO, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                </div>
+            </div>
+            <div class="col-sm-3" id="EdadDiv">
+                <div class="form-group">
+                    <label class="control-label">Edad</label>
+                    @Html.TextBoxFor(m => m.VIEW.Edad, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Dirección</label>
+                    @Html.TextBoxFor(m => m.VIEW.DIRECCION, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Celular</label>
+                    @Html.TextBoxFor(m => m.VIEW.CELULAR, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Telefono </label>
+                    @Html.TextBoxFor(m => m.VIEW.TELEFONO, new { @class = "form-control", })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Estado</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <select name="VIEW.ESTADO" class="form-control" required>
+                            <option value="0"> Seleccione....</option>
+                            @foreach (var item in Model.ListEstado)
+                            {
+                                <option value="@item.CODIGO" @(item.CODIGO == Model.VIEW.ESTADO.ToString() ? "selected" : "")>@item.NOMBRE</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="panel-footer">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Usuario Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.USUARIOCREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHACREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">IP Creación</label>
+                    @Html.TextBoxFor(m => m.VIEW.IPCREACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">Usuario Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.USUARIOMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.FECHAMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">IP Modificación</label>
+                    @Html.TextBoxFor(m => m.VIEW.IPMODIFICACION, new { @class = "form-control", @redonly = "readonly", @disabled = "" })
+                </div>
+            </div>
+        </div>
+    </footer>
+
+}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    function calculateAge(birthDate) {
+        var today = new Date();
+        var birthDate = new Date(birthDate);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var monthDifference = today.getMonth() - birthDate.getMonth();
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+    $(document).ready(function () {
+        $('#tipoPersona').change(function () {
+            var selectedValue = $(this).val();
+
+            // Aquí puedes especificar el valor que debe ocultar los campos
+            if (selectedValue === 'J') {
+                $('#EdadDiv').hide();
+                $('#NacimientoDiv').hide();
+                $('#CivilDiv').hide();
+                $('#SexoDiv').hide();
+                $('#apepaternoDiv').hide();
+                $('#apematernoDiv').hide();
+                $('#nombreField').hide();
+                $('#NOMBRE').removeAttr('required');
+                $('#nombreCompletoField').show();
+                $('#NOMBRECOMPLETO').attr('required', 'required');
+            } else {
+                $('#EdadDiv').show();
+                $('#NacimientoDiv').show();
+                $('#CivilDiv').show();
+                $('#SexoDiv').show();
+                $('#apepaternoDiv').show();
+                $('#apematernoDiv').show();
+                $('#nombreField').show();
+                $('#NOMBRE').attr('required', 'required');
+                $('#nombreCompletoField').hide();
+                $('#NOMBRECOMPLETO').removeAttr('required');
+                var birthDate = $('#FECHANACIMIENTO').val();
+                if (birthDate) {
+                    var age = calculateAge(birthDate);
+                    $('#Edad').val(age);
+                } else {
+                    $('#Edad').val('');
+                }
+
+            }
+        });
+
+        // Opcional: Si deseas que los campos se oculten/mostrar correctamente al cargar la página según el valor seleccionado
+        $('#tipoPersona').trigger('change');
+
+        $('#FECHANACIMIENTO').change(function () {
+            var birthDate = $(this).val();
+            if (birthDate) {
+                var age = calculateAge(birthDate);
+                $('#Edad').val(age);
+            } else {
+                $('#Edad').val('');
+            }
+        });
+
+    });
+</script>
+
+
+

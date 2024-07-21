@@ -7,6 +7,7 @@ using WebAdministrativo.ViewModels;
 using System.Data.Entity.Infrastructure;
 using WebAdministrativo.Service;
 using WebAdministrativo.Clases;
+using System.Data.Entity.Validation;
 
 namespace WebAdministrativo.Controllers
 {
@@ -65,6 +66,22 @@ namespace WebAdministrativo.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult BuscarEmpresaPorRuc(string ruc)
+        {
+            VIEW_Persona ViewMode = new VIEW_Persona();
+            ViewMode.TIPODOCUMENTO = "R";
+            ViewMode.TIPOPERSONA = "J";
+            ViewMode.DOCUMENTO = ruc;
+            var empresa = PersonaService.Buscar(ViewMode); // Reemplaza esto con tu lógica de obtención de empresa
+            foreach ( var item in empresa) {
+                ViewMode = item;
+            }
+            if (ViewMode != null)
+            {
+                return Json(new { success = true, idEmpresa = ViewMode.IDPERSONA, nombreEmpresa = ViewMode.NOMBRECOMPLETO }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { success = false, message = "Empresa no encontrada" }, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult Nuevo()
         {
@@ -203,25 +220,36 @@ namespace WebAdministrativo.Controllers
             Persona.FECHACREACION = DateTime.Now; // Actualizar la fecha de modificación
             Persona.USUARIOCREACION = GlobalAdmin.UserAdmin; // Actualizar la fecha de modificación
             Persona.IPCREACION = UtilScripts.ObtenerIP();
-            var ValRerurn = PersonaService.Nuevo(1, Persona);
-            if (ValRerurn < 1)
+
+
+            try
             {
-                return View(ViewModels);
+                var ValRerurn = PersonaService.Nuevo(1, Persona);
+                if (ValRerurn < 1)
+                {
+                    return View(ViewModels);
+                }
+                TempData["Message"] = "Registro Exitoso";
+                TempData["MessageType"] = "primary";
+                return RedirectToAction("Index");
+            }
+            catch (DbEntityValidationException ex)
+            {
+                string msj = "Ocurrió un error al Guardar Garantias los datos. Inténtelo de nuevo.";
+                string msjson = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Mostrar el error en la consola o registrarlo en un log
+                        msjson += $"  Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}";
+                    }
+                }
+                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|Guardar =" + msj + msjson);
+                TempData["Message"] = "Hubo un problema al guardar la garantía.";
+                TempData["MessageType"] = "danger";
             }
 
-            // Guardar los cambios en la base de datos
-            //try
-            //{
-            //    var ValRerurn = PersonaService.Nuevo(1,Persona);
-            //}
-            ////catch (DbUpdateConcurrencyException)
-            //catch (Exception ex)
-            //{
-            //    // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
-            //    //var Lista = PersonaService.Nuevo(1, ViewModels.Persona);
-
-            //    return View(ViewModels);
-            //}
             return RedirectToAction("Index");
         }
 

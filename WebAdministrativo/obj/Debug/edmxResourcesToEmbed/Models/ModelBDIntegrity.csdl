@@ -620,33 +620,6 @@
     <NavigationProperty Name="SCI_PERSONA2" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_RE__2FCF1A8A" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
     <NavigationProperty Name="SCI_PERSONA3" Relationship="BDIntegrityModel.FK__SCI_TAREA__ID_SO__2EDAF651" FromRole="SCI_TAREAS" ToRole="SCI_PERSONA" />
   </EntityType>
-  <EntityType Name="SCI_TICKET">
-    <Key>
-      <PropertyRef Name="IDTICKET" />
-    </Key>
-    <Property Name="IDTICKET" Type="Int32" Nullable="false" />
-    <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="TIPO" Type="Int32" />
-    <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
-    <Property Name="IDSOLICITANTE" Type="Int32" />
-    <Property Name="IDRESPONSABLE" Type="Int32" />
-    <Property Name="FECHAINI" Type="DateTime" Precision="3" />
-    <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
-    <Property Name="CANTIDAD" Type="Int32" />
-    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-    <Property Name="ESTADO" Type="Int32" />
-    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
-    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
-    <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK_TICKET_IDRES" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
-    <NavigationProperty Name="SCI_PERSONA1" Relationship="BDIntegrityModel.FK_TICKET_IDSOL" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
-  </EntityType>
   <EntityType Name="SCI_UBIGEO">
     <Key>
       <PropertyRef Name="IDUBIGEO" />
@@ -688,9 +661,9 @@
     <Property Name="IDPERSONA" Type="Int32" Nullable="false" />
     <Property Name="DESTIPOUSUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="NOMBRECOMPLETO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="APEPATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="APEMATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="APEPATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APEMATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="TIPODOCUMENTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -896,39 +869,6 @@
     <Property Name="USUARIOMODIFICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
     <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="VIEW_Ticket">
-    <Key>
-      <PropertyRef Name="IDTICKET" />
-    </Key>
-    <Property Name="SOLICITANTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="RESPONSABLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="TIPOREQUERIMIENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DESESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="COLORESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FECREGISTRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="FECINIPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="FECFINPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="IDTICKET" Type="Int32" Nullable="false" />
-    <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="TIPO" Type="Int32" />
-    <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
-    <Property Name="IDSOLICITANTE" Type="Int32" />
-    <Property Name="IDRESPONSABLE" Type="Int32" />
-    <Property Name="FECHAINI" Type="DateTime" Precision="3" />
-    <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
-    <Property Name="CANTIDAD" Type="Int32" />
-    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-    <Property Name="ESTADO" Type="Int32" />
-    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
-    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
-    <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK__SCI_ACCIO__ID_TA__367C1819">
     <End Role="SCI_TAREAS" Type="Self.SCI_TAREAS" Multiplicity="1" />
@@ -1324,7 +1264,6 @@
     <EntitySet Name="SCI_PRODUCTO" EntityType="Self.SCI_PRODUCTO" />
     <EntitySet Name="SCI_PRODUCTODETALLE" EntityType="Self.SCI_PRODUCTODETALLE" />
     <EntitySet Name="SCI_TAREAS" EntityType="Self.SCI_TAREAS" />
-    <EntitySet Name="SCI_TICKET" EntityType="Self.SCI_TICKET" />
     <EntitySet Name="SCI_UBIGEO" EntityType="Self.SCI_UBIGEO" />
     <EntitySet Name="SCI_USUARIO" EntityType="Self.SCI_USUARIO" />
     <EntitySet Name="VIEW_Accesos" EntityType="Self.VIEW_Accesos" />
@@ -1335,7 +1274,6 @@
     <EntitySet Name="VIEW_Maestro" EntityType="Self.VIEW_Maestro" />
     <EntitySet Name="VIEW_Tarea" EntityType="Self.VIEW_Tarea" />
     <EntitySet Name="VIEW_TareaAsignadas" EntityType="Self.VIEW_TareaAsignadas" />
-    <EntitySet Name="VIEW_Ticket" EntityType="Self.VIEW_Ticket" />
     <AssociationSet Name="FK__SCI_ACCIO__ID_TA__367C1819" Association="Self.FK__SCI_ACCIO__ID_TA__367C1819">
       <End Role="SCI_TAREAS" EntitySet="SCI_TAREAS" />
       <End Role="SCI_ACCIONES" EntitySet="SCI_ACCIONES" />
@@ -1510,6 +1448,9 @@
       <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
       <End Role="SCI_USUARIO" EntitySet="SCI_USUARIO" />
     </AssociationSet>
+    <EntitySet Name="VIEW_Persona" EntityType="BDIntegrityModel.VIEW_Persona" />
+    <EntitySet Name="SCI_TICKET" EntityType="BDIntegrityModel.SCI_TICKET" />
+    <EntitySet Name="VIEW_Ticket" EntityType="BDIntegrityModel.VIEW_Ticket" />
     <AssociationSet Name="FK_TICKET_IDRES" Association="BDIntegrityModel.FK_TICKET_IDRES">
       <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
       <End Role="SCI_TICKET" EntitySet="SCI_TICKET" />
@@ -1518,7 +1459,6 @@
       <End Role="SCI_PERSONA" EntitySet="SCI_PERSONA" />
       <End Role="SCI_TICKET" EntitySet="SCI_TICKET" />
     </AssociationSet>
-    <EntitySet Name="VIEW_Persona" EntityType="BDIntegrityModel.VIEW_Persona" />
   </EntityContainer>
   <EntityType Name="VIEW_MaestroDetalle">
     <Key>
@@ -1741,30 +1681,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TICKET_IDRES">
-    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
-    <End Type="BDIntegrityModel.SCI_TICKET" Role="SCI_TICKET" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_TICKET">
-        <PropertyRef Name="IDRESPONSABLE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TICKET_IDSOL">
-    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
-    <End Type="BDIntegrityModel.SCI_TICKET" Role="SCI_TICKET" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SCI_PERSONA">
-        <PropertyRef Name="IDPERSONA" />
-      </Principal>
-      <Dependent Role="SCI_TICKET">
-        <PropertyRef Name="IDSOLICITANTE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="VIEW_Persona">
     <Key>
       <PropertyRef Name="IDPERSONA" />
@@ -1811,4 +1727,93 @@
     <Property Name="Provincia" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
     <Property Name="Distrito" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="SCI_TICKET">
+    <Key>
+      <PropertyRef Name="IDTICKET" />
+    </Key>
+    <Property Name="IDTICKET" Type="Int32" Nullable="false" />
+    <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO" Type="Int32" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
+    <Property Name="IDSOLICITANTE" Type="Int32" />
+    <Property Name="IDRESPONSABLE" Type="Int32" />
+    <Property Name="FECHAINI" Type="DateTime" Precision="3" />
+    <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
+    <Property Name="CANTIDAD" Type="Int32" />
+    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="Int32" />
+    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
+    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
+    <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACONTRATO" Type="DateTime" Precision="3" />
+    <Property Name="TIPOTICKET" Type="Int32" />
+    <NavigationProperty Name="SCI_PERSONA" Relationship="BDIntegrityModel.FK_TICKET_IDRES" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
+    <NavigationProperty Name="SCI_PERSONA1" Relationship="BDIntegrityModel.FK_TICKET_IDSOL" FromRole="SCI_TICKET" ToRole="SCI_PERSONA" />
+  </EntityType>
+  <EntityType Name="VIEW_Ticket">
+    <Key>
+      <PropertyRef Name="IDTICKET" />
+    </Key>
+    <Property Name="SOLICITANTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RESPONSABLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESTIPOTICKET" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TIPOREQUERIMIENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="COLORESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECREGISTRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FECINIPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FECFINPLAZO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IDTICKET" Type="Int32" Nullable="false" />
+    <Property Name="CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO" Type="Int32" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
+    <Property Name="IDSOLICITANTE" Type="Int32" />
+    <Property Name="IDRESPONSABLE" Type="Int32" />
+    <Property Name="FECHAINI" Type="DateTime" Precision="3" />
+    <Property Name="FECHAFIN" Type="DateTime" Precision="3" />
+    <Property Name="CANTIDAD" Type="Int32" />
+    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SOLUCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DOCUMENTACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="Int32" />
+    <Property Name="USUARIOCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIODMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACREACION" Type="DateTime" Precision="3" />
+    <Property Name="FECHAMODIFICACION" Type="DateTime" Precision="3" />
+    <Property Name="IPMODIFICACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IPCREACION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACONTRATO" Type="DateTime" Precision="3" />
+    <Property Name="TIPOTICKET" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_TICKET_IDRES">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+    <End Type="BDIntegrityModel.SCI_TICKET" Role="SCI_TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TICKET">
+        <PropertyRef Name="IDRESPONSABLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TICKET_IDSOL">
+    <End Type="BDIntegrityModel.SCI_PERSONA" Role="SCI_PERSONA" Multiplicity="0..1" />
+    <End Type="BDIntegrityModel.SCI_TICKET" Role="SCI_TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCI_PERSONA">
+        <PropertyRef Name="IDPERSONA" />
+      </Principal>
+      <Dependent Role="SCI_TICKET">
+        <PropertyRef Name="IDSOLICITANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -4,7 +4,7 @@
     ViewBag.Title = "Asignar";
 }
 
-<input type="hidden" id="IdUsuario" class="spinner-input form-control" readonly value="@ViewBag.IdUsuarioAdmin">
+
 <!-- start: page -->
 <section class="panel">
     <div class="row">
@@ -13,115 +13,112 @@
                 <ul class="nav nav-tabs">
                     <li id="ClickTarea" class="active">
                         <a href="#popular" data-toggle="tab">
-                      
                             Asignar Ticket
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <div id="popular" class="tab-pane active">
-                        <form id="Frmpopular">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <ul class="notifications" style="float:right">
-                                        <li>
-                                            <a href="#" onclick="SendParametrosList()" class="btn btn-primary">
-                                                <i class="fa fa-search"></i>
-                                            </a>
 
-                                        </li>
-                                        <li>
-                                            <a href="@Url.Action("Nuevo","Ticket")" class="btn btn-primary">
-                                                <i class="fa fa-file-o"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <ul class="notifications" style="float:right">
+                                    <li>
+                                        <a href="#" onclick="SendParametrosList()" class="btn btn-primary">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Nuevo","Ticket")" class="btn btn-primary">
+                                            <i class="fa fa-file-o"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label class="control-label">Responsable </label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-user"></i>
-                                                </span>
-                                                <select name="IDRESPONSABLE" class="form-control" required>
-                                                    <option> Seleccione....</option>
-                                                    @foreach (var item in ViewBag.ListRESPONSABLE)
-                                                    {
-                                                        <option value="@item.IDPERSONA" @(item.IDPERSONA == ViewBag.IdUsuarioAdmin ? "selected" : "")> @item.NOMBRECOMPLETO</option>
-                                                    }
-                                                </select>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Responsable </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            <select id="IDRESPONSABLE" name="IDRESPONSABLE" class="form-control" required>
+                                                <option> Seleccione....</option>
+                                                @foreach (var item in ViewBag.ListRESPONSABLE)
+                                                {
+                                                    <option value="@item.IDPERSONA" @(item.IDPERSONA == ViewBag.IdUsuarioAdmin ? "selected" : "")> @item.NOMBRECOMPLETO</option>
+                                                }
+                                            </select>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label class=" control-label">Desde</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-calendar"></i>
-                                                </span>
-                                                <input type="text" name="FECHAINI" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
-                                                       class="form-control" value="@ViewBag.FechaRegistro">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label class=" control-label">Hasta</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-calendar"></i>
-                                                </span>
-                                                <input type="text" name="FECHAFIN" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
-                                                       class="form-control" value="@ViewBag.FechaRegistro">
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <div class="form-group">
-                                            <label class="control-label">Tarea</label>
-                                            <input type="text" name="DESCRIPCION" maxlength="30" name="lastname" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label class="control-label">Estado</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-tasks"></i>
-                                                </span>
-                                                <select name="ESTADO" class="form-control" required>
-                                                    <option> Seleccione....</option>
-                                                    @foreach (var item in ViewBag.ListEstado)
-                                                    {
-                                                        <option value="@item.CODIGO">@item.NOMBRE</option>
-                                                    }
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div id="ContenedorTarea" class="form-group">
-                                            <br />
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class=" control-label">Desde</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                            <input type="text" id="FECHAINI" name="FECHAINI" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
+                                                   class="form-control" value="@ViewBag.FechaRegistro">
                                         </div>
                                     </div>
                                 </div>
-                                <br />
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class=" control-label">Hasta</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                            <input type="text" id="FECHAFIN" name="FECHAFIN" placeholder="__/__/____" data-plugin-datepicker data-plugin-options='{"format": "dd/mm/yyyy"}'
+                                                   class="form-control" value="@ViewBag.FechaRegistro">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="control-label">Tarea</label>
+                                        <input type="text" id="DESCRIPCION" name="DESCRIPCION" maxlength="30" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Estado</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-tasks"></i>
+                                            </span>
+                                            <select id="ESTADO" name="ESTADO" class="form-control" required>
+                                                <option> Seleccione....</option>
+                                                @foreach (var item in ViewBag?.ListEstado)
+                                                {
+                                                    <option value="@item.CODIGO">@item.NOMBRE</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div id="ContenedorTarea" class="form-group">
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <form id="Frmpopular">
                                 <div class="row">
                                     <div class="panel-body">
-
                                         <table class="table table-hover mb-none" id="datatable-default">
                                             <thead>
                                                 <tr class="dark">
                                                     <th>Nro</th>
-                                                    <th>Fecha Ini</th>
+                                                    <th>Fecha Registro</th>
                                                     <th>Tipo</th>
                                                     <th>Asunto</th>
                                                     <th>Solicitante</th>
@@ -136,16 +133,16 @@
                                                     <tr>
                                                         <td>@item.IDTICKET</td>
                                                         <td>@item.FECREGISTRO</td>
-                                                        <td>@item.TIPOREQUERIMIENTO</td>
+                                                        <td>@item.DESTIPOTICKET</td>
                                                         <td>@item.DESCRIPCION</td>
                                                         <td>@item.SOLICITANTE</td>
                                                         <td>@item.RESPONSABLE</td>
                                                         <td class="@item.COLORESTADO ">@item.DESESTADO</td>
                                                         <td style="width:10%">
                                                             <a title="Modificar" href="@Url.Action("Modificar","Ticket", new { id=item.IDTICKET})"><i class="fa fa-pencil"></i></a>
-                                                            <a title="Aprobar" onclick="getID(@item.IDTICKET)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalAprobar"><i class="fa fa-check"></i></a>
-                                                            <a title="Revertir" onclick="getID(@item.IDTICKET)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalRevertir"><i class="fa fa-reply-all"></i></a>
-                                                            <a title="Anular" onclick="getID(@item.IDTICKET)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalAnular"><i class="fa fa-times"></i></a>
+                                                            <a title="Aprobar" onclick="openModalAprobar(@item.IDTICKET)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalAprobar"><i class="fa fa-check"></i></a>
+                                                            <a title="Revertir" onclick="openModalRevertir(@item.IDTICKET)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalRevertir"><i class="fa fa-reply-all"></i></a>
+                                                            <a title="Anular" onclick="openModalAnular(@item.IDTICKET)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalAnular"><i class="fa fa-times"></i></a>
                                                             <a title="Ver" href="@Url.Action("Ver","Ticket", new { id=item.IDTICKET})"><i class="fa  fa-search"></i></a>
                                                         </td>
                                                     </tr>
@@ -154,8 +151,9 @@
                                         </table>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -237,28 +235,116 @@
 </div>
 
 
-<input type="hidden" value="" name="IDTICKET" id="IDTICKET"/>
+<input type="hidden" value="" id="ID" />
 <script>
 
-    function getID(id) {
-        $("#IDTICKET").val(id);
+        var dt;
+
+    function SendParametrosList() {
+
+        // Definir la variable dt fuera del ámbito de la función para que sea accesible globalmente
+        dt = $("#datatable-default").DataTable({
+            destroy: true,
+            responsive: true,
+            searching: false,
+            lengthChange: false,
+            language: {
+                "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros"
+            },
+            ajax: {
+                method: "POST",
+                url: "/Ticket/Buscar",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: function (d) {
+                    d.IDRESPONSABLE = $('#IDRESPONSABLE').val();
+                    d.FECHAINI = $('#FECHAINI').val();
+                    d.FECHAFIN = $('#FECHAFIN').val();
+                    d.DESCRIPCION = $('#DESCRIPCION').val();
+                    d.ESTADO = $('#ESTADO').val();
+                    return JSON.stringify(d);
+                },
+
+                dataSrc: "data",
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.error('Error en la solicitud Ajax:', textStatus, errorThrown);
+                    if (jqXHR.responseJSON) {
+                        console.error('Detalles del error:', jqXHR.responseJSON);
+                    }
+                }
+            },
+            columns: [
+                { "data": "IDTICKET" },
+                { "data": "FECREGISTRO" },
+                { "data": "TIPOREQUERIMIENTO"},
+                { "data": "DESCRIPCION" },
+                { "data": "SOLICITANTE" },
+                { "data": "RESPONSABLE" },
+                { "data": "DESESTADO" },
+                {
+                    "data": "IDTICKET",
+                    'orderable': false,
+                    'render': function (data, type, full, meta) {
+                        var html = '<a title="Ver"    class="mb-xs mt-xs mr-xs modal-basic" href="/Ticket/Ver/' + data + '"><i class="fa fa-search"></i></a>';
+                        html += '<a title="Modificar" class="mb-xs mt-xs mr-xs modal-basic" href="/Ticket/Modificar/' + data + '"><i class="fa fa-pencil"></i></a>';
+                        html += '<a title="Aprobar"   class="mb-xs mt-xs mr-xs modal-basic" href="#" onclick="openModalAprobar(' + data + ')"><i class="fa fa-check"></i></a>';
+                        html += '<a title="Revertir"  class="mb-xs mt-xs mr-xs modal-basic" href="#" onclick="openModalRevertir(' + data + ')"><i class="fa fa-reply-all"></i></a>';
+                        html += '<a title="Anular"    class="mb-xs mt-xs mr-xs modal-basic" href="#" onclick="openModalAnular(' + data + ')"><i class="fa fa-times"></i></a>';
+                        return html;
+                    }
+                }
+            ]
+        });
+    }
+
+    function openModalAprobar(id) {
+        // Muestra el modal utilizando Magnific Popup
+        $.magnificPopup.open({
+            items: {
+                src: '#modalAprobar'
+            },
+            type: 'inline'
+        });
+        $("#ID").val(id);
+    }
+
+    function openModalRevertir(id) {
+        // Muestra el modal utilizando Magnific Popup
+        $.magnificPopup.open({
+            items: {
+                src: '#modalRevertir'
+            },
+            type: 'inline'
+        });
+        $("#ID").val(id);
+    }
+
+    function openModalAnular(id) {
+        // Muestra el modal utilizando Magnific Popup
+        $.magnificPopup.open({
+            items: {
+                src: '#modalAnular'
+            },
+            type: 'inline'
+        });
+        $("#ID").val(id);
     }
 
     function modalAprobar(id) {
-        let url= '@Url.Action("UpdAprobarEstado", "Ticket")'
-        url = url + '/' + $("#IDTICKET").val();
+        let url= '@Url.Action("modalAprobar", "Ticket")'
+        url = url + '/' + $("#ID").val();
         window.location.href = url;
     }
 
     function modalRevertir(id) {
         let url= '@Url.Action("modalRevertir", "Ticket")'
-        url = url + '/' + $("#IDTICKET").val();
+        url = url + '/' + $("#ID").val();
         window.location.href = url;
     }
 
     function modalAnular(id) {
         let url= '@Url.Action("modalAnular", "Ticket")'
-        url = url + '/' + $("#IDTICKET").val();
+        url = url + '/' + $("#ID").val();
         window.location.href = url;
     }
 </script>

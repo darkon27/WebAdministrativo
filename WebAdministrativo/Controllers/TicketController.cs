@@ -8,6 +8,8 @@ using WebAdministrativo.Models;
 using WebAdministrativo.ViewModels;
 using System.Data.Entity.Infrastructure;
 using WebAdministrativo.Clases;
+using WebAdministrativo.Service;
+using System.Data.Entity.Validation;
 
 namespace WebAdministrativo.Controllers
 {
@@ -33,24 +35,23 @@ namespace WebAdministrativo.Controllers
                 ViewBag.FechaRegistro = GlobalAdmin.FechaRegistro;
                 List<SCI_MAESTRODETALLE> listMAESTRODETALLE = (List<SCI_MAESTRODETALLE>)Session["VIEW_MAESTRODETALLE"];
                 ViewBag.ListEstado = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 22).ToList();
-                //menu;
-                var listitem = GlobalAdmin.lstSalida.Where(x => x.IsActive == "nav-parent nav-expanded nav-active");
-                int id = 0;
-                foreach (var item in listitem)
-                {
-                    id = item.IDGRUPO;
-                }
-                if (id != 7)
-                {
-                    UtilScripts.ActualizarCampo(id, "nav-parent");
-                    UtilScripts.ActualizarCampo(7, "nav-parent nav-expanded nav-active");
-                }
-                ViewBag.lstSalida = GlobalAdmin.lstSalida;
+                ViewBag.ListTipoTicket = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 20).ToList();
+                
             }
             else
             {
                 return RedirectToAction("Index", "Login");
             }
+            //menu;
+            var listitem = GlobalAdmin.lstSalida.Where(x => x.IsActive == "nav-parent nav-expanded nav-active");
+            int id = 0;
+            foreach (var item in listitem)
+            {
+                id = item.IDGRUPO;
+            }
+            UtilScripts.ActualizarCampo(id, "nav-parent");
+            UtilScripts.ActualizarCampo(6, "nav-parent nav-expanded nav-active");
+            ViewBag.lstSalida = GlobalAdmin.lstSalida;
 
             var ListTicket = context.VIEW_Ticket.Where(x => x.IDSOLICITANTE == IdUsuarioAdmin).ToList();
             return View(ListTicket);
@@ -108,7 +109,7 @@ namespace WebAdministrativo.Controllers
                 GlobalAdmin.FechaRegistro = DateTime.Now.ToShortDateString();
                 ViewBag.FechaRegistro = GlobalAdmin.FechaRegistro;
                 List<SCI_MAESTRODETALLE> listMAESTRODETALLE = (List<SCI_MAESTRODETALLE>)Session["VIEW_MAESTRODETALLE"];
-
+                ViewMode.ListTipoTicket = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 20).ToList();
                 ViewMode.ListTipo = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 21).ToList();
                 //ViewMode.ListEstado = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 22).ToList();
 
@@ -136,6 +137,7 @@ namespace WebAdministrativo.Controllers
                 ViewBag.FechaRegistro = GlobalAdmin.FechaRegistro;
                 List<SCI_MAESTRODETALLE> listMAESTRODETALLE = (List<SCI_MAESTRODETALLE>)Session["VIEW_MAESTRODETALLE"];
                 ViewBag.ListTipo = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 21).ToList();
+                ViewBag.ListTipoTicket = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 20).ToList();
                 ViewBag.ListRESPONSABLE = context.VIEW_Accesos.Where(x => x.ESTADO == 1 && x.TIPOUSUARIO != 2).ToList();
                 ViewBag.lstSalida = GlobalAdmin.lstSalida;
             }
@@ -196,23 +198,20 @@ namespace WebAdministrativo.Controllers
                 ViewBag.ListTipoTarea = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 21).ToList();
                 ViewBag.ListArea = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 24).ToList();
                 ViewBag.ListEstado = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 22).ToList();
-
-                //menu;
-                var listitem = GlobalAdmin.lstSalida.Where(x => x.IsActive == "nav-parent nav-expanded nav-active");
-                int id = 0;
-                foreach (var item in listitem)
-                {
-                    id = item.IDGRUPO;
-                }
-                if (id != 7)
-                {
-                    UtilScripts.ActualizarCampo(id, "nav-parent");
-                    UtilScripts.ActualizarCampo(7, "nav-parent nav-expanded nav-active");
-                }
-                ViewBag.lstSalida = GlobalAdmin.lstSalida;
             }
+            //menu;
+            var listitem = GlobalAdmin.lstSalida.Where(x => x.IsActive == "nav-parent nav-expanded nav-active");
+            int id = 0;
+            foreach (var item in listitem)
+            {
+                id = item.IDGRUPO;
+            }
+            UtilScripts.ActualizarCampo(id, "nav-parent");
+            UtilScripts.ActualizarCampo(6, "nav-parent nav-expanded nav-active");
+            ViewBag.lstSalida = GlobalAdmin.lstSalida;
 
-            if(GlobalAdmin.TipoUsuario == 4)
+
+            if (GlobalAdmin.TipoUsuario == 4)
             {
                 ViewMode.ListTicket = context.VIEW_Ticket.Where(x => x.IDRESPONSABLE == GlobalAdmin.IdUsuarioAdmin).ToList();   
                 ViewBag.ListRESPONSABLE = context.VIEW_Accesos.Where(x => x.ESTADO == 1 && x.TIPOUSUARIO != 2 && x.IDPERSONA == GlobalAdmin.IdUsuarioAdmin).ToList();
@@ -250,7 +249,7 @@ namespace WebAdministrativo.Controllers
                 GlobalAdmin.FechaRegistro = DateTime.Now.ToShortDateString();
                 ViewBag.FechaRegistro = GlobalAdmin.FechaRegistro;
                 List<SCI_MAESTRODETALLE> listMAESTRODETALLE = (List<SCI_MAESTRODETALLE>)Session["VIEW_MAESTRODETALLE"];
-
+                ViewMode.ListTipoTicket = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 20).ToList();
                 ViewMode.ListTipo = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 21).ToList();
                 ViewMode.ListEstado = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 22).ToList();
 
@@ -269,70 +268,109 @@ namespace WebAdministrativo.Controllers
                 // Manejar el caso en que el modelo no sea válido, por ejemplo, retornando la vista con los errores
                 return View(ticket);
             }
-
-            // Obtener el usuario existente desde la base de datos
-            var usuarioExistente = context.SCI_TICKET.Find(ticket.VIEW.IDTICKET);
-            if (usuarioExistente == null)
-            {
-                // Manejar el caso en que el usuario no existe, por ejemplo, mostrando un mensaje de error
-                TempData["ErrorMessage"] = "El usuario no existe.";
-                return RedirectToAction("Index");
-            }
-
-            usuarioExistente.IDRESPONSABLE = ticket.VIEW.IDRESPONSABLE;
-            usuarioExistente.OBSERVACION = ticket.VIEW.OBSERVACION;
-            usuarioExistente.FECHAINI = DateTime.Now;
-            usuarioExistente.ESTADO = 2; // EN PROCESO
-            usuarioExistente.FECHAMODIFICACION = DateTime.Now; // Actualizar la fecha de modificación
-            // Guardar los cambios en la base de datos
             try
             {
-                context.SaveChanges();
+                var Existente = new SCI_TICKET();
+                Existente.IDTICKET = ticket.VIEW.IDTICKET;
+                Existente.IDRESPONSABLE = ticket.VIEW.IDRESPONSABLE;
+                Existente.OBSERVACION = ticket.VIEW.OBSERVACION;
+                Existente.SOLUCION = ticket.VIEW.SOLUCION;
+                Existente.TIPOTICKET = ticket.VIEW.TIPOTICKET;
+                Existente.FECHAINI = DateTime.Now;
+                Existente.ESTADO = 2; // EN PROCESO
+                Existente.FECHAMODIFICACION = DateTime.Now; // Actualizar la fecha de modificación
+                Existente.USUARIODMODIFICACION = GlobalAdmin.UserAdmin;
+                Existente.IPMODIFICACION = UtilScripts.ObtenerIP();
+                var respt = TicketService.Modificar(2, Existente);
+                TempData["Message"] = "Registro Exitoso";
+                TempData["MessageType"] = "primary";
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbEntityValidationException ex)
             {
-                // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
-                context.Entry(usuarioExistente).Reload();
-                context.SaveChanges();
+                string msj = "Ocurrió un error al Guardar Garantias los datos. Inténtelo de nuevo.";
+                string msjson = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Mostrar el error en la consola o registrarlo en un log
+                        msjson += $"  Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}";
+                    }
+                }
+                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|Guardar =" + msj + msjson);
+                TempData["Message"] = "Hubo un problema al guardar la Ticket.";
+                TempData["MessageType"] = "danger";
             }
+            //// Obtener el usuario existente desde la base de datos
+            //var usuarioExistente = context.SCI_TICKET.Find(ticket.VIEW.IDTICKET);
+            //if (usuarioExistente == null)
+            //{
+            //    // Manejar el caso en que el usuario no existe, por ejemplo, mostrando un mensaje de error
+            //    TempData["ErrorMessage"] = "El usuario no existe.";
+            //    return RedirectToAction("Index");
+            //}
+
+            //usuarioExistente.IDRESPONSABLE = ticket.VIEW.IDRESPONSABLE;
+            //usuarioExistente.OBSERVACION = ticket.VIEW.OBSERVACION;
+            //usuarioExistente.FECHAINI = DateTime.Now;
+            //usuarioExistente.ESTADO = 2; // EN PROCESO
+            //usuarioExistente.FECHAMODIFICACION = DateTime.Now; // Actualizar la fecha de modificación
+            //// Guardar los cambios en la base de datos
+            //try
+            //{
+            //    context.SaveChanges();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
+            //    context.Entry(usuarioExistente).Reload();
+            //    context.SaveChanges();
+            //}
 
             // Redirigir al usuario a la página de índice
             return RedirectToAction("Asignar");
         }
 
         [HttpGet]
-        public ActionResult UpdAprobarEstado(string IDTICKET)
+        public ActionResult modalAprobar(int id)
         {
             // Verificar si el modelo es válido
             if (!ModelState.IsValid)
             {
                 // Manejar el caso en que el modelo no sea válido, por ejemplo, retornando la vista con los errores
-                return View(IDTICKET);
+                return View(id);
             }
 
-            // Obtener el usuario existente desde la base de datos
-            var usuarioExistente = context.SCI_TICKET.Find(IDTICKET);
-            if (usuarioExistente == null)
-            {
-                // Manejar el caso en que el usuario no existe, por ejemplo, mostrando un mensaje de error
-                TempData["ErrorMessage"] = "El usuario no existe.";
-                return RedirectToAction("Index");
-            }
-
-            usuarioExistente.FECHAINI = DateTime.Now;
-            usuarioExistente.ESTADO = 4; //  FINALIZADO
-            usuarioExistente.FECHAMODIFICACION = DateTime.Now; // Actualizar la fecha de modificación
-            usuarioExistente.USUARIODMODIFICACION = GlobalAdmin.UserAdmin; // Actualizar la fecha de modificación
+            var Existente = new SCI_TICKET();
+            // Actualizar los datos del usuario existente con los nuevos datos del modelo  
+            Existente.IDTICKET = id;
+            Existente.USUARIODMODIFICACION = GlobalAdmin.UserAdmin;
+            Existente.ESTADO = 4;
+            Existente.FECHAFIN = DateTime.Now;
+            Existente.FECHAMODIFICACION = DateTime.Now; // Actualizar la fecha de modificación
+            Existente.IPMODIFICACION = UtilScripts.ObtenerIP();
             // Guardar los cambios en la base de datos
             try
             {
-                context.SaveChanges();
+                Existente.IDTICKET = TicketService.Modificar(3, Existente);
+                TempData["Message"] = "Registro Exitoso";
+                TempData["MessageType"] = "primary";
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbEntityValidationException ex)
             {
-                // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
-                context.Entry(usuarioExistente).Reload();
-                context.SaveChanges();
+                string msj = "Ocurrió un error al Guardar Garantias los datos. Inténtelo de nuevo.";
+                string msjson = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Mostrar el error en la consola o registrarlo en un log
+                        msjson += $"  Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}";
+                    }
+                }
+                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|Guardar =" + msj + msjson);
+                TempData["ErrorMessage"] = "Hubo un problema al guardar la Ticket.";
+                TempData["MessageType"] = "danger";
             }
 
             // Redirigir al usuario a la página de índice
@@ -340,138 +378,99 @@ namespace WebAdministrativo.Controllers
         }
 
         [HttpGet]
-        public ActionResult modalRevertir(string IDTICKET)
+        public ActionResult modalRevertir(int id)
         {
             // Verificar si el modelo es válido
             if (!ModelState.IsValid)
             {
                 // Manejar el caso en que el modelo no sea válido, por ejemplo, retornando la vista con los errores
-                return View(IDTICKET);
+                return View(id);
             }
-
-            // Obtener el usuario existente desde la base de datos
-            var usuarioExistente = context.SCI_TICKET.Find(IDTICKET);
-            if (usuarioExistente == null)
-            {
-                // Manejar el caso en que el usuario no existe, por ejemplo, mostrando un mensaje de error
-                TempData["ErrorMessage"] = "El usuario no existe.";
-                return RedirectToAction("Index");
-            }
-
-            usuarioExistente.FECHAINI = DateTime.Now;
-            usuarioExistente.FECHAFIN = usuarioExistente.FECHAMODIFICACION;
-            usuarioExistente.ESTADO = 2; // EN PROCESO
-            usuarioExistente.FECHAMODIFICACION = DateTime.Now; // Actualizar la fecha de modificación
-            usuarioExistente.USUARIODMODIFICACION = GlobalAdmin.UserAdmin; // Actualizar la fecha de modificación
+            var Existente = new SCI_TICKET();
+            // Actualizar los datos del usuario existente con los nuevos datos del modelo  
+            Existente.IDTICKET = id;
+            Existente.USUARIODMODIFICACION = GlobalAdmin.UserAdmin;
+            Existente.ESTADO = 2;
+            Existente.FECHAFIN = null;
+            Existente.FECHAMODIFICACION = DateTime.Now; // Actualizar la fecha de modificación
+            Existente.IPMODIFICACION = UtilScripts.ObtenerIP();
             // Guardar los cambios en la base de datos
             try
             {
-                context.SaveChanges();
+                Existente.IDTICKET = TicketService.Modificar(3, Existente);
+                TempData["Message"] = "Registro Exitoso";
+                TempData["MessageType"] = "primary";
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbEntityValidationException ex)
             {
-                // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
-                context.Entry(usuarioExistente).Reload();
-                context.SaveChanges();
+                string msj = "Ocurrió un error al Guardar Garantias los datos. Inténtelo de nuevo.";
+                string msjson = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Mostrar el error en la consola o registrarlo en un log
+                        msjson += $"  Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}";
+                    }
+                }
+                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|Guardar =" + msj + msjson);
+                TempData["ErrorMessage"] = "Hubo un problema al guardar la Ticket.";
+                TempData["MessageType"] = "danger";
             }
-
             // Redirigir al usuario a la página de índice
             return RedirectToAction("Asignar");
         }
 
         [HttpGet]
-        public ActionResult modalAnular(string IDTICKET)
+        public ActionResult modalAnular(int id)
         {
             // Verificar si el modelo es válido
             if (!ModelState.IsValid)
             {
                 // Manejar el caso en que el modelo no sea válido, por ejemplo, retornando la vista con los errores
-                return View(IDTICKET);
+                return View(id);
             }
 
-            // Obtener el usuario existente desde la base de datos
-            var usuarioExistente = context.SCI_TICKET.Find(IDTICKET);
-            if (usuarioExistente == null)
-            {
-                // Manejar el caso en que el usuario no existe, por ejemplo, mostrando un mensaje de error
-                TempData["ErrorMessage"] = "El usuario no existe.";
-                return RedirectToAction("Index");
-            }
-
-            usuarioExistente.FECHAINI = DateTime.Now;
-            usuarioExistente.ESTADO = 5; // ANULADO
-            usuarioExistente.FECHAMODIFICACION = DateTime.Now; // Actualizar la fecha de modificación
-            usuarioExistente.USUARIODMODIFICACION = GlobalAdmin.UserAdmin; // Actualizar la fecha de modificación
+            var Existente = new SCI_TICKET();
+            // Actualizar los datos del usuario existente con los nuevos datos del modelo  
+            Existente.IDTICKET = id;
+            Existente.USUARIODMODIFICACION = GlobalAdmin.UserAdmin;
+            Existente.ESTADO = 5;
+            Existente.FECHAMODIFICACION = DateTime.Now; // Actualizar la fecha de modificación
+            Existente.IPMODIFICACION = UtilScripts.ObtenerIP();
             // Guardar los cambios en la base de datos
             try
             {
-                context.SaveChanges();
+                Existente.IDTICKET = TicketService.Modificar(3, Existente);
+                TempData["Message"] = "Registro Exitoso";
+                TempData["MessageType"] = "primary";
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbEntityValidationException ex)
             {
-                // Manejar el caso de concurrencia optimista, por ejemplo, recargando los datos y volviendo a intentar
-                context.Entry(usuarioExistente).Reload();
-                context.SaveChanges();
+                string msj = "Ocurrió un error al Guardar Garantias los datos. Inténtelo de nuevo.";
+                string msjson = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Mostrar el error en la consola o registrarlo en un log
+                        msjson += $"  Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}";
+                    }
+                }
+                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "Error|Guardar =" + msj + msjson);
+                TempData["ErrorMessage"] = "Hubo un problema al guardar la Ticket.";
+                TempData["MessageType"] = "danger";
             }
 
             // Redirigir al usuario a la página de índice
             return RedirectToAction("Asignar");
         }
 
-        [HttpGet]
-        public ActionResult Buscar(SCI_TICKET filtro)
-        {
- 
-            List<VIEW_Accesos> UsuAccesos = (List<VIEW_Accesos>)Session["VIEW_Accesos"];
-            foreach (var intem in UsuAccesos)
-            {
-                ViewBag.UserNameAdmin = intem.NOMBRECOMPLETO;
-                ViewBag.TipoUsuarioAdmin = intem.DESTIPOUSUARIO;
-                ViewBag.IdUsuarioAdmin = intem.IDPERSONA; 
-            }
-            GlobalAdmin.FechaRegistro = DateTime.Now.ToShortDateString();
-            ViewBag.FechaRegistro = GlobalAdmin.FechaRegistro;
-            List<SCI_MAESTRODETALLE> listMAESTRODETALLE = (List<SCI_MAESTRODETALLE>)Session["VIEW_MAESTRODETALLE"];
-            ViewBag.ListEstado = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 22).ToList();
-
-          // var tickets = context.VIEW_Ticket.Where(t => t.IDSOLICITANTE == filtro.IDSOLICITANTE && t.ESTADO == filtro.ESTADO).ToList(); // Ejemplo de búsqueda por nombre
-
-            IQueryable<VIEW_Ticket> query = context.VIEW_Ticket;
-
-            // Aplicar filtros
-            if (!string.IsNullOrEmpty(filtro.IDSOLICITANTE.ToString()))
-            {
-                query = query.Where(t => t.IDSOLICITANTE == filtro.IDSOLICITANTE);
-            }
-            if (!string.IsNullOrEmpty(filtro.IDRESPONSABLE.ToString()))
-            {
-                query = query.Where(t => t.IDRESPONSABLE == filtro.IDRESPONSABLE);
-            }
-            if (filtro.FECHAINI != null)
-            {
-                query = query.Where(t => t.FECHAREGISTRO >= filtro.FECHAINI);
-            }
-            if (filtro.FECHAINI != null)
-            {
-                query = query.Where(t => t.FECHAREGISTRO >= filtro.FECHAINI);
-            }
-
-            if (filtro.FECHAFIN != null)
-            {
-                query = query.Where(t => t.FECHAREGISTRO <= filtro.FECHAFIN);
-            }
-
-            if (!string.IsNullOrEmpty(filtro.ESTADO.ToString()))
-            {
-                query = query.Where(t => t.ESTADO == filtro.ESTADO);
-            }
-
-            var tickets = query.ToList();
-
-
-
-            //return View(tickets);
-            return View("Index", tickets); // Devolver los resultados a la vista Index
+        public JsonResult Buscar(SCI_TICKET filtro)
+        {        
+            var tickets = TicketService.Buscar(filtro);
+            object json = new { data = tickets };
+            return Json(json, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

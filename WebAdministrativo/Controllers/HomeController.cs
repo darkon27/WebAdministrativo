@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using WebAdministrativo.Models;
+using WebAdministrativo.Service;
 using WebAdministrativo.ViewModels;
 
 namespace WebAdministrativo.Controllers
@@ -16,21 +17,26 @@ namespace WebAdministrativo.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-
+            List<TicketEstadistico> ListEstadistica = new List<TicketEstadistico>();
             if (Session["VIEW_Accesos"] != null)
-            {
+            {    SCI_TICKET filtro = new SCI_TICKET();
+           
                 List<VIEW_Accesos>  UsuAccesos = (List<VIEW_Accesos>)Session["VIEW_Accesos"];
                 foreach ( var intem in  UsuAccesos)
                 {
+                    filtro.IDSOLICITANTE = intem.IDPERSONA;
                     ViewBag.UserNameAdmin = intem.NOMBRECOMPLETO;
                     ViewBag.TipoUsuarioAdmin = intem.DESTIPOUSUARIO;
                 }
                 GlobalAdmin.FechaRegistro = DateTime.Now.ToShortDateString();
                 ViewBag.FechaRegistro = GlobalAdmin.FechaRegistro;
+            
+                ListEstadistica = TicketService.TicketEstadistico(filtro);
             }
             ViewBag.lstSalida = GlobalAdmin.lstSalida;
+
             ////return View(ViewBag.lstSalida);
-             return View();
+             return View(ListEstadistica);
         }
 
         public ActionResult Logout()
@@ -38,8 +44,10 @@ namespace WebAdministrativo.Controllers
             // Cerrar sesión del usuario
             Session["VIEW_Accesos"] = null;
             Session["MAESTRODETALLE"] = null;
-
-            GlobalAdmin xon = new GlobalAdmin();  
+            Session["MAESTRODETALLE"] = null;
+            TempData["Message"] = null;
+            TempData["MessageType"] = null;
+      
             GlobalAdmin.UserNameAdmin = null;
             GlobalAdmin.TipoUserAdmin = null;
             GlobalAdmin.IdUsuarioAdmin = 0;
@@ -48,8 +56,9 @@ namespace WebAdministrativo.Controllers
             GlobalAdmin.NombreGrupo = null;
             GlobalAdmin.AccionOpenSetList = null;
 
+
             // Redirigir al usuario a la página de login
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("Index", "Portal");
         }
 
 

@@ -26,11 +26,10 @@ namespace WebAdministrativo.Controllers
         }
 
         public ActionResult ValidateUserAdmin(VIEW_Accesos Usu)
-        {
-            var viewmodel = new List<VIEW_Accesos>();
+        { 
             try
             {
-                viewmodel = UsuarioService.Accesos(Usu);
+              var  viewmodel = UsuarioService.Accesos(Usu);
                 //   viewmodel = context.VIEW_Accesos.Where(x => x.EMAIL == Usu.EMAIL && x.PASSWORD == Usu.PASSWORD).ToList();
                 // Validar los datos de inicio de sesión aquí
                 if (viewmodel.Count > 0)
@@ -126,11 +125,11 @@ namespace WebAdministrativo.Controllers
                 return RedirectToAction("Registrate");
             }
 
-            if (context.SCI_PERSONA.Any(C => C.EMAIL == Accesos.EMAIL))
-            {
-                TempData["Message"] = "Ya existe el correo ingresado.";
-                return RedirectToAction("Registrate");
-            }
+            //if (context.SCI_PERSONA.Any(C => C.EMAIL == Accesos.EMAIL))
+            //{
+            //    TempData["Message"] = "Ya existe el correo ingresado.";
+            //    return RedirectToAction("Registrate");
+            //}
 
             if (context.SCI_USUARIO.Any(C => C.USUARIO == Accesos.USUARIO))
             {
@@ -146,6 +145,7 @@ namespace WebAdministrativo.Controllers
                     Accesos.IDPERSONA = Idsecuencia;
                     var objPERSONA = new SCI_PERSONA
                     {
+                        IDPERSONA = Accesos.IDPERSONA,
                         TIPODOCUMENTO = Accesos.TIPODOCUMENTO,
                         DOCUMENTO = Accesos.DOCUMENTO,
                         NOMBRE = Accesos.NOMBRE.Trim(),
@@ -159,14 +159,16 @@ namespace WebAdministrativo.Controllers
                         USUARIOMODIFICACION = Accesos.USUARIO,
                         IPMODIFICACION = UtilScripts.ObtenerIP()
                     };
-
+                    context.SCI_PERSONA.Add(objPERSONA);
+                    context.SaveChanges(); // Guardar la entidad SCI_PERSONA para obtener el IDPERSONA
+                  //  transaction.Commit();
                     var objUSUARIO = new SCI_USUARIO
                     {
+                        IDUSUARIO = Accesos.IDPERSONA,
                         USUARIO = Accesos.USUARIO,
                         PASSWORD = Accesos.PASSWORD,
                         FECHAEXPIRACION = DateTime.Now.AddYears(1),
-                        TIPOUSUARIO = 2,
-                        IDUSUARIO = Accesos.IDPERSONA,
+                        TIPOUSUARIO = 2,                       
                         CADUCIDAD = 1,
                         ESTADO = 1,
                         FECHACREACION = DateTime.Now, // Actualizar la fecha de modificación
@@ -174,16 +176,16 @@ namespace WebAdministrativo.Controllers
                         IPCREACION = UtilScripts.ObtenerIP()
                     };
 
-                    context.SCI_PERSONA.Add(objPERSONA);
                     context.SCI_USUARIO.Add(objUSUARIO);
                     context.SaveChanges();
+
                     transaction.Commit();
-                    var asunto = "Ingreso al Sistema Web";
+                    //var asunto = "Ingreso al Sistema Web";
                     var mensaje = new StringBuilder();
                     mensaje.AppendLine("<div><h2>Su Nuevo Acceso al Sistema Web </h2>");
-                    mensaje.AppendLine($"<p><strong>Su Usuario es : </strong>{Accesos.EMAIL}</p>");
+                    mensaje.AppendLine($"<p><strong>Su Usuario es : </strong>{Accesos.USUARIO}</p>");
                     mensaje.AppendLine($"<p><strong>Su Password es :</strong>{Accesos.PASSWORD}</p></div>");
-                    ClassBase.EnviarCorreo(Accesos.EMAIL, null, null, asunto, mensaje.ToString(), null);
+                  //  ClassBase.EnviarCorreo(Accesos.EMAIL, null, null, asunto, mensaje.ToString(), null);
                     TempData["Message"] = "Registro exitoso. " + mensaje;
                 }
                 catch (DbEntityValidationException ex)
@@ -214,44 +216,44 @@ namespace WebAdministrativo.Controllers
             return View();
         }
 
-        public ActionResult Profile()
-        {
-            VIEW_Accesos Entity = new VIEW_Accesos();
-            if (Session["VIEW_Accesos"] != null)
-            {
-                List<VIEW_Accesos> UsuAccesos = (List<VIEW_Accesos>)Session["VIEW_Accesos"];
-                foreach (var intem in UsuAccesos)
-                {
-                    ViewBag.UserNameAdmin = intem.NOMBRECOMPLETO;
-                    ViewBag.TipoUsuarioAdmin = intem.DESTIPOUSUARIO;
-                    ViewBag.IdUsuarioAdmin = intem.IDPERSONA;
-                }
-                GlobalAdmin.FechaRegistro = DateTime.Now.ToShortDateString();
-                ViewBag.FechaRegistro = GlobalAdmin.FechaRegistro;
-                List<SCI_MAESTRODETALLE> listMAESTRODETALLE = (List<SCI_MAESTRODETALLE>)Session["VIEW_MAESTRODETALLE"];
-                ViewBag.ListEstado = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 1).ToList();
+        //public ActionResult Profile()
+        //{
+        //    VIEW_Accesos Entity = new VIEW_Accesos();
+        //    if (Session["VIEW_Accesos"] != null)
+        //    {
+        //        List<VIEW_Accesos> UsuAccesos = (List<VIEW_Accesos>)Session["VIEW_Accesos"];
+        //        foreach (var intem in UsuAccesos)
+        //        {
+        //            ViewBag.UserNameAdmin = intem.NOMBRECOMPLETO;
+        //            ViewBag.TipoUsuarioAdmin = intem.DESTIPOUSUARIO;
+        //            ViewBag.IdUsuarioAdmin = intem.IDPERSONA;
+        //        }
+        //        GlobalAdmin.FechaRegistro = DateTime.Now.ToShortDateString();
+        //        ViewBag.FechaRegistro = GlobalAdmin.FechaRegistro;
+        //        List<SCI_MAESTRODETALLE> listMAESTRODETALLE = (List<SCI_MAESTRODETALLE>)Session["VIEW_MAESTRODETALLE"];
+        //        ViewBag.ListEstado = listMAESTRODETALLE.Where(x => x.IDMAESTRO == 1).ToList();
 
-                //menu;
-                var listitem = GlobalAdmin.lstSalida.Where(x => x.IsActive == "nav-parent nav-expanded nav-active");
-                int id = 0;
-                foreach (var item in listitem)
-                {
-                    id = item.IDGRUPO;
-                }
-                UtilScripts.ActualizarCampo(id, "nav-parent");
-                UtilScripts.ActualizarCampo(7, "nav-parent nav-expanded nav-active");
-                ViewBag.lstSalida = GlobalAdmin.lstSalida;
+        //        //menu;
+        //        var listitem = GlobalAdmin.lstSalida.Where(x => x.IsActive == "nav-parent nav-expanded nav-active");
+        //        int id = 0;
+        //        foreach (var item in listitem)
+        //        {
+        //            id = item.IDGRUPO;
+        //        }
+        //        UtilScripts.ActualizarCampo(id, "nav-parent");
+        //        UtilScripts.ActualizarCampo(7, "nav-parent nav-expanded nav-active");
+        //        ViewBag.lstSalida = GlobalAdmin.lstSalida;
 
-                Entity.IDPERSONA = ViewBag.IdUsuarioAdmin;
-                var ListUsuario = UsuarioService.Buscar(Entity);
-                foreach (var intem in ListUsuario)
-                {
-                    Entity = intem;
-                }
-            }
+        //        Entity.IDPERSONA = ViewBag.IdUsuarioAdmin;
+        //        var ListUsuario = UsuarioService.Buscar(Entity);
+        //        foreach (var intem in ListUsuario)
+        //        {
+        //            Entity = intem;
+        //        }
+        //    }
 
-            return View(Entity);
-        }
+        //    return View(Entity);
+        //}
 
 
 

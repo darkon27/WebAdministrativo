@@ -8,21 +8,20 @@
 
 <!-- start: page -->
 <section class="panel">
-    <a class="btn btn-outline-success my-2 my-sm-0" style="float:right" href="@Url.Action("Nuevo","Tarea")"><i class="fa fa-file-o"></i></a>
     <div class="row">
         <div class="col-md-12">
             <div class="tabs">
                 <ul class="nav nav-tabs">
                     <li id="ClickTarea" class="active">
                         <a href="#popular" data-toggle="tab">
-                            <span class="badge hidden-xs">1</span>
+                    
                             Consultar
                         </a>
                     </li>
 
                     <li id="ClickAcciones">
                         <a href="#Acciones" data-toggle="tab">
-                            <span class="badge hidden-xs">3</span>
+                  
                             Acciones
                         </a>
                     </li>
@@ -30,8 +29,21 @@
                 <div class="tab-content">
                     <div id="popular" class="tab-pane active">
                         <form id="Frmpopular">
-
                             <div class="panel-body">
+                                <div class="row">
+                                    <ul class="notifications" style="float:right">
+                                        <li>
+                                            <a href="#" onclick="SendParametrosList()" class="btn btn-primary">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Nuevo","Tarea")" class="btn btn-primary">
+                                                <i class="fa fa-file-o"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
@@ -111,7 +123,7 @@
                                 <div class="row">
                                     <div class="panel-body">
 
-                                        <table class="table table-bordered table-striped table-condensed mb-none">
+                                        <table class="table table-hover mb-none" id="datatable-default">
                                             <thead>
                                                 <tr class="dark">
                                                     <th>Nro</th>
@@ -126,22 +138,22 @@
                                             <tbody>
                                                 @foreach (var item in Model)
                                                 {
-                                                <tr>
-                                                    <td>@item.ID_TAREA</td>
-                                                    <td>@item.FECREGISTRO</td>
-                                                    <td>@item.TIPOREQUERIMIENTO</td>
-                                                    <td>@item.TAREA</td>
-                                                    <td>@item.RESPONSABLE</td>
-                                                    <td class="btn btn-@item.COLORESTADO ">@item.DESESTADO</td>
-                                                    <td style="width:12%">
-                                                        <a title="Editar" href="@Url.Action("Modificar","Tarea", new { id=item.ID_TAREA})"><i class="fa fa-pencil"></i></a>
-                                                        <a title="Aprobar" onclick="getID(@item.ID_TAREA)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalAprobar"><i class="fa fa-check"></i></a>
-                                                        <a title="Revertir" onclick="getID(@item.ID_TAREA)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalRevertir"><i class="fa fa-reply-all"></i></a>
-                                                        <a title="Anular" onclick="getID(@item.ID_TAREA)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalAnular"><i class="fa fa-times"></i></a>
-                                                        <a title="Ver" href="@Url.Action("Ver","Tarea", new { id=item.ID_TAREA})"><i class="fa  fa-search"></i></a>
-                                                        @*<a title="Eliminar" onclick="getID(@item.ID_TAREA)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalMD"><i class="fa fa-trash-o"></i></a>*@
-                                                    </td>
-                                                </tr>
+                                                    <tr>
+                                                        <td>@item.ID_TAREA</td>
+                                                        <td>@item.FECREGISTRO</td>
+                                                        <td>@item.TIPOREQUERIMIENTO</td>
+                                                        <td>@item.TAREA</td>
+                                                        <td>@item.RESPONSABLE</td>
+                                                        <td class="btn btn-@item.COLORESTADO ">@item.DESESTADO</td>
+                                                        <td style="width:12%">
+                                                            <a title="Editar" href="@Url.Action("Modificar","Tarea", new { id=item.ID_TAREA})"><i class="fa fa-pencil"></i></a>
+                                                            <a title="Aprobar" onclick="getID(@item.ID_TAREA)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalAprobar"><i class="fa fa-check"></i></a>
+                                                            <a title="Revertir" onclick="getID(@item.ID_TAREA)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalRevertir"><i class="fa fa-reply-all"></i></a>
+                                                            <a title="Anular" onclick="getID(@item.ID_TAREA)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalAnular"><i class="fa fa-times"></i></a>
+                                                            <a title="Ver" href="@Url.Action("Ver","Tarea", new { id=item.ID_TAREA})"><i class="fa  fa-search"></i></a>
+                                                            @*<a title="Eliminar" onclick="getID(@item.ID_TAREA)" class="mb-xs mt-xs mr-xs modal-basic" href="#modalMD"><i class="fa fa-trash-o"></i></a>*@
+                                                        </td>
+                                                    </tr>
                                                 }
                                             </tbody>
                                         </table>
